@@ -11,6 +11,7 @@ use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\LogAkunController;
+use App\Http\Controllers\WarrantyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,6 +28,12 @@ Route::get('/', function () {
 });
 Route::post('regist', [UserController::class, 'insertRegis'])->name('regist');
 Route::post('regist', [LogAkunController::class, 'store']);
+Route::resource('fp', WarrantyController::class);
+Route::post('claim-warranty', [WarrantyController::class, 'claim']);
+Route::get('fp/{code}/claim', [WarrantyController::class, 'claimadmin']);
+Route::get('mauklaim/{code}', [WarrantyController::class, 'mauklaim']);
+Route::get('tunggu/{code}', [WarrantyController::class, 'tunggu']);
+Route::get('udah/{code}', [WarrantyController::class, 'udah']);
 /**
  * socialite auth
  */
@@ -35,8 +42,6 @@ Route::get('/auth/{provider}/callback', [SocialiteController::class, 'handleProv
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-
-
     //akun
     Route::get('/profile', [LogAkunController::class, 'dataprofil'])->name("profile");
     Route::post('/edit-profile', [LogAkunController::class, 'editprofil']);
