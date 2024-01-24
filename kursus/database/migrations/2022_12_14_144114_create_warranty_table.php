@@ -18,7 +18,7 @@ class CreateWarrantyTable extends Migration
             $table->string('code')->unique();
             $table->string('status')->default('unclaimed');
             $table->string('nama')->nullable();
-            $table->string('tanggal-lahir')->nullable();
+            $table->string('tanggal')->nullable();
             $table->string('email')->nullable();
             $table->string('handphone')->nullable();
             $table->string('alamat')->nullable();
