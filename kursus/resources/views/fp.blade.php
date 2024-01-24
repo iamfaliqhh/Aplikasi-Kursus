@@ -47,7 +47,7 @@
     <div class="input-group w-auto input">
         <label for="" class="form-label"></label>
         <input type="text" placeholder="Masukkan Kode Garansi" class="form-control input" name="code" style="width: 500px" id="" aria-describedby="helpId" placeholder=""/>
-        <button class="btn btn-secondary" type="submit">
+        <button class="btn btn-primary" type="submit">
             Submit
         </button>
     </div>
