@@ -21,21 +21,25 @@
             width: 100%;
             object-fit: cover;
         }
+        .text-center {
+            text-align: center;
+        }
     </style>
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/logoroblox.png') }}">
-    <!-- Bootstrap -->
+    <!-- BOOTSTRAP CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
 <img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover">
-<div class="container">
+<div class="container text-center">
     <br>
     <br>
-    <h1 class="font-weight-bold text-center" style="font-size: 24px;">Terimakasih telah mengisi data</h1>
-    <p class="text-center" style="font-size: 15px;">Mohon untuk menunggu validasi dari pihak kami ya!</p>
-    <a class="text-center" href="{{url('fp')}}" >Balik ke halaman utama</a>
+    <h1 class="font-weight-bold" style="font-size: 24px;">Terima kasih telah mengisi data</h1>
+    <p style="font-size: 15px;">Mohon untuk menunggu validasi dari pihak kami ya!</p>
+    <br>
+    <a class="btn btn-primary" style="" href="{{url('fp')}}" >Balik ke halaman utama</a>
 </div>    
 </body>
 </html>

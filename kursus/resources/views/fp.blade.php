@@ -53,5 +53,16 @@
     </div>
     </form>
     </div>
+    <br>
+    <br>
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <p style="font-size: 12px;">Note :
+                <br>1. Data tidak ditemukan atau salah informasi? Silakan hubungi admin Stealth (+62) 0819-3402-2750
+                <br>2. Masa garansi produk sesuai dengan tipe produk yang terpasang
+            </p>
+        </div>
+    </div>
 </body>
 </html>
