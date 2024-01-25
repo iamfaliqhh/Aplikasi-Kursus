@@ -22,7 +22,8 @@ class CreateWarrantyTable extends Migration
             $table->string('email')->nullable();
             $table->string('handphone')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('mobil')->nullable();
+            $table->string('merek')->nullable();
+            $table->string('tipe')->nullable();
             $table->timestamps();
         });
     }

@@ -113,7 +113,8 @@ class WarrantyController extends Controller
             'email' => $request->email,
             'handphone' => $request->handphone,
             'alamat' => $request->alamat,
-            'mobil' => $request->mobil,
+            'merek' => $request->merek,
+            'tipe' => $request->tipe,
             'status' => 'pending'
         ]);
         return view('tunggu');

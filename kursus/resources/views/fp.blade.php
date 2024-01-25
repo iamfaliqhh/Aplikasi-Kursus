@@ -49,7 +49,7 @@
 </head>
 
 <body>
-    <a href="https://api.whatsapp.com/send?phone=51955081075&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">
+    <a href="https://api.whatsapp.com/send?phone=6281934022750&text=Hello%2C%20I%20think%20there%27s%20a%20problem%20with%20my%20data%2Fmisinformation%20in%20my%20warranty%20form.%0ACan%20you%20help%20me%20out%3F" class="float" target="_blank">
     <i class="fa fa-whatsapp my-float"></i>
     </a>
     <img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover">
@@ -60,7 +60,7 @@
     <p class="text-center" style="font-size: 15px;">Anda telah menggunakan produk berkualitas dari <b>STEALTH HIGH DEFINITION FILMS</b></p>
     <br>
     <p class="text-center" style="font-size: 15px;">
-        Dengan memiliki kartu garansi Premio, anda telah mendapatkan jaminan <b>garansi 1 (satu) tahun</b>. 
+            Dengan memiliki kartu garansi Premio, anda telah mendapatkan jaminan <b>garansi 1 (satu) tahun</b>. 
         <br>Untuk mendapatkan <b>garansi maksimal hingga 7 (tujuh) tahun</b>, 
         <br>silakan aktivasi dan isi data diri anda secara lengkap pada halaman berikut setelah mengisi Kode Garansi anda.
     </p>
@@ -70,7 +70,7 @@
     <div class="d-flex justify-content-center">
     <div class="input-group w-auto input">
         <label for="" class="form-label"></label>
-        <input type="text" placeholder="Masukkan Kode Garansi" class="form-control input" name="code" style="width: 500px" id="" aria-describedby="helpId" placeholder=""/>
+        <input type="text" placeholder="Masukkan Kode Garansi" class="form-control input" name="code" style="width: 500px" id="" aria-describedby="helpId" placeholder="" required/>
         <button class="btn btn-primary" type="submit">
             Submit
         </button>
@@ -83,8 +83,8 @@
     <div class="card">
         <div class="card-body">
             <p style="font-size: 12px;">Note :
-                <br>1. Data tidak ditemukan atau salah informasi? Silakan hubungi Admin Stealth via WhatsApp (+62) 0819-3402-2750
-                <br>2. Masa garansi produk sesuai dengan tipe produk yang terpasang
+                <br>1. Data tidak ditemukan atau salah informasi? Silakan hubungi Admin Stealth via WhatsApp.
+                <br>2. Masa garansi produk sesuai dengan tipe produk yang terpasang.
             </p>
         </div>
     </div>

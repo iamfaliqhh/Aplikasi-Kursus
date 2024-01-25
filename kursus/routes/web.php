@@ -12,6 +12,7 @@ use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\LogAkunController;
 use App\Http\Controllers\WarrantyController;
+use App\Http\Controllers\DropdownController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,8 @@ use App\Http\Controllers\WarrantyController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('dropdown', [DropdownController::class, 'index']);
+Route::post('api/fetch-tipe', [DropdownController::class, 'fetchTipe']);
 Route::post('regist', [UserController::class, 'insertRegis'])->name('regist');
 Route::post('regist', [LogAkunController::class, 'store']);
 Route::resource('fp', WarrantyController::class);

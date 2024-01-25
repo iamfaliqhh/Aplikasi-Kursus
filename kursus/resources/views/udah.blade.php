@@ -33,8 +33,30 @@
 </head>
 
 <body>
-   mobil = {{$check->mobil}} <br>
-   nama = {{$check->nama}} <br>
-   <p>selamat warranty berlaku 50 tahun</p>
+    <img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover">
+    <div class="container text-center">
+    <br>
+    <h1 class="font-weight-bold" style="font-size: 24px;">Terima kasih telah mengisi data!</h1>
+    <p style="font-size: 15px;">Selamat! Warranty anda telah diaktivasi dan berlaku untuk 7 tahun.</p>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Nama</th>
+                <th scope="col">Tanggal Lahir</th>
+                <th scope="col">E-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{$check->nama}}</td>
+                <td>{{$check->tanggal}}</td>
+                <td>{{$check->email}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a class="btn btn-primary" style="" href="{{url('fp')}}" >Balik ke halaman utama</a>
+</div>
 </body>
 </html>
