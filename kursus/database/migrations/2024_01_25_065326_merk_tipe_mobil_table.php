@@ -21,8 +21,8 @@ return new class extends Migration
   
         Schema::create('tipes', function (Blueprint $table) {
             $table->id();
+            $table->integer('merek_id');
             $table->string('name');
-            $table->integer('tipe_id');
             $table->timestamps();
         });
     }
