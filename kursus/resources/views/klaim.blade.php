@@ -31,8 +31,7 @@
     <!-- BOOTSTRAP LINK -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- JQUERY LINK -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -69,7 +68,7 @@
     </div>
     <div class="mb-3">
         <label for="" class="form-label label-font">Merek Mobil</label>
-        <select id="merek-dropdown" class="form-control">
+        <select id="merek-dropdown" class="form-control select2" name="merk">
             <option value="">-- Pilih Merek --</option>
             @foreach ($mereks as $data)
             <option value="{{$data->id}}">
@@ -79,15 +78,18 @@
         </select>
         <br>
         <label for="" class="form-label label-font">Tipe Mobil</label>
-        <select id="tipe-dropdown" class="form-control">
+        <select id="tipe-dropdown" class="form-control select2" name="tipe">
         </select>
     </div>
     <br>
     <button class="btn btn-primary" type="submit">Submit</button>
     </form>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
+        $('.select2').select2();
   
             /*------------------------------------------
             --------------------------------------------
@@ -106,32 +108,16 @@
                     },
                     dataType: 'json',
                     success: function (result) {
+                        console.log(result);
                         $('#tipe-dropdown').html('<option value="">-- Pilih Tipe --</option>');
                         $.each(result.tipe, function (key, value) {
                             $("#tipe-dropdown").append('<option value="' + value
                                 .id + '">' + value.name + '</option>');
                         });
+                        $('#tipe-dropdown').select2();
                     }
                 });
             });
-  
-            /*------------------------------------------
-            --------------------------------------------
-            Tipe Dropdown Change Event
-            --------------------------------------------
-            --------------------------------------------*/
-            $('#tipe-dropdown').on('change', function () {
-                var idTipe = this.value;
-                $.ajax({
-                    type: "POST",
-                    data: {
-                        state_id: idTipe,
-                        _token: '{{csrf_token()}}'
-                    },
-                    dataType: 'json',
-                });
-            });
-  
         });
     </script>
 </body>

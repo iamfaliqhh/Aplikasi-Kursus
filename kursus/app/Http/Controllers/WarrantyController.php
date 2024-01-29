@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Merek;
 use App\Models\Warranty;
 use Illuminate\Http\Request;
 
@@ -29,20 +30,25 @@ class WarrantyController extends Controller
 
     public function claim(Request $request)
     {
-        $check = Warranty::where('code', $request->code)->first();
+        $check = Warranty::with('tipe_mobil.merek')->where('code', $request->code)->first();
+        $mereks = Merek::all();
+        if($check == null){
+            return redirect('fp');
+        }
+
         if($check->status == 'pending'){
             return view('tunggu', compact('check'));
         }elseif($check->status == 'claimed'){
             return view('udah', compact('check'));
         }else{
-            return view('klaim', compact('check'));
+            return view('klaim', compact('check','mereks'));
         }
     }
 
     public function mauklaim($code)
     {
-        $data = Warranty::where('code', $code)->first();
-        return view('klaim', compact('data'));
+        $check = Warranty::where('code', $code)->first();
+        return view('klaim', compact('check'));
     }
 
     public function tunggu($code)
@@ -113,7 +119,6 @@ class WarrantyController extends Controller
             'email' => $request->email,
             'handphone' => $request->handphone,
             'alamat' => $request->alamat,
-            'merek' => $request->merek,
             'tipe' => $request->tipe,
             'status' => 'pending'
         ]);

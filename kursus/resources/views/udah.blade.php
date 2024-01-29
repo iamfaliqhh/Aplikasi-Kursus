@@ -39,21 +39,34 @@
     <h1 class="font-weight-bold" style="font-size: 24px;">Terima kasih telah mengisi data!</h1>
     <p style="font-size: 15px;">Selamat! Warranty anda telah diaktivasi dan berlaku untuk 7 tahun.</p>
     <br>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">Nama</th>
-                <th scope="col">Tanggal Lahir</th>
-                <th scope="col">E-mail</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{$check->nama}}</td>
-                <td>{{$check->tanggal}}</td>
-                <td>{{$check->email}}</td>
-            </tr>
-        </tbody>
+    <table class="table table-bordered text-left">
+        <tr>
+            <td scope="col"><b>Nama</b></td>
+            <td>{{$check->nama}}</td>
+        </tr>
+        <tr>
+            <td scope="col"><b>Tanggal Lahir</b></td>
+            <td>{{$check->tanggal}}</td>
+        </tr>
+        <tr>
+            <td scope="col"><b>Email</b></td>
+            <td>{{$check->email}}</td>
+        </tr>
+        <tr>
+            <td scope="col"><b>Nomor Telepon</b></td>
+            <td>{{$check->handphone}}</td>
+        </tr>
+        <tr>
+            <td scope="col"><b>Alamat</b></td>
+            <td>{{$check->alamat}}</td>
+        </tr>
+        <tr>
+            <td scope="col"><b>Tipe</b></td>
+            <td>{{$check->tipe_mobil->name ?? '-'}}</td>
+        </tr>
+        <tr>
+            <td scope="col"><b>Merek</b></td>
+            <td>{{$check->tipe_mobil->merek->name ?? '-'}}</td>
     </table>
     <br>
     <a class="btn btn-primary" style="" href="{{url('fp')}}" >Balik ke halaman utama</a>

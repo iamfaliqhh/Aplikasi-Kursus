@@ -17,4 +17,9 @@ class Tipe extends Model
     protected $fillable = [
         'name', 'tipe_id'
     ];
+
+    public function merek()
+    {
+        return $this->belongsTo(Merek::class,'merek_id','id');
+    }
 }
