@@ -109,7 +109,12 @@ class WarrantyController extends Controller
     {
         Warranty::where('code', $code)->update([
             'nama' => $request->nama,
-            'mobil' => $request->mobil,
+            'tanggal' => $request->tanggal,
+            'email' => $request->email,
+            'handphone' => $request->handphone,
+            'alamat' => $request->alamat,
+            'merek' => $request->merek,
+            'tipe' => $request->tipe,
             'status' => 'pending'
         ]);
         return view('tunggu');
