@@ -10,4 +10,9 @@ class Warranty extends Model
     public $table = 'warranty';
     public $guarded = [];
     use HasFactory;
+
+    public function tipe_mobil()
+    {
+        return $this->belongsTo(Tipe::class,'tipe','id');
+    }
 }

@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             SekolahSeeder::class,
             KursusSeeder::class,
             PendaftaranSeeder::class,
+            WarrantySeeder::class,
+            MerekTipeSeeder::class,
         ]);
     }
 }
