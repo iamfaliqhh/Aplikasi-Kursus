@@ -33,7 +33,6 @@
                         <li><a href="{{route('data-user')}}">Garansi</a></li>
                         <li><a href="{{route('data-sekolah')}}">Merek & Tipe Mobil</a></li>
                         <li><a href="{{route('data-produk')}}">Produk</a></li>
-
                     </ul>
                 </li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
