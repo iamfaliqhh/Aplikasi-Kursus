@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    COURSE
+    Garansi | STEALTH
 @endsection
 
 @section('header')
@@ -12,7 +12,7 @@
 @endsection
 
 @section('menunya')
-    Pengguna
+    <h1 class="font-weight-bold" style="font-size: 24px;">Garansi<h1>
 @endsection
 
 @section('menu')
@@ -20,7 +20,7 @@
         <ul class="metismenu" id="menu">
             <li><a href="dashboard">
                     <i class="fas fa-home"></i>
-                    <span class="nav-text">Pengguna</span>
+                    <span class="nav-text">Dashboard</span>
                 </a>
             </li>
             @if (auth()->user()->role == 'Administrator')
@@ -29,10 +29,9 @@
                         <span class="nav-text">Data Master </span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ route('data-user') }}">Pengguna</a></li>
-                        <li><a href="{{ route('data-sekolah') }}">Sekolah</a></li>
-                        <li><a href="{{ route('data-kursus') }}">Kursus</a></li>
-
+                        <li><a href="{{ route('data-user') }}">Garansi</a></li>
+                        <li><a href="{{ route('data-sekolah') }}">Merek & Tipe Mobil</a></li>
+                        <li><a href="{{ route('data-produk') }}">Produk</a></li>
                     </ul>
                 </li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -40,14 +39,8 @@
                         <span class="nav-text">Data History</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ route('data-registration') }}">Pendaftaran</a></li>
-                        <li><a href="{{ route('data-pembayaran') }}">Pembayaran</a></li>
+                        <li><a href="{{ route('data-registration') }}">Pendaftaran Garansi</a></li>
                     </ul>
-                </li>
-                <li><a href="{{ route('data-pengumuman') }}" aria-expanded="false">
-                        <i class="fa fa-file"></i>
-                        <span class="nav-text">Pengumuman</span>
-                    </a>
                 </li>
             @else
                 <li><a href="{{ route('data-registration') }}" aria-expanded="false">
@@ -65,7 +58,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">User Data</h4>
+                    <h4 class="card-title">Data Garansi</h4>
 
                     <!-- center modal -->
                     <div>
@@ -74,7 +67,7 @@
                         <!--<button class="btn btn-secondary waves-effect waves-light mb-4"><i class="fas fa-eye"
                                                         title="Mode grid"> </i></button>-->
                         <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target=".modal"
-                            style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambahkan Pengguna</button>
+                            style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambahkan Garansi</button>
                     </div>
 
 
@@ -83,7 +76,7 @@
                         <div class="modal-dialog modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Tambah Pengguna</h5>
+                                    <h5 class="modal-title">Tambah Garansi</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     </button>
                                 </div>

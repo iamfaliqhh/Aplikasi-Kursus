@@ -73,7 +73,7 @@ class MerekTipeSeeder extends Seeder
 
         /*------------------------------------------
         --------------------------------------------
-        India Country Data
+        Nissan Data
         --------------------------------------------
         --------------------------------------------*/
         $merek = Merek::firstOrCreate(['name' => 'Nissan']);

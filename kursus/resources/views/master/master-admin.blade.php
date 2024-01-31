@@ -19,12 +19,13 @@
     <title>@yield('title')</title>
 
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/logoroblox.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">
 
     <!-- Datatable -->
     <link href="{{ asset('sipenmaru/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <!-- Print Datatable -->
     <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- Daterange picker -->
     <link href="{{ asset('sipenmaru/vendor/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
@@ -81,9 +82,9 @@
         ***********************************-->
         <div class="nav-header">
             <a href="dashboard" class="brand-logo">
-                <img alt="image" width="25" src="{{ asset('sipenmaru/images/logoroblox.png') }}">
+                <img alt="image" width="50" src="{{ asset('sipenmaru/images/stealth.png') }}">
                 <div class="brand-title">
-                    <h2 class="">COURSE</h2>
+                    <h2 style="font-size: 18px;">STEALTH Admin Panel</h2>
                 </div>
             </a>
             <div class="nav-control">
@@ -393,46 +394,20 @@
                         @endif
                             </span>
                         </div>
-                            <h6 class="mt-3 f-14 f-w-600">
-
-                                {{ auth()->user()->name }}
-
-                            </h6>
                         </a>
                     </div>
+                    <br>
                 @endauth
-                <div class="side-bar-profile">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <div class="side-bar-profile-img">
-                                @if (auth()->user()->profile->foto != null)
-                                    <img class="avatar-lg rounded-circle img-thumbnail" src="{{ url('/' . auth()->user()->profile->foto) }}"
-                                        alt=""  />
-                                @else
-                                    <img class="avatar-lg rounded-circle img-thumbnail"
-                                    src="{{ asset('sipenmaru/images/ava.png') }}" alt=""
-                                         />
-                                @endif
-                            <!--<img src="images/user.jpg" alt="">-->
-                        </div>
-                        <div class="profile-info1">
-                            <h4 class="fs-18 font-w500">{{ auth()->user()->name }}</h4>
-                            <span>{{ auth()->user()->email }}</span>
-                        </div>
-                        <div class="profile-button">
-                            <i class="fas fa-caret-down scale5 text-light"></i>
-                        </div>
-                    </div>
-                </div>
                 @section('menu')@show
 
 
 
                 <div class="copyright">
-                    <p><strong>PROGRAMMING COURSE ROBLOX </strong> ©
+                    <p><strong>STEALTH High Definition Films</strong> ©
                         <script>
                             document.write(new Date().getFullYear())
-                        </script> All Rights Reserved</p>
-                    <p class="fs-12">Made with <span class="heart"></span> by Jasmine Mutiara Bintang</p>
+                        </script> All Rights Reserved.</p>
+                    <p class="fs-12">Made by Faliqh Yoon</p>
                 </div>
             </div>
         </div>
@@ -570,8 +545,6 @@
 
             /*  testimonial one function by = owl.carousel.js */
 
-
-
             jQuery('.card-slider').owlCarousel({
                 loop: true,
                 margin: 0,
@@ -706,19 +679,6 @@
         })
     })
 </script>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/63b42e5047425128790b671c/1glrt9rn5';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    COURSE
+    Pendaftaran Garansi | STEALTH
 @endsection
 
 @section('header')
@@ -12,7 +12,7 @@
 @endsection
 
 @section('menunya')
-    Pendaftaran
+    <h1 class="font-weight-bold" style="font-size: 24px;">Pendaftaran Garansi<h1>
 @endsection
 
 @section('menu')
@@ -20,7 +20,7 @@
         <ul class="metismenu" id="menu">
             <li><a href="{{route('dashboard')}}">
                     <i class="fas fa-home"></i>
-                    <span class="nav-text">Beranda</span>
+                    <span class="nav-text">Dashboard</span>
                 </a>
             </li>
             @if (auth()->user()->role == 'Administrator')
@@ -29,9 +29,9 @@
                         <span class="nav-text">Data Master </span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{route('data-user')}}">Pengguna</a></li>
-                        <li><a href="{{route('data-sekolah')}}">Sekolah</a></li>
-                        <li><a href="{{route('data-kursus')}}">Kursus</a></li>
+                        <li><a href="{{route('data-user')}}">Garansi</a></li>
+                        <li><a href="{{route('data-sekolah')}}">Merek & Tipe Mobil</a></li>
+                        <li><a href="{{route('data-produk')}}">Produk</a></li>
 
                     </ul>
                 </li>
@@ -40,14 +40,8 @@
                     <span class="nav-text">Data History</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{route('data-registration')}}">Pendaftaran</a></li>
-                        <li><a href="{{route('data-pembayaran')}}">Pembayaran</a></li>
+                        <li><a href="{{route('data-registration')}}">Pendaftaran Garansi</a></li>
                     </ul>
-                </li>
-                <li><a href="{{route('data-pengumuman')}}" aria-expanded="false">
-                        <i class="fa fa-file"></i>
-                        <span class="nav-text">Pengumuman</span>
-                    </a>
                 </li>
             @else
                 <li><a href="{{route('data-registration')}}" aria-expanded="false">
@@ -70,7 +64,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Data Pendaftar</h4>
+                            <h4 class="card-title">Data Pendaftar Garansi</h4>
 
                             <!-- center modal -->
                             <div>
@@ -105,7 +99,7 @@
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $x->id_pendaftaran }}</td>
                                                 <td>{{ $x->nama_siswa }}</td>
-                                                <td>{{ $x->pilihan1->nama_kursus }}</td>
+                                                <td>{{ $x->pilihan1->nama_produk }}</td>
                                                 <td>{{ $x->jenis_kelamin }}</td>
                                                 <td><strong>{{ $x->tgl_pendaftaran }}</strong></a></td>
                                                 <td>

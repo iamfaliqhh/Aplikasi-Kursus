@@ -74,7 +74,7 @@
 @import url(../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
 @import url(../vendor/metismenu/css/metisMenu.min.css);
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -300,7 +300,7 @@ hr:not([size]) {
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: -5px;
   font-weight: 500;
   line-height: 1.2;
   color: #000; }
@@ -12789,7 +12789,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   width: 50vw; }
 
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -12845,7 +12845,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     font-weight: 600;
     background: var(--rgba-primary-1);
     border-bottom-right-radius: 5rem;
-    border-top-right-radius: 0.9rem; }
+    border-top-right-radius: 5rem; }
     [data-sidebar-style="full"][data-layout="vertical"] .dlabnav .metismenu > li.mm-active > a:before {
       width: 0.563rem; }
       @media only screen and (max-width: 87.5rem) {
@@ -13009,7 +13009,7 @@ The smaller device rules always should write below the bigger device rules
 Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Component
 */
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -13247,7 +13247,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   [data-sidebar-style="mini"] .dlabnav li a.has-arrow::after {
     transform: rotate(-45deg) translateY(-50%); } }
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -17661,7 +17661,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   font-family: 'HelveticaNeue'; }
 
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -17791,7 +17791,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     border-color: transparent transparent rgba(0, 0, 0, 0.15) transparent; }
 
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -19816,7 +19816,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   height: auto; }
 
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -20295,7 +20295,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   color: #393939; }
 
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -20547,7 +20547,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   border-bottom-right-radius: 0; }
 
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -20574,7 +20574,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     color: #fff; }
 
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -20617,7 +20617,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     margin-bottom: .5rem; }
 
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -20673,7 +20673,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   font-size: 2rem; }
 
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -21788,7 +21788,8 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   line-height: 1.5;
   border-radius: 1.03125rem;
   padding: 0.25rem 0.625rem;
-  border: 0.0625rem solid transparent; }
+  border: 0.0625rem solid transparent; 
+  margin-top: 10px; }
 
 .badge-rounded {
   border-radius: 1.25rem;
@@ -25472,7 +25473,7 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
       z-index: -1;
       margin: -0.1875rem;
       border-radius: inherit;
-      background: linear-gradient(to right, #CEA7FF, #ffa7d7); }
+      background: linear-gradient(to right, #23a7af, #00f0ff); }
 
 .header-profile .nav-link {
   padding-right: 0 !important;
@@ -28552,7 +28553,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   padding-right: 9.375rem; }
 
 :root {
-  --primary: #886CC0;
+  --primary: #23A7AF;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;

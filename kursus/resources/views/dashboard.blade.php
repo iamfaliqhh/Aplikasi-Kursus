@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    Kursus
+    Dashboard | STEALTH
 @endsection
 
 @section('header')
@@ -13,7 +13,7 @@
 
 
 @section('menunya')
-    Beranda
+    <h1 class="font-weight-bold" style="font-size: 24px;">Dashboard<h1>
 @endsection
 
 @section('menu')
@@ -21,7 +21,7 @@
         <ul class="metismenu" id="menu">
             <li class="mm-active"><a href="dashboard">
                     <i class="fas fa-home"></i>
-                    <span class="nav-text">Beranda</span>
+                    <span class="nav-text">Dashboard</span>
                 </a>
             </li>
             @if (auth()->user()->role == 'Administrator')
@@ -30,9 +30,9 @@
                         <span class="nav-text">Data Master </span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{route('data-user')}}">Pengguna</a></li>
-                        <li><a href="{{route('data-sekolah')}}">Sekolah</a></li>
-                        <li><a href="{{route('data-kursus')}}">Kursus</a></li>
+                        <li><a href="{{route('data-user')}}">Garansi</a></li>
+                        <li><a href="{{route('data-sekolah')}}">Merek & Tipe Mobil</a></li>
+                        <li><a href="{{route('data-produk')}}">Produk</a></li>
 
                     </ul>
                 </li>
@@ -41,15 +41,8 @@
                         <span class="nav-text">Data History</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{route('data-registration')}}">Pendaftaran</a></li>
-                        <li><a href="{{route('data-pembayaran')}}">Pembayaran</a></li>
+                        <li><a href="{{route('data-registration')}}">Pendaftaran Garansi</a></li>
                     </ul>
-                </li>
-
-                <li><a href="{{route('data-pengumuman')}}" aria-expanded="false">
-                        <i class="fa fa-file"></i>
-                        <span class="nav-text">Pengumuman</span>
-                    </a>
                 </li>
             @else
                 <li><a href="{{route('data-registration')}}" aria-expanded="false">

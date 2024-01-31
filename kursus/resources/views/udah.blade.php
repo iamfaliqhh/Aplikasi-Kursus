@@ -27,7 +27,7 @@
         }
     </style>
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/logoroblox.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
@@ -41,32 +41,17 @@
     <br>
     <table class="table table-bordered text-left">
         <tr>
-            <td scope="col"><b>Nama</b></td>
+            <td scope="col"><b>Nama Pemilik</b></td>
             <td>{{$check->nama}}</td>
         </tr>
         <tr>
-            <td scope="col"><b>Tanggal Lahir</b></td>
-            <td>{{$check->tanggal}}</td>
+            <td scope="col"><b>Merek Mobil</b></td>
+            <td>{{$check->tipe_mobil->merek->name ?? '-'}}</td>
         </tr>
         <tr>
-            <td scope="col"><b>Email</b></td>
-            <td>{{$check->email}}</td>
-        </tr>
-        <tr>
-            <td scope="col"><b>Nomor Telepon</b></td>
-            <td>{{$check->handphone}}</td>
-        </tr>
-        <tr>
-            <td scope="col"><b>Alamat</b></td>
-            <td>{{$check->alamat}}</td>
-        </tr>
-        <tr>
-            <td scope="col"><b>Tipe</b></td>
+            <td scope="col"><b>Jenis Mobil</b></td>
             <td>{{$check->tipe_mobil->name ?? '-'}}</td>
         </tr>
-        <tr>
-            <td scope="col"><b>Merek</b></td>
-            <td>{{$check->tipe_mobil->merek->name ?? '-'}}</td>
     </table>
     <br>
     <a class="btn btn-primary" style="" href="{{url('fp')}}" >Balik ke halaman utama</a>
