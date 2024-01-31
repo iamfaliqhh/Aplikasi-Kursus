@@ -83,11 +83,15 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>No Peserta</th>
                                             <th>Nama</th>
-                                            <th>Program Kursus</th>
-                                            <th>Jenis Kelamin</th>
+                                            <th>Merek Mobil</th>
+                                            <th>Jenis Mobil</th>
                                             <th>Tanggal Daftar</th>
+                                            <th>Nomor Rangka</th>
+                                            <th>Nomor Plat</th>
+                                            <th>Front Window</th>
+                                            <th>Side Window</th>
+                                            <th>Rear Window</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -97,11 +101,15 @@
                                         @foreach ($viewData as $x)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $x->id_pendaftaran }}</td>
-                                                <td>{{ $x->nama_siswa }}</td>
-                                                <td>{{ $x->pilihan1->nama_produk }}</td>
-                                                <td>{{ $x->jenis_kelamin }}</td>
-                                                <td><strong>{{ $x->tgl_pendaftaran }}</strong></a></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><strong></strong></a></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                                 <td>
                                                     <div class="row">
                                                         <div class="col-md-6">
