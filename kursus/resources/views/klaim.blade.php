@@ -25,6 +25,24 @@
         .label-font {
             font-size: 13px;
         }
+
+        .text-mask {
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0, 0.4); 
+            color: white;
+            font-weight: bold;
+            border: 0px solid;
+
+            /* now center the mask*/
+            position: absolute;
+            top: 137px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 100%;
+            padding: 108px;
+            text-align: center;
+        }
     </style>
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">
@@ -35,7 +53,13 @@
 </head>
 
 <body>
-    <img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover">
+    <div>
+        <img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover">
+        <div class="text-mask">
+            <h1 class="font-weight-bold" style="font-size:45px">E-WARRANTY</h1>
+        </div>
+    </div>
+    
     <div class="container" style="width: 900px;">
         <br>
         <br>
@@ -69,7 +93,7 @@
     <div class="mb-3">
         <label for="" class="form-label label-font">Merek Mobil</label>
         <select id="merek-dropdown" class="form-control select2" name="merk">
-            <option value="">-- Pilih Merek --</option>
+            <option value="">-- Pilih Merek Mobil --</option>
             @foreach ($mereks as $data)
             <option value="{{$data->id}}">
                 {{$data->name}}
@@ -85,9 +109,21 @@
         <label for="" class="form-label label-font">Kaca Film Depan</label>
         <select name="name" class="form-control">
             <option value="">-- Pilih Kaca Film --</option>
-            @foreach ($windowfilms as $item)
-                <option value="{{ $item->id }}">{{ $item->name }}</option>
-            @endforeach
+                <option value=""></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="" class="form-label label-font">Kaca Film Samping</label>
+        <select name="name" class="form-control">
+            <option value="">-- Pilih Kaca Film --</option>
+                <option value=""></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="" class="form-label label-font">Kaca Film Belakang</label>
+        <select name="name" class="form-control">
+            <option value="">-- Pilih Kaca Film --</option>
+                <option value=""></option>
         </select>
     </div>
     <br>

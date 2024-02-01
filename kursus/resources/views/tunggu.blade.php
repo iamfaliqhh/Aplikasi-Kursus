@@ -24,6 +24,24 @@
         .text-center {
             text-align: center;
         }
+
+        .text-mask {
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0, 0.4); 
+            color: white;
+            font-weight: bold;
+            border: 0px solid;
+
+            /* now center the mask*/
+            position: absolute;
+            top: 137px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 100%;
+            padding: 108px;
+            text-align: center;
+        }
     </style>
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">
@@ -32,7 +50,12 @@
 </head>
 
 <body>
-<img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover">
+<div>
+    <img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover">
+    <div class="text-mask">
+        <h1 class="font-weight-bold" style="font-size:45px">E-WARRANTY</h1>
+    </div>
+</div>
 <div class="container text-center">
     <br>
     <br>
