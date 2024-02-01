@@ -407,7 +407,7 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script> All Rights Reserved.</p>
-                    <p class="fs-12">Made by Faliqh Yoon</p>
+                    <p class="fs-12">Made by Faliqh Yoon X Fugomika</p>
                 </div>
             </div>
         </div>
@@ -440,7 +440,7 @@
                     <script>
                         document.write(new Date().getFullYear())
                     </script> <br>
-                    Designed &amp; Developed by <a href="https://www.instagram.com/piaaasan/" target="_blank">Jasmine Mutiara Bintang</a> | Repost by <a href='https://stokcoding.com/' title='StokCoding.com' target='_blank'>StokCoding.com</a>
+                    Designed &amp; Developed by <a href="https://www.instagram.com/piaaasan/" target="_blank">Faliqh Yoon X Fugomika</a>
 
                 </p>
             </div>

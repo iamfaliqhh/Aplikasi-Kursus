@@ -105,7 +105,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td><strong></strong></a></td>
+                                                <td></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>

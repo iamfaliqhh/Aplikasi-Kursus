@@ -162,50 +162,43 @@
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
-                                    <th></th>
-                                    <th>Nama</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Telepon</th>
-                                    <th>Email</th>
+                                    <th>No</th>
+                                    <th>Kode Garansi</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dataUser as $x)
                                     <tr>
+                                        <td></td>
+                                        <td></td>
                                         <td>
-                                            @if ($x->profile->foto != null)
-                                                <img class=" rounded-circle img-thumbnail"
-                                                    src="{{ url('/' . $x->profile->foto) }}" alt=""
-                                                    width="45px" />
-                                            @else
-                                                <img class="rounded-circle img-thumbnail"
-                                                    src="{{ asset('sipenmaru/images/ava.png') }}" alt=""
-                                                    width="45px" />
-                                            @endif
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <!-- @if ('Terverifikasi') -->
+                                                        <span class="badge badge-success">Terverifikasi<span
+                                                            class="ms-1 fa fa-check"></span>
+                                                        <!-- @elseif('Belum Terverifikasi') -->
+                                                        <span class="badge badge-warning">Belum <br> Terverifikasi
+                                                            <br><span class="ms-1 fas fa-stream"></span>
+                                                            <!-- @elseif('Selesai') -->
+                                                                <span class="badge badge-primary">Selesai<span
+                                                                class="ms-1 fa fa-check"></span>
+                                                                <!-- @else -->
+                                                                <span class="badge badge-danger">Not Found<span
+                                                                class="ms-1 fa fa-ban"></span>
+                                                            <!-- @endif -->
+                                                        </div>
                                         </td>
-                                        <td>{{ $x->profile->nama }}</td>
-                                        <td>
-                                            @if ($x->profile->gender == 'Perempuan')
-                                                <span class="badge badge-secondary">Perempuan</span>
-                                            @elseif($x->profile->gender == 'Laki-laki')
-                                                <span class="badge"
-                                                    style="background-color: rgb(81, 171, 255)">Laki-Laki</span>
-                                            @else
-                                                <span class="badge badge-warning">?</span>
-                                            @endif
-                                        </td>
-                                        <td><strong>{{ $x->profile->no_hp }}</strong></a></td>
-                                        <td><a href="javascript:void(0);"><strong>{{ $x->email }}</strong></a></td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
-                                                    href="{{ route('edit-user', $x->id) }}"><i
+                                                    href=""><i
                                                         class="fa fa-pencil-alt"></i></a>
                                                 <a class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target=".delete{{ $x->id }}"></i></a>
-                                                <div class="modal fade delete{{ $x->id }}" tabindex="-1"
+                                                        data-bs-target=""></i></a>
+                                                <div class="modal fade delete" tabindex="-1"
                                                     role="dialog" aria-hidden="true">
                                                     <div class="modal-dialog modal-sm">
                                                         <div class="modal-content">
@@ -217,12 +210,12 @@
                                                             </div>
                                                             <div class="modal-body text-center"><i
                                                                     class="fa fa-trash"></i><br> Apakah anda yakin ingin
-                                                                menghapus data ini?<br> {{ $x->id }}
+                                                                menghapus data ini?<br>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger light"
                                                                     data-bs-dismiss="modal">Batalkan</button>
-                                                                <a href="{{ route('delete-user', $x->id) }}">
+                                                                <a href="">
                                                                     <button type="submit" class="btn btn-danger shadow">
                                                                         Ya, Hapus Data!
                                                                     </button></a>
@@ -233,7 +226,6 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach
                             </tbody>
                         </table>
                     </div>

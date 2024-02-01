@@ -22031,10 +22031,10 @@ button {
     box-shadow: none; }
 
 .btn {
-  padding: 0.938rem 1.5rem;
+  padding: 0.938rem -1rem;
   border-radius: 1.25rem;
   font-weight: 400;
-  font-size: 1rem; }
+  font-size: 14px; }
   .btn:hover, .btn:focus, .btn:active, .btn.active {
     outline: 0 !important; }
   @media only screen and (max-width: 87.5rem) {
@@ -24864,7 +24864,7 @@ table.dataTable tbody tr, table.dataTable tbody td {
 table.dataTable thead th {
   color: #000;
   white-space: nowrap;
-  font-size: 18px;
+  font-size: 15px;
   text-transform: capitalize;
   font-weight: 600;
   padding: 20px 15px; }
@@ -24927,14 +24927,14 @@ table.dataTable tfoot th {
   flex-flow: wrap; }
   .dataTables_wrapper .dataTables_paginate .paginate_button.previous, .dataTables_wrapper .dataTables_paginate .paginate_button.next {
     margin-left: 0px;
-    font-size: 18px;
-    margin: 0 2px;
+    font-size: 0px;
+    margin: 0 -1px;
     border: 0 !important;
-    height: 50px;
-    width: 50px;
+    height: 35px;
+    width: 36px;
     padding: 0;
     border-radius: 1rem;
-    line-height: 54px;
+    line-height: 55px;
     display: inline-block;
     color: var(--primary) !important; }
     .dataTables_wrapper .dataTables_paginate .paginate_button.previous i, .dataTables_wrapper .dataTables_paginate .paginate_button.next i {
@@ -24950,12 +24950,12 @@ table.dataTable tfoot th {
         width: 50px;
         line-height: 54px; } }
   .dataTables_wrapper .dataTables_paginate span .paginate_button {
-    height: 50px;
-    width: 50px;
+    height: 37px;
+    width: 24px;
     padding: 0;
     margin-left: 0px;
     margin: 0 2px;
-    line-height: 50px;
+    line-height: 40px;
     text-align: center;
     font-size: 18px;
     border-radius: 1rem;

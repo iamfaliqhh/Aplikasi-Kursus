@@ -129,7 +129,6 @@
                                     <th>No</th>
                                     <th>ID</th>
                                     <th>Nama Produk</th>
-                                    <th>Kategori Produk</th>
                                     <th>Foto Produk</th>
                                     <th>Aksi</th>
 
@@ -141,7 +140,6 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $x->id_produk }}</td>
                                         <td>{{$x->nama_produk}}</td>
-                                        <td>{{ $x->kategori_produk }}</td>
                                         <td><img src="{{ asset($x->foto_produk) }}" width="200px" height="200" alt=""></td>
                                         <td>
                                             <div class="d-flex">
@@ -182,7 +180,6 @@
 
                                     <div class="modal fade edit{{ $x->id }}" tabindex="-1" role="dialog"
                                         aria-labelledby="mySmallModalLabel" aria-hidden="true">
-
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -205,13 +202,6 @@
                                                                     <input type="text" class="form-control" id="nama"
                                                                         value="{{ $x->nama_produk }}"
                                                                         placeholder="Masukan nama produk" name="nama"
-                                                                        required>
-                                                                </div>
-                                                                <div class="col-xl-12">
-                                                                    <label for="iduser">Kategori Produk</label>
-                                                                    <input type="text" class="form-control" id="kategori"
-                                                                        value="{{ $x->kategori_produk }}"
-                                                                        placeholder="Masukan kategori produk" name="kategori"
                                                                         required>
                                                                 </div>
                                                                 <div class="col-xl-12">

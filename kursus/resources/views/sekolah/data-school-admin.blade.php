@@ -61,7 +61,6 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Data Merek & Tipe Mobil</h4>
-
                     <!-- center modal -->
                     <div>
                         <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
@@ -69,8 +68,6 @@
                         <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target=".modal"
                             style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Sekolah</button>
                     </div>
-
-
                     <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable">
@@ -104,7 +101,6 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="iduser">Kabupaten/Kota</label>
-
                                             <input class="form-control" list="datalistOptionsSekolah" id="exampleDataList"
                                                 placeholder="Pilih wilayah" name="kota" value="{{ old('kota') }}">
                                             <datalist id="datalistOptionsSekolah">
@@ -132,15 +128,12 @@
                 <div class="card-body" id="cetak">
                     <div class="table-responsive">
                         {{ csrf_field() }}
-
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>NPSN</th>
-                                    <th>Nama Sekolah</th>
-                                    <th>Alamat</th>
-                                    <th>Kota</th>
+                                    <th>Tipe Mobil</th>
+                                    <th>Merek Mobil</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -148,20 +141,18 @@
                                 @php $no = 1; @endphp
                                 @foreach ($viewData as $x)
                                     <tr>
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $x->NPSN }}</td>
-                                        <td>{{ $x->nama_sekolah }}</td>
-                                        <td>{{ $x->alamat }}</td>
-                                        <td>{{ $x->kota }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
-                                                    data-bs-toggle="modal" data-bs-target=".edit{{ $x->NPSN }}"><i
+                                                    data-bs-toggle="modal" data-bs-target=".edit"><i
                                                         class="fa fa-pencil-alt"></i></a>
                                                 <a class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target=".delete{{ $x->id }}"></i></a>
-                                                <div class="modal fade delete{{ $x->id }}" tabindex="-1"
+                                                        data-bs-target=".delete"></i></a>
+                                                <div class="modal fade delete" tabindex="-1"
                                                     role="dialog" aria-hidden="true">
                                                     <div class="modal-dialog modal-sm">
                                                         <div class="modal-content">
@@ -189,10 +180,8 @@
                                             </div>
                                         </td>
                                     </tr>
-
                                     <div class="modal fade edit{{ $x->NPSN }}" tabindex="-1" role="dialog"
                                         aria-labelledby="mySmallModalLabel" aria-hidden="true">
-
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -264,6 +253,5 @@
         </div>
     </div>
 @endsection
-
 @section('footer')
 @endsection

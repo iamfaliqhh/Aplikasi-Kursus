@@ -81,15 +81,13 @@
         <select id="tipe-dropdown" class="form-control select2" name="tipe">
         </select>
     </div>
-    <div class="mb-3">
-        <label for="" class="form-label label-font">Front Window Film</label>
-        <select id="windowfilms-dropdown" class="form-control select2" name="merk">
-            <option value="">-- Pilih Window Film --</option>
-            @foreach ($WindowFilms as $data)
-            <option value="{{$data->id}}">
-                {{$data->name}}
-        </option>
-        @endforeach
+    <div class="form-group">
+        <label for="" class="form-label label-font">Kaca Film Depan</label>
+        <select name="name" class="form-control">
+            <option value="">-- Pilih Kaca Film --</option>
+            @foreach ($windowfilms as $item)
+                <option value="{{ $item->id }}">{{ $item->name }}</option>
+            @endforeach
         </select>
     </div>
     <br>
