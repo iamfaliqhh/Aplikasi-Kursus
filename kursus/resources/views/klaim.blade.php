@@ -81,6 +81,17 @@
         <select id="tipe-dropdown" class="form-control select2" name="tipe">
         </select>
     </div>
+    <div class="mb-3">
+        <label for="" class="form-label label-font">Front Window Film</label>
+        <select id="windowfilms-dropdown" class="form-control select2" name="merk">
+            <option value="">-- Pilih Window Film --</option>
+            @foreach ($WindowFilm as $data)
+            <option value="{{$data->id}}">
+                {{$data->name}}
+        </option>
+        @endforeach
+        </select>
+    </div>
     <br>
     <button class="btn btn-primary" type="submit">Submit</button>
     </form>
@@ -119,6 +130,9 @@
                 });
             });
         });
+
+        $(document).ready(function () {
+        $('.select2').select2();
     </script>
 </body>
 </html>

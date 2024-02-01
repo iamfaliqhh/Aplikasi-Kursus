@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 class WindowFilmsController extends Controller
 {
-    public function create()
+    public function index()
     {
-        $windowfilms = WindowFilms::all();
-        return view('users.create', compact('windowfilms'));
+        $data['WindowFilms'] = WindowFilms::get(["name", "id"]);
+        return view('dropdown', $data);
     }
 }
