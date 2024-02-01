@@ -32,6 +32,7 @@ Route::get('dropdown', [DropdownController::class, 'index']);
 Route::post('api/fetch-tipe', [DropdownController::class, 'fetchTipe']);
 Route::post('regist', [UserController::class, 'insertRegis'])->name('regist');
 Route::post('regist', [LogAkunController::class, 'store']);
+Route::get('windowfilms', [WindowFilmsController::class, 'index']);
 
 // guest fp page
 Route::resource('fp', WarrantyController::class);

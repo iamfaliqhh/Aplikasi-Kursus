@@ -85,7 +85,7 @@
         <label for="" class="form-label label-font">Front Window Film</label>
         <select id="windowfilms-dropdown" class="form-control select2" name="merk">
             <option value="">-- Pilih Window Film --</option>
-            @foreach ($WindowFilm as $data)
+            @foreach ($WindowFilms as $data)
             <option value="{{$data->id}}">
                 {{$data->name}}
         </option>

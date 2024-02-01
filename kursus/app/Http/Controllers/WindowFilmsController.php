@@ -8,7 +8,7 @@ class WindowFilmsController extends Controller
 {
     public function index()
     {
-        $data['WindowFilms'] = WindowFilms::get(["name", "id"]);
-        return view('dropdown', $data);
+        $data = WindowFilms::get(["name", "id"]);
+        return view($data);
     }
 }
