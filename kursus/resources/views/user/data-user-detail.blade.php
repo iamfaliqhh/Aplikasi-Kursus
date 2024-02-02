@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    COURSE
+    Garansi | STEALTH
 @endsection
 
 @section('header')
@@ -12,7 +12,7 @@
 @endsection
 
 @section('menunya')
-    Detail Pengguna
+    <h1 class="font-weight-bold" style="font-size: 24px;">Garansi<h1>
 @endsection
 
 @section('menu')
@@ -20,7 +20,7 @@
         <ul class="metismenu" id="menu">
             <li><a href="{{ route('edit-user', $viewData->id) }}">
                     <i class="fas fa-home"></i>
-                    <span class="nav-text">Detail Pengguna</span>
+                    <span class="nav-text">Dashboard</span>
                 </a>
             </li>
             @if (auth()->user()->role == 'Administrator')
@@ -29,10 +29,9 @@
                         <span class="nav-text">Data Master </span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ route('data-user') }}">Pengguna</a></li>
-                        <li><a href="{{ route('data-sekolah') }}">Sekolah</a></li>
-                        <li><a href="{{ route('data-kursus') }}">Kursus</a></li>
-
+                        <li><a href="{{ route('data-user') }}">Garansi</a></li>
+                        <li><a href="{{ route('data-sekolah') }}">Merek & Tipe Mobil</a></li>
+                        <li><a href="{{ route('data-produk') }}">Produk</a></li>
                     </ul>
                 </li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -40,14 +39,8 @@
                         <span class="nav-text">Data History</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ route('data-registration') }}">Pendaftaran</a></li>
-                        <li><a href="{{ route('data-pembayaran') }}">Pembayaran</a></li>
+                        <li><a href="{{ route('data-registration') }}">Pendaftaran Garansi</a></li>
                     </ul>
-                </li>
-                <li><a href="{{ route('data-pengumuman') }}" aria-expanded="false">
-                        <i class="fa fa-file"></i>
-                        <span class="nav-text">Pengumuman</span>
-                    </a>
                 </li>
             @else
                 <li><a href="{{ route('data-registration') }}" aria-expanded="false">
@@ -62,65 +55,6 @@
 
 @section('content')
     <div class="row mb-4">
-        <div class="col-xl-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <div class="dropdown float-end">
-                            <a class="text-body dropdown-toggle font-size-18" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true"> <i class="uil uil-ellipsis-v"></i> </a>
-                            <div class="dropdown-menu dropdown-menu-end"> <a class="dropdown-item"
-                                    href="#profile-settings">Perbaharui Data</a> <a class="dropdown-item"
-                                    href="{{ route('profile') }}">Segarkan</a>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <div>
-                            @if ($viewData->foto != null)
-                                <img class="avatar-lg rounded-circle img-thumbnail" src="{{ url('/' . $viewData->foto) }}"
-                                    alt="" width="100px" />
-                            @else
-                                <img class="avatar-lg rounded-circle img-thumbnail"
-                                    src="{{ asset('sipenmaru/images/ava.png') }}" alt="" width="100px" />
-                            @endif
-                        </div>
-                        <h5 class="mt-3 mb-1">
-                            {{ $viewData->nama }}
-                        </h5>
-                        <div class="mt-4">
-                            <a href="mailto:{{ $viewData->email }}"><button type="button"
-                                    class="btn btn-primary btn-sm"><i class="uil uil-envelope-alt me-2"></i>
-                                    Kirim Pesan</button></a>
-                        </div>
-                    </div>
-                    <hr class="my-4">
-                    <div class="text-muted">
-                        <div class="table-responsive mt-4">
-                            @auth
-
-                                <div>
-                                    <p class="mb-1">Nama :</p>
-                                    <h5 class="font-size-16">
-                                        {{ $viewData->nama }}
-                                    </h5>
-                                </div>
-                                <div class="mt-4">
-                                    <p class="mb-1">No Hp :</p>
-                                    <h5 class="font-size-16">
-                                        {{ $viewData->no_hp }}
-                                    </h5>
-                                </div>
-                                <div class="mt-4">
-                                    <p class="mb-1">E-mail :</p>
-                                    <h5 class="font-size-16">{{ $viewData->email }}</h5>
-                                </div>
-
-                            @endauth
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="col-xl-8">
             <div class="card">
                 <div class="card-body">

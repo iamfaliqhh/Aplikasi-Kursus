@@ -71,7 +71,6 @@
                                     <div class="card-body px-4 pb-0">
                                         <h4 class="fs-18 font-w600 mb-5 text-nowrap">Hasil Seleksi Garansi</h4>
                                         <div class="progress default-progress">
-
                                             @php
                                                 $a = 0;
                                                 $b = 0;
@@ -103,7 +102,6 @@
                                             <div class="progress-bar bg-gradient1 progress-animated"
                                                 style="width: {{ $hasilpersenan }}%; height:10px;" role="progressbar">
                                             </div>
-
                                         </div>
                                         <div class="d-flex align-items-end mt-2 pb-3 justify-content-between">
                                             <span>{{ $hasil }} yang telah diberi <br> pengumuman</span>
@@ -120,7 +118,8 @@
                                             <div class="">
                                                 <h4 class="fs-32 font-w700">{{ $jmluser }}</h4>
                                                 <span class="fs-18 font-w500 d-block">Total
-                                                    Pengguna</span></span>
+                                                    Pengguna</span>
+                                                </span>
                                             </div>
                                         </div>
                                         <div id="NewCustomers"></div>

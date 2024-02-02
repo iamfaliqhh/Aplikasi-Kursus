@@ -32,7 +32,6 @@
                         <li><a href="{{route('data-user')}}">Garansi</a></li>
                         <li><a href="{{route('data-sekolah')}}">Merek & Tipe Mobil</a></li>
                         <li><a href="{{route('data-produk')}}">Produk</a></li>
-
                     </ul>
                 </li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -55,17 +54,14 @@
 @endsection
 
 @section('content')
-    <!--ADMIn-->
+    <!--Admin-->
     @auth
-
-
         @if (auth()->user()->role == 'Administrator')
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Data Pendaftar Garansi</h4>
-
                             <!-- center modal -->
                             <div>
                                 <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
@@ -83,15 +79,15 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
+                                            <th>Kode Garansi</th>
                                             <th>Nama</th>
                                             <th>Merek Mobil</th>
                                             <th>Jenis Mobil</th>
-                                            <th>Tanggal Daftar</th>
                                             <th>Nomor Rangka</th>
                                             <th>Nomor Plat</th>
-                                            <th>Front Window</th>
-                                            <th>Side Window</th>
-                                            <th>Rear Window</th>
+                                            <th>Kaca Film Depan</th>
+                                            <th>Kaca Film Samping</th>
+                                            <th>Kaca Film Belakang</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -119,13 +115,13 @@
                                                                 @elseif($x->status_pendaftaran == 'Belum Terverifikasi')
                                                                     <span class="badge badge-warning">Belum <br> Terverifikasi
                                                                         <br><span class="ms-1 fas fa-stream"></span>
-                                                                    @elseif($x->status_pendaftaran == 'Selesai')
-                                                                        <span class="badge badge-primary">Selesai<span
-                                                                                class="ms-1 fa fa-check"></span>
-                                                                        @else
-                                                                            <span class="badge badge-danger">Not Found<span
-                                                                                    class="ms-1 fa fa-ban"></span>
-                                                            @endif
+                                                                @elseif($x->status_pendaftaran == 'Selesai')
+                                                                    <span class="badge badge-primary">Selesai<span
+                                                                        class="ms-1 fa fa-check"></span>
+                                                                @else
+                                                                    <span class="badge badge-danger">Not Found<span
+                                                                    class="ms-1 fa fa-ban"></span>
+                                                                @endif
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="dropdown text-sans-serif"><button
@@ -306,7 +302,7 @@
                                                         </svg>
                                                         <div>
                                                             <small
-                                                                class="d-block fs-16 font-w400">{{ $x->pilihan1->nama_kursus }}</small>
+                                                                class="d-block fs-16 font-w400">{{ $x->pilihan1->nama_produk }}</small>
                                                         </div>
                                                     </div>
                                                 </div>

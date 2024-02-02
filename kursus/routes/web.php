@@ -74,12 +74,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/update-produk/{id_produk}', [ProgramStudiController::class, 'updateproduk']);
     Route::get('/delete-produk/{id_produk}', [ProgramStudiController::class, 'hapusproduk']);
 
-    //jadwal
-    Route::get('/data-jadwal', [JadwalKegiatanController::class, 'datajadwal'])->name('data-jadwal');
-    Route::post('/save-jadwal', [JadwalKegiatanController::class, 'simpanjadwal']);
-    Route::post('/update-jadwal/{id}', [JadwalKegiatanController::class, 'updatejadwal']);
-    Route::get('/delete-jadwal/{id}', [JadwalKegiatanController::class, 'hapusjadwal']);
-
     //pendaftaran
     Route::get('/data-registration', [PendaftaranController::class, 'datapendaftaran'])->name('data-registration');
     Route::get('/form-registration', [PendaftaranController::class, 'inputpendaftaran']);
@@ -88,31 +82,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/update-registration/{id_pendaftaran}', [PendaftaranController::class, 'updatependaftaran']);
     Route::get('/delete-registration/{id_pendaftaran}', [PendaftaranController::class, 'hapuspendaftaran']);
     Route::get('/detail-registration/{id_pendaftaran}', [PendaftaranController::class, 'detailpendaftaran']);
-    Route::get('/card-registration/{id_pendaftaran}', [PendaftaranController::class, 'kartupendaftaran']);
 
     Route::get('/verified-registration/{id_pendaftaran}', [PendaftaranController::class, 'verifikasistatuspendaftaran']);
     Route::get('/notverified-registration/{id_pendaftaran}', [PendaftaranController::class, 'notverifikasistatuspendaftaran']);
     Route::get('/invalid-registration/{id_pendaftaran}', [PendaftaranController::class, 'invalidstatuspendaftaran']);
     Route::get('/finish-registration/{id_pendaftaran}', [PendaftaranController::class, 'selesaistatuspendaftaran']);
-
-    //pembayaran
-    Route::get('/data-payment', [PembayaranController::class, 'datapembayaran'])->name('data-pembayaran');
-    Route::post('/save-payment', [PembayaranController::class, 'simpanpembayaran']);
-    Route::post('/update-payment/{id_pembayaran}', [PembayaranController::class, 'updatepembayaran']);
-    Route::get('/delete-payment/{id_pembayaran}', [PembayaranController::class, 'hapuspembayaran']);
-
-    Route::post('/upload-payment', [PembayaranController::class, 'updatebuktipembayaran'])->name('upload-payment');
-    Route::get('/paid-payment/{id_pembayaran}', [PembayaranController::class, 'verifikasipembayaran']);
-    Route::get('/unpaid-payment/{id_pembayaran}', [PembayaranController::class, 'belumbayar']);
-    Route::get('/invalid-payment/{id_pembayaran}', [PembayaranController::class, 'invalidbayar']);
-
-    //pengumuman
-    Route::get('/data-announcement', [PengumumanController::class, 'datapengumuman'])->name('data-pengumuman');
-    Route::get('/view-announcement/{id_pendaftaran}', [PengumumanController::class, 'lihatpengumuman']);
-    //Route::get('/view-announcement', [PengumumanController::class, 'lihatpengumuman']);
-    Route::post('/save-announcement', [PengumumanController::class, 'simpanpengumuman']);
-    Route::post('/update-announcement/{id_pengumuman}', [PengumumanController::class, 'updatepengumuman']);
-    Route::get('/delete-announcement/{id_pengumuman}', [PengumumanController::class, 'hapuspengumuman']);
 });
 
 require __DIR__ . '/auth.php';
