@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    COURSE
+    Garansi | STEALTH
 @endsection
 
 @section('header')
@@ -12,7 +12,7 @@
 @endsection
 
 @section('menunya')
-    Pengguna
+    <h1 class="font-weight-bold" style="font-size: 24px;">Garansi<h1>
 @endsection
 
 @section('menu')
@@ -20,7 +20,7 @@
         <ul class="metismenu" id="menu">
             <li><a href="dashboard">
                     <i class="fas fa-home"></i>
-                    <span class="nav-text">Pengguna</span>
+                    <span class="nav-text">Dashboard</span>
                 </a>
             </li>
             @if (auth()->user()->role == 'Administrator')
@@ -29,10 +29,9 @@
                         <span class="nav-text">Data Master </span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ route('data-user') }}">Pengguna</a></li>
-                        <li><a href="{{ route('data-sekolah') }}">Sekolah</a></li>
-                        <li><a href="{{ route('data-kursus') }}">Kursus</a></li>
-
+                        <li><a href="{{ route('data-user') }}">Garansi</a></li>
+                        <li><a href="{{ route('data-sekolah') }}">Merek & Tipe Mobil</a></li>
+                        <li><a href="{{ route('data-produk') }}">Produk</a></li>
                     </ul>
                 </li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -40,14 +39,8 @@
                         <span class="nav-text">Data History</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ route('data-registration') }}">Pendaftaran</a></li>
-                        <li><a href="{{ route('data-pembayaran') }}">Pembayaran</a></li>
+                        <li><a href="{{ route('data-registration') }}">Pendaftaran Garansi</a></li>
                     </ul>
-                </li>
-                <li><a href="{{ route('data-pengumuman') }}" aria-expanded="false">
-                        <i class="fa fa-file"></i>
-                        <span class="nav-text">Pengumuman</span>
-                    </a>
                 </li>
             @else
                 <li><a href="{{ route('data-registration') }}" aria-expanded="false">
@@ -65,7 +58,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">User Data</h4>
+                    <h4 class="card-title">Data Garansi</h4>
 
                     <!-- center modal -->
                     <div>
@@ -74,7 +67,7 @@
                         <!--<button class="btn btn-secondary waves-effect waves-light mb-4"><i class="fas fa-eye"
                                                         title="Mode grid"> </i></button>-->
                         <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target=".modal"
-                            style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambahkan Pengguna</button>
+                            style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambahkan Garansi</button>
                     </div>
 
 
@@ -83,7 +76,7 @@
                         <div class="modal-dialog modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Tambah Pengguna</h5>
+                                    <h5 class="modal-title">Tambah Garansi</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     </button>
                                 </div>
@@ -169,50 +162,43 @@
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
-                                    <th></th>
-                                    <th>Nama</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Telepon</th>
-                                    <th>Email</th>
+                                    <th>No</th>
+                                    <th>Kode Garansi</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dataUser as $x)
                                     <tr>
+                                        <td></td>
+                                        <td></td>
                                         <td>
-                                            @if ($x->profile->foto != null)
-                                                <img class=" rounded-circle img-thumbnail"
-                                                    src="{{ url('/' . $x->profile->foto) }}" alt=""
-                                                    width="45px" />
-                                            @else
-                                                <img class="rounded-circle img-thumbnail"
-                                                    src="{{ asset('sipenmaru/images/ava.png') }}" alt=""
-                                                    width="45px" />
-                                            @endif
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <!-- @if ('Terverifikasi') -->
+                                                        <span class="badge badge-success">Terverifikasi<span
+                                                            class="ms-1 fa fa-check"></span>
+                                                        <!-- @elseif('Belum Terverifikasi') -->
+                                                        <span class="badge badge-warning">Belum <br> Terverifikasi
+                                                            <br><span class="ms-1 fas fa-stream"></span>
+                                                            <!-- @elseif('Selesai') -->
+                                                                <span class="badge badge-primary">Selesai<span
+                                                                class="ms-1 fa fa-check"></span>
+                                                                <!-- @else -->
+                                                                <span class="badge badge-danger">Not Found<span
+                                                                class="ms-1 fa fa-ban"></span>
+                                                            <!-- @endif -->
+                                                        </div>
                                         </td>
-                                        <td>{{ $x->profile->nama }}</td>
-                                        <td>
-                                            @if ($x->profile->gender == 'Perempuan')
-                                                <span class="badge badge-secondary">Perempuan</span>
-                                            @elseif($x->profile->gender == 'Laki-laki')
-                                                <span class="badge"
-                                                    style="background-color: rgb(81, 171, 255)">Laki-Laki</span>
-                                            @else
-                                                <span class="badge badge-warning">?</span>
-                                            @endif
-                                        </td>
-                                        <td><strong>{{ $x->profile->no_hp }}</strong></a></td>
-                                        <td><a href="javascript:void(0);"><strong>{{ $x->email }}</strong></a></td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
-                                                    href="{{ route('edit-user', $x->id) }}"><i
+                                                    href=""><i
                                                         class="fa fa-pencil-alt"></i></a>
                                                 <a class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target=".delete{{ $x->id }}"></i></a>
-                                                <div class="modal fade delete{{ $x->id }}" tabindex="-1"
+                                                        data-bs-target=""></i></a>
+                                                <div class="modal fade delete" tabindex="-1"
                                                     role="dialog" aria-hidden="true">
                                                     <div class="modal-dialog modal-sm">
                                                         <div class="modal-content">
@@ -224,12 +210,12 @@
                                                             </div>
                                                             <div class="modal-body text-center"><i
                                                                     class="fa fa-trash"></i><br> Apakah anda yakin ingin
-                                                                menghapus data ini?<br> {{ $x->id }}
+                                                                menghapus data ini?<br>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger light"
                                                                     data-bs-dismiss="modal">Batalkan</button>
-                                                                <a href="{{ route('delete-user', $x->id) }}">
+                                                                <a href="">
                                                                     <button type="submit" class="btn btn-danger shadow">
                                                                         Ya, Hapus Data!
                                                                     </button></a>
@@ -240,7 +226,6 @@
                                             </div>
                                         </td>
                                     </tr>
-                                @endforeach
                             </tbody>
                         </table>
                     </div>

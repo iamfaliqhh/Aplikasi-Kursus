@@ -16,7 +16,7 @@
     <title>Masuk dan Daftar | COURSE</title>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/logoroblox.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">
     <link href="{{ asset('sipenmaru/vendor/login/style.css') }}" rel="stylesheet">
 
 </head>
@@ -173,15 +173,6 @@
 
         <div class="panels-container">
             <div class="panel left-panel">
-                <div class="content">
-                    <h3>Baru disini ?</h3>
-                    <p>
-                        Silahkan daftar akun untuk melanjutkan proses pendaftaran peserta kursus baru!
-                    </p>
-                    <button class="btn transparent" id="sign-up-btn">
-                        DAFTAR
-                    </button>
-                </div>
                 <img src="{{ asset('sipenmaru/images/beranda.png') }}" class="image" alt="" />
             </div>
             <div class="panel right-panel">

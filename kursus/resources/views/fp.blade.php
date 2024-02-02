@@ -40,9 +40,27 @@
         .my-float{
 	        margin-top:16px;
         }
+
+        .text-mask {
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0, 0.4); 
+            color: white;
+            font-weight: bold;
+            border: 0px solid;
+
+            /* now center the mask*/
+            position: absolute;
+            top: 137px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 100%;
+            padding: 108px;
+            text-align: center;
+        }
     </style>
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/logoroblox.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -52,7 +70,12 @@
     <a href="https://api.whatsapp.com/send?phone=6281934022750&text=Hello%2C%20I%20think%20there%27s%20a%20problem%20with%20my%20data%2Fmisinformation%20in%20my%20warranty%20form.%0ACan%20you%20help%20me%20out%3F" class="float" target="_blank">
     <i class="fa fa-whatsapp my-float"></i>
     </a>
-    <img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover">
+    <div>
+    <img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover header">
+    <div class="text-mask">
+        <h1 class="font-weight-bold" style="font-size:45px">E-WARRANTY</h1>
+    </div>
+    </div>
     <div class="container" style="width: 900px;">
     <br>
     <br>

@@ -9,15 +9,15 @@ use Illuminate\Support\Facades\DB;
 class ProgramStudi extends Model
 {
     use HasFactory;
-    protected $table = "program_kursus";
+    protected $table = "produk";
     protected $primaryKey= "id";
-    protected $fillable = ["id_kursus","nama_kursus","jenjang_kursus","foto_kursus","pengajar","jam","hari","harga_kursus","contoh_game"];
+    protected $fillable = ["id_produk","nama_produk","kategori_produk","foto_produk"];
     public $timestamps = false;
     public $incrementing = false;
 
     public static function id()
     {
-    	$kode = DB::table('program_kursus')->max('id');
+    	$kode = DB::table('produk')->max('id');
     	$addNol = '';
     	$kode = str_replace("KRS", "", $kode);
     	$kode = (int) $kode + 1;

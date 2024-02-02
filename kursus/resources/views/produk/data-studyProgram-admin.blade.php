@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    Data Merek & Tipe | STEALTH
+    Data Produk | STEALTH
 @endsection
 
 @section('header')
@@ -12,15 +12,15 @@
 @endsection
 
 @section('menunya')
-    <h1 class="font-weight-bold" style="font-size: 24px;">Merek & Tipe Mobil<h1>
+    <h1 class="font-weight-bold" style="font-size: 24px;">Data Produk<h1>
 @endsection
 
 @section('menu')
-    @auth
+@auth
         <ul class="metismenu" id="menu">
-            <li><a href="{{ route('dashboard') }}">
+            <li><a href="{{route('dashboard')}}">
                     <i class="fas fa-home"></i>
-                    <span class="nav-text">Dashboard</span>
+                    <span class="nav-text">Beranda</span>
                 </a>
             </li>
             @if (auth()->user()->role == 'Administrator')
@@ -29,10 +29,9 @@
                         <span class="nav-text">Data Master </span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ route('data-user') }}">Garansi</a></li>
-                        <li><a href="{{ route('data-sekolah') }}">Merek & Tipe Mobil</a></li>
-                        <li><a href="{{ route('data-produk') }}">Produk</a></li>
-
+                        <li><a href="{{route('data-user')}}">Garansi</a></li>
+                        <li><a href="{{route('data-sekolah')}}">Merek & Tipe Mobil</a></li>
+                        <li><a href="{{route('data-produk')}}">Produk</a></li>
                     </ul>
                 </li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -40,13 +39,12 @@
                         <span class="nav-text">Data History</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ route('data-registration') }}">Pendaftaran</a></li>
-                        <li><a href="{{ route('data-pembayaran') }}">Pembayaran</a></li>
+                        <li><a href="{{route('data-registration')}}">Pendaftaran Garansi</a></li>
                     </ul>
                 </li>
             @else
-                <li><a href="{{ route('data-registration') }}" aria-expanded="false">
-                        <i class="fa fa-database"></i>
+                <li><a href="{{route('data-registration')}}" aria-expanded="false">
+                    <i class="fa fa-database"></i>
                         <span class="nav-text">Pendaftaran</span>
                     </a>
                 </li>
@@ -56,68 +54,64 @@
 @endsection
 
 @section('content')
+@error('success')
+<div class="alert alert-success alert-dismissible fade show">
+    <svg viewbox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="me-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+    <strong>Sukses!</strong> Data berhasil disimpan.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close">
+    </button>
+</div>
+@enderror
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data Merek & Tipe Mobil</h4>
+                    <h4 class="card-title">Data Jenis Produk</h4>
+
                     <!-- center modal -->
                     <div>
                         <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
                                 class="fa fa-print"> </i></button>
                         <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target=".modal"
-                            style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Sekolah</button>
+                            style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Produk</button>
                     </div>
+
                     <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
                         aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Tambah Sekolah</h5>
+                                    <h5 class="modal-title">Tambah Produk</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="save-school" method="POST" enctype="multipart/form-data">
+                                    <form action="save-produk" method="POST" enctype="multipart/form-data">
                                         {{ csrf_field() }}
-                                        <input type="hidden" name="userid" value="{{ auth()->user()->id }}">
+                                        <input type="hidden" name="userid" value="{{ auth()->user()->id}}">
                                         <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-xl-4">
-                                                    <label for="iduser">NPSN</label>
-                                                    <input type="text" class="form-control" id="nama"
-                                                        placeholder="Enter NPSN" name="id" required>
-                                                </div>
-                                                <div class="col-xl-8">
-                                                    <label for="iduser">Nama Sekolah</label>
-                                                    <input type="text" class="form-control" id="nama"
-                                                        placeholder="Enter School Name" name="nama" required>
+                                            <label for="iduser">Nama Produk</label>
+                                            <input type="text" class="form-control" id="nama"
+                                                placeholder="Masukkan nama produk" name="nama" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="iduser">Kategori Produk</label>
+                                            <input type="text" class="form-control" id="kategori"
+                                                placeholder="Masukkan kategori produk" name="kategori" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="iduser">Foto Produk</label>
+                                            <div class="input-group">
+                                                <span class="input-group-text">Upload</span>
+                                                <div class="form-file">
+                                                    <input type="file" class="form-file-input form-control" name="foto">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="iduser">Alamat</label>
-                                            <textarea name="Address" id="" cols="30" rows="5" class="form-control" placeholder="Enter Address"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="iduser">Kabupaten/Kota</label>
-                                            <input class="form-control" list="datalistOptionsSekolah" id="exampleDataList"
-                                                placeholder="Pilih wilayah" name="kota" value="{{ old('kota') }}">
-                                            <datalist id="datalistOptionsSekolah">
-                                                <option value="Purwakarta">Purwakarta</option>
-                                                <option value="Subang">Subang</option>
-                                                <option value="Karawang">Karawang</option>
-                                                <option value="Bandung">Bandung</option>
-                                                <option value="Banten">Banten</option>
-                                                <option value="Bekasi">Bekasi</option>
-                                                <option value="Bogor">Bogor</option>
-                                            </datalist>
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex">
                                             <button type="button" class="btn btn-danger light"
                                                 data-bs-dismiss="modal">Tutup</button>
-                                            <button type="submit" name="add" class="btn btn-primary">Tambahkan
-                                                Data</button>
+                                            <button type="submit" name="add" class="btn btn-primary">Tambah Data</button>
                                         </div>
                                     </form>
                                 </div>
@@ -128,31 +122,34 @@
                 <div class="card-body" id="cetak">
                     <div class="table-responsive">
                         {{ csrf_field() }}
+
                         <table id="example3" class="display" style="min-width: 845px">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Tipe Mobil</th>
-                                    <th>Merek Mobil</th>
+                                    <th>ID</th>
+                                    <th>Nama Produk</th>
+                                    <th>Foto Produk</th>
                                     <th>Aksi</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $no = 1; @endphp
                                 @foreach ($viewData as $x)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $x->id_produk }}</td>
+                                        <td>{{$x->nama_produk}}</td>
+                                        <td><img src="{{ asset($x->foto_produk) }}" width="200px" height="200" alt=""></td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
-                                                    data-bs-toggle="modal" data-bs-target=".edit"><i
+                                                    data-bs-toggle="modal" data-bs-target=".edit{{ $x->id }}"><i
                                                         class="fa fa-pencil-alt"></i></a>
                                                 <a class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target=".delete"></i></a>
-                                                <div class="modal fade delete" tabindex="-1"
+                                                        data-bs-target=".delete{{ $x->id }}"></i></a>
+                                                <div class="modal fade delete{{ $x->id }}" tabindex="-1"
                                                     role="dialog" aria-hidden="true">
                                                     <div class="modal-dialog modal-sm">
                                                         <div class="modal-content">
@@ -163,13 +160,13 @@
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body text-center"><i
-                                                                    class="fa fa-trash"></i><br> Anda yakin ingin menghapus
-                                                                data ini?<br>{{ $x->id }}
+                                                                    class="fa fa-trash"></i><br> Apakah anda yakin ingin
+                                                                menghapus data ini?<br> {{ $x->nama_produk }}
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-danger light"
                                                                     data-bs-dismiss="modal">Batalkan</button>
-                                                                <a href="delete-school/{{ $x->id }}">
+                                                                <a href="delete-produk/{{ $x->id }}">
                                                                     <button type="submit" class="btn btn-danger shadow">
                                                                         Ya, Hapus Data!
                                                                     </button></a>
@@ -180,57 +177,46 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <div class="modal fade edit{{ $x->NPSN }}" tabindex="-1" role="dialog"
+
+                                    <div class="modal fade edit{{ $x->id }}" tabindex="-1" role="dialog"
                                         aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Sunting Sekolah</h5>
+                                                    <h5 class="modal-title">Sunting Produk</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close">
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="update-school/{{ $x->NPSN }}" method="POST"
+                                                    <form action="update-produk/{{ $x->id }}" method="POST"
                                                         enctype="multipart/form-data">
                                                         {{ csrf_field() }}
-                                                        <input type="hidden" name="userid"
-                                                            value="{{ auth()->user()->id }}">
+                                                        <input type="hidden" name="userid" value="{{ auth()->user()->id}}">
                                                         <div class="form-group">
+                                                            <input type="hidden" name="id" id="nama" class="form-control"
+                                                                value="{{ $x->id }}">
                                                             <div class="row">
-                                                                <div class="col-xl-4">
-                                                                    <label for="iduser">NPSN</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="nama" value="{{ $x->NPSN }}"
-                                                                        placeholder="Enter NPSN" name="id" readonly>
-                                                                </div>
-                                                                <div class="col-xl-8">
-                                                                    <label for="iduser">Nama Sekolah</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="nama" value="{{ $x->nama_sekolah }}"
-                                                                        placeholder="Enter School Name" name="nama"
+                                                                <div class="col-xl-12">
+                                                                    <label for="iduser">Nama Produk</label>
+                                                                    <input type="text" class="form-control" id="nama"
+                                                                        value="{{ $x->nama_produk }}"
+                                                                        placeholder="Masukan nama produk" name="nama"
                                                                         required>
                                                                 </div>
+                                                                <div class="col-xl-12">
+                                                                    <label for="iduser">Foto Produk</label>
+                                                                    <div class="input-group">
+                                                                        <span class="input-group-text">Upload</span>
+                                                                        <div class="form-file">
+                                                                            <input type="file" class="form-file-input form-control" name="foto"
+                                                                                value="{{ old('foto') }}">
+                                                                            <input type="hidden" name="pathnya" class="form-control-file"
+                                                                                value="{{ $x->foto_produk }}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="iduser">Alamat</label>
-                                                            <textarea name="Address" id="" cols="30" rows="5" class="form-control">{{ $x->alamat }}</textarea>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="iduser">Kabupaten/Kota</label>
-                                                            <input class="form-control" list="datalistOptionsSekolah"
-                                                                id="exampleDataList" name="kota"
-                                                                value="{{ $x->kota }}">
-                                                            <datalist id="datalistOptionsSekolah">
-                                                                <option value="Purwakarta">Purwakarta</option>
-                                                                <option value="Subang">Subang</option>
-                                                                <option value="Karawang">Karawang</option>
-                                                                <option value="Bandung">Bandung</option>
-                                                                <option value="Banten">Banten</option>
-                                                                <option value="Bekasi">Bekasi</option>
-                                                                <option value="Bogor">Bogor</option>
-                                                            </datalist>
                                                         </div>
                                                         <div class="modal-footer border-top-0 d-flex">
                                                             <button type="button" class="btn btn-danger light"
@@ -253,5 +239,6 @@
         </div>
     </div>
 @endsection
+
 @section('footer')
 @endsection

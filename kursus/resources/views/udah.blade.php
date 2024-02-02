@@ -25,15 +25,38 @@
         .label-font {
             font-size: 13px;
         }
+
+        .text-mask {
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0, 0.4); 
+            color: white;
+            font-weight: bold;
+            border: 0px solid;
+
+            /* now center the mask*/
+            position: absolute;
+            top: 137px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 100%;
+            padding: 108px;
+            text-align: center;
+        }
     </style>
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/logoroblox.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
-    <img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover">
+    <div>
+        <img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover">
+        <div class="text-mask">
+            <h1 class="font-weight-bold" style="font-size:45px">E-WARRANTY</h1>
+        </div>
+    </div>
     <div class="container text-center">
     <br>
     <h1 class="font-weight-bold" style="font-size: 24px;">Terima kasih telah mengisi data!</h1>
@@ -41,32 +64,29 @@
     <br>
     <table class="table table-bordered text-left">
         <tr>
-            <td scope="col"><b>Nama</b></td>
+            <td scope="col"><b>Nama Pemilik</b></td>
             <td>{{$check->nama}}</td>
         </tr>
         <tr>
-            <td scope="col"><b>Tanggal Lahir</b></td>
-            <td>{{$check->tanggal}}</td>
+            <td scope="col"><b>Merek Mobil</b></td>
+            <td>{{$check->tipe_mobil->merek->name ?? '-'}}</td>
         </tr>
         <tr>
-            <td scope="col"><b>Email</b></td>
-            <td>{{$check->email}}</td>
-        </tr>
-        <tr>
-            <td scope="col"><b>Nomor Telepon</b></td>
-            <td>{{$check->handphone}}</td>
-        </tr>
-        <tr>
-            <td scope="col"><b>Alamat</b></td>
-            <td>{{$check->alamat}}</td>
-        </tr>
-        <tr>
-            <td scope="col"><b>Tipe</b></td>
+            <td scope="col"><b>Jenis Mobil</b></td>
             <td>{{$check->tipe_mobil->name ?? '-'}}</td>
         </tr>
         <tr>
-            <td scope="col"><b>Merek</b></td>
-            <td>{{$check->tipe_mobil->merek->name ?? '-'}}</td>
+            <td scope="col"><b>Kaca Film Depan</b></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td scope="col"><b>Kaca Film Samping</b></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td scope="col"><b>Kaca Film Belakang</b></td>
+            <td></td>
+        </tr>
     </table>
     <br>
     <a class="btn btn-primary" style="" href="{{url('fp')}}" >Balik ke halaman utama</a>

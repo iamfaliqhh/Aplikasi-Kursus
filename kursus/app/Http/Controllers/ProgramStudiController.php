@@ -29,13 +29,13 @@ class ProgramStudiController extends Controller
     }
 
 
-    //data kursus kompliit
-    public function datakursus(){
+    //data produk kompliit
+    public function dataproduk(){
         $viewData = ProgramStudi::all();
-        return view ('kursus.data-studyProgram-admin',compact('viewData'));
+        return view ('produk.data-studyProgram-admin',compact('viewData'));
     }
 
-    public function simpankursus(Request $a)
+    public function simpanproduk(Request $a)
     {
         try{
 
@@ -43,8 +43,8 @@ class ProgramStudiController extends Controller
 
             $fileft = $a->file('foto');
             if(file_exists($fileft)){
-                $nama_fileft = "kursus".time() . "-" . $fileft->getClientOriginalName();
-                $namaFolderft = 'foto kursus';
+                $nama_fileft = "produk".time() . "-" . $fileft->getClientOriginalName();
+                $namaFolderft = 'foto produk';
                 $fileft->move($namaFolderft,$nama_fileft);
                 $path = $namaFolderft."/".$nama_fileft;
             } else {
@@ -52,57 +52,47 @@ class ProgramStudiController extends Controller
             }
 
             ProgramStudi::create([
-                'id_kursus' => $kode,
-                'nama_kursus' => $a->nama,
-                'jenjang_kursus' => $a->jenjang,
-                'foto_kursus' => $path,
-                'pengajar' => $a->pengajar,
-                'jam' => $a->jam,
-                'hari' => $a->hari,
-                'harga_kursus' => $a->harga_kursus,
-                'contoh_game' => $a->contoh_game,
+                'id_produk' => $kode,
+                'nama_produk' => $a->nama,
+                'kategori_produk' => $a->kategori,
+                'foto_produk' => $path,
         ]);
-            return redirect('/data-kursus')->with('success', 'Data Tersimpan!!');
+            return redirect('/data-produk')->with('success', 'Data Tersimpan!!');
         } catch (\Exception $e){
             echo $e;
             //return redirect()->back()->with('error', 'Data Tidak Berhasil Disimpan!');
         }
     }
 
-    public function updatekursus(Request $a, $id_kursus){
+    public function updateproduk(Request $a, $id_produk){
         //$dataUser = Pengguna::all();
         try{
             $fileft = $a->file('foto');
             if(file_exists($fileft)){
-                $nama_fileft = "kursus".time() . "-" . $fileft->getClientOriginalName();
-                $namaFolderft = 'foto kursus';
+                $nama_fileft = "produk".time() . "-" . $fileft->getClientOriginalName();
+                $namaFolderft = 'foto produk';
                 $fileft->move($namaFolderft,$nama_fileft);
                 $path = $namaFolderft."/".$nama_fileft;
             } else {
                 $path = $a->pathnya;
             }
-            ProgramStudi::where("id", $id_kursus)->update([
-                'nama_kursus' => $a->nama,
-                'jenjang_kursus' => $a->jenjang,
-                'foto_kursus' => $path,
-                'pengajar' => $a->pengajar,
-                'jam' => $a->jam,
-                'hari' => $a->hari,
-                'harga_kursus' => $a->harga_kursus,
-                'contoh_game' => $a->contoh_game,
+            ProgramStudi::where("id", $id_produk)->update([
+                'nama_produk' => $a->nama,
+                'kategori_produk' => $a->kategori,
+                'foto_produk' => $path,
         ]);
-            return redirect('/data-kursus')->with('success', 'Data Terubah!!');
+            return redirect('/data-produk')->with('success', 'Data Terubah!!');
         } catch (\Exception $e){
             return redirect()->back()->with('error', 'Data Tidak Berhasil Diubah!');
         }
     }
 
-    public function hapuskursus($id_kursus){
+    public function hapusproduk($id_produk){
         //$dataUser = Pengguna::all();
         try{
-            $data = ProgramStudi::find($id_kursus);
+            $data = ProgramStudi::find($id_produk);
             $data->delete();
-            return redirect('/data-kursus')->with('success', 'Data Terhapus!!');
+            return redirect('/data-produk')->with('success', 'Data Terhapus!!');
         } catch (\Exception $e){
             return redirect()->back()->with('error', 'Data Tidak Berhasil Dihapus!');
         }

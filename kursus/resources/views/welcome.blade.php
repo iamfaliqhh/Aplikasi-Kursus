@@ -13,10 +13,10 @@
     <meta property="og:description" content="COURSE">
 
     <!-- PAGE TITLE HERE -->
-    <title>Masuk dan Daftar | COURSE</title>
+    <title>Admin Login | STEALTH</title>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/logoroblox.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">
     <link href="{{ asset('sipenmaru/vendor/login/style.css') }}" rel="stylesheet">
 
 </head>
@@ -59,8 +59,9 @@
                         </div>
                     @enderror
 
-                    <h2 class="title">Masuk</h2>
-                    <br><center><p>Repost by <a href='https://stokcoding.com/' title='StokCoding.com' target='_blank'>StokCoding.com</a></p></center>
+                    <h2 class="title">Selamat Datang</h2>
+                    <p>Silahkan login ke akun Anda</p>
+                    <br>
 
                     <div class="input-field">
                         <i class="fas fa-user"></i>
@@ -76,21 +77,6 @@
 
                 <br>
                 <hr>
-                    <p class="social-text">Sosial Media Kami</p>
-                <div class="social-media">
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="social-icon">
-                        <i class="fas fa-globe"></i>
-                    </a>
-                </div>
                 </form>
 
 
@@ -172,15 +158,6 @@
 
         <div class="panels-container">
             <div class="panel left-panel">
-                <div class="content">
-                    <h3>Baru disini ?</h3>
-                    <p>
-                        Silahkan daftar akun untuk melanjutkan proses pendaftaran peserta kursus baru!
-                    </p>
-                    <button class="btn transparent" id="sign-up-btn">
-                        DAFTAR
-                    </button>
-                </div>
                 <img src="{{ asset('sipenmaru/images/beranda.png') }}" class="image" alt="" />
             </div>
             <div class="panel right-panel">
@@ -203,19 +180,6 @@
     <script src="{{ asset('sipenmaru/js/dlabnav-init.js') }}"></script>-->
  <script src="{{ asset('sipenmaru/js/styleSwitcher.js') }}"></script>
     <script src="{{ asset('sipenmaru/vendor/login/app.js') }}"></script>
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/63b42e5047425128790b671c/1glrt9rn5';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
 </body>
 
 </html>

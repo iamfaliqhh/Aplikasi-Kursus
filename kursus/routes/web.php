@@ -13,6 +13,7 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\LogAkunController;
 use App\Http\Controllers\WarrantyController;
 use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\WindowFilmsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,9 @@ Route::get('dropdown', [DropdownController::class, 'index']);
 Route::post('api/fetch-tipe', [DropdownController::class, 'fetchTipe']);
 Route::post('regist', [UserController::class, 'insertRegis'])->name('regist');
 Route::post('regist', [LogAkunController::class, 'store']);
+Route::get('windowfilms', [WindowFilmsController::class, 'index']);
+
+// guest fp page
 Route::resource('fp', WarrantyController::class);
 Route::post('claim-warranty', [WarrantyController::class, 'claim']);
 Route::get('fp/{code}/claim', [WarrantyController::class, 'claimadmin']);
@@ -64,11 +68,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/update-school/{NPSN}', [SekolahController::class, 'updatesekolah']);
     Route::get('/delete-school/{id}', [SekolahController::class, 'hapussekolah']);
 
-    //kursus
-    Route::get('/data-kursus', [ProgramStudiController::class, 'datakursus'])->name('data-kursus');
-    Route::post('/save-kursus', [ProgramStudiController::class, 'simpankursus']);
-    Route::post('/update-kursus/{id_kursus}', [ProgramStudiController::class, 'updatekursus']);
-    Route::get('/delete-kursus/{id_kursus}', [ProgramStudiController::class, 'hapuskursus']);
+    //produk
+    Route::get('/data-produk', [ProgramStudiController::class, 'dataproduk'])->name('data-produk');
+    Route::post('/save-produk', [ProgramStudiController::class, 'simpanproduk']);
+    Route::post('/update-produk/{id_produk}', [ProgramStudiController::class, 'updateproduk']);
+    Route::get('/delete-produk/{id_produk}', [ProgramStudiController::class, 'hapusproduk']);
 
     //jadwal
     Route::get('/data-jadwal', [JadwalKegiatanController::class, 'datajadwal'])->name('data-jadwal');
