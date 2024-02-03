@@ -170,7 +170,6 @@
                                                 <h2>
                                                     <a href="https://www.instagram.com/{{ $viewData->instagram }}/"><i
                                                             class="fab fa-instagram" style="width: 50px"></i></a>
-
                                                 </h2>
                                             </div>
                                         </div>

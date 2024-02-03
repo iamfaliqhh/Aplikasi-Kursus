@@ -67,7 +67,6 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Data Jenis Produk</h4>
-
                     <!-- center modal -->
                     <div>
                         <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
