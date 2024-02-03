@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2024 at 10:09 AM
+-- Generation Time: Feb 03, 2024 at 08:54 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `kursus`
+-- Database: `laravel`
 --
 
 -- --------------------------------------------------------
@@ -59,9 +59,9 @@ CREATE TABLE `jadwal_kegiatan` (
 --
 
 INSERT INTO `jadwal_kegiatan` (`id`, `id_kegiatan`, `nama_kegiatan`, `jenis_kegiatan`, `tgl_mulai`, `tgl_akhir`, `created_at`, `updated_at`) VALUES
-(1, 'JDW00001', 'Gelombang 1 | REGULER', 'Pendaftaran', '2023-07-07', '2023-08-06', NULL, NULL),
-(2, 'JDW00002', '| BEASISWA PRESTASI', 'Pendaftaran', '2023-07-07', '2023-07-27', NULL, NULL),
-(3, 'JDW00003', 'Gelombang 2', 'REGULER', '2023-08-07', '2023-09-05', NULL, NULL);
+(1, 'JDW00001', 'Gelombang 1 | REGULER', 'Pendaftaran', '2024-01-29', '2024-02-28', NULL, NULL),
+(2, 'JDW00002', '| BEASISWA PRESTASI', 'Pendaftaran', '2024-01-29', '2024-02-18', NULL, NULL),
+(3, 'JDW00003', 'Gelombang 2', 'REGULER', '2024-02-29', '2024-03-29', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -70,19 +70,19 @@ INSERT INTO `jadwal_kegiatan` (`id`, `id_kegiatan`, `nama_kegiatan`, `jenis_kegi
 --
 
 CREATE TABLE `mereks` (
-  `id` int(20) UNSIGNED NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `mereks`
 --
 
-INSERT INTO `mereks` (`id`, `name`, `updated_at`, `created_at`) VALUES
-(2, 'Toyota', '2024-01-25 01:00:12', '2024-01-25 01:00:12'),
-(3, 'Nissan', '2024-01-25 01:00:12', '2024-01-25 01:00:12');
+INSERT INTO `mereks` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Toyota', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(2, 'Nissan', '2024-01-29 19:40:59', '2024-01-29 19:40:59');
 
 -- --------------------------------------------------------
 
@@ -114,8 +114,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2022_12_14_144036_create_pendaftarans_table', 1),
 (12, '2022_12_14_144051_create_pembayarans_table', 1),
 (13, '2022_12_14_144114_create_pengumuman_table', 1),
-(14, '2022_12_14_144114_create_warranty_table', 2),
-(15, '2024_01_25_065326_merk_tipe_mobil_table', 3);
+(14, '2022_12_14_144114_create_warranty_table', 1),
+(15, '2024_01_25_065326_merk_tipe_mobil_table', 1),
+(16, '2024_01_31_072241_window_films', 2);
 
 -- --------------------------------------------------------
 
@@ -154,7 +155,7 @@ CREATE TABLE `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`id`, `id_pembayaran`, `bukti_pembayaran`, `status`, `verifikasi`, `total_bayar`, `jatuh_tempo`, `tgl_pembayaran`, `id_pendaftaran`, `created_at`, `updated_at`) VALUES
-(1, 'PEMPSB00001', 'data pendaftar/20230100001/Prestasi1673879039-Formulir Pendaftaran-Cupiditate ex amet (1).pdf', 'Dibayar', 1, 150000, '2023-07-09', '2023-07-08', 1, '2023-07-07 16:26:08', NULL);
+(1, 'PEMPSB00001', 'data pendaftar/20230100001/Prestasi1673879039-Formulir Pendaftaran-Cupiditate ex amet (1).pdf', 'Dibayar', 1, 150000, '2024-01-31', '2024-01-30', 1, '2024-01-29 02:00:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -215,7 +216,7 @@ CREATE TABLE `pendaftaran` (
 --
 
 INSERT INTO `pendaftaran` (`id`, `id_pendaftaran`, `user_id`, `nisn`, `nik`, `nama_siswa`, `jenis_kelamin`, `pas_foto`, `tempat_lahir`, `tanggal_lahir`, `agama`, `email`, `hp`, `alamat`, `provinsi_id`, `kabupaten_id`, `kecamatan_id`, `kelurahan_id`, `tahun_masuk`, `pil1`, `pil2`, `nama_ayah`, `nama_ibu`, `pekerjaan_ayah`, `pekerjaan_ibu`, `pendidikan_ayah`, `pendidikan_ibu`, `nohp_ayah`, `nohp_ibu`, `penghasilan_ayah`, `penghasilan_ibu`, `berkas_ortu`, `sekolah`, `smt1`, `smt2`, `smt3`, `smt4`, `smt5`, `smt6`, `berkas_siswa`, `prestasi`, `status_pendaftaran`, `tgl_pendaftaran`, `created_at`, `updated_at`) VALUES
-(1, '20230100001', 3, '92348927348', '72619873972094293', 'Inayah Fauziah', 'Perempuan', 'data pendaftar/20230100001/Pasfoto1673879039-WhatsApp Image 2023-01-05 at 14.13.39.jpeg', 'Purwakarta', '2023-07-07', 'Islam', 'emailinay@gmail.com', '238742342340', 'data pendaftar alamat', NULL, NULL, NULL, NULL, '2023', 1, 2, 'data pendaftar nama_ayah', 'data pendaftar nama_ibu', 'data pendaftar pekerjaan_ayah', 'data pendaftar pekerjaan_ibu', 'data pendaftar pendidikan_ayah', 'data pendaftar pendidikan_ibu', 'data pendaftar nohp_ayah', 'data pendaftar nohp_ibu', 'data pendaftar penghasilan_ayah', 'data pendaftar penghasilan_ibu', 'data pendaftar/20230100001/BerkasOrtu1673879039-Formulir Pendaftaran-Cupiditate ex amet.pdf', 1, 99, 92, 93, 94, 95, 96, 'data pendaftar/20230100001/BerkasSiswa1673879039-Formulir Pendaftaran-Cupiditate ex amet (1).pdf', 'path_prestasi', 'Selesai', '2023-07-07 23:26:08', '2023-07-07 16:26:08', NULL);
+(1, '20230100001', 3, '92348927348', '72619873972094293', 'Inayah Fauziah', 'Perempuan', 'data pendaftar/20230100001/Pasfoto1673879039-WhatsApp Image 2023-01-05 at 14.13.39.jpeg', 'Purwakarta', '2024-01-29', 'Islam', 'emailinay@gmail.com', '238742342340', 'data pendaftar alamat', NULL, NULL, NULL, NULL, '2023', 1, 2, 'data pendaftar nama_ayah', 'data pendaftar nama_ibu', 'data pendaftar pekerjaan_ayah', 'data pendaftar pekerjaan_ibu', 'data pendaftar pendidikan_ayah', 'data pendaftar pendidikan_ibu', 'data pendaftar nohp_ayah', 'data pendaftar nohp_ibu', 'data pendaftar penghasilan_ayah', 'data pendaftar penghasilan_ibu', 'data pendaftar/20230100001/BerkasOrtu1673879039-Formulir Pendaftaran-Cupiditate ex amet.pdf', 1, 99, 92, 93, 94, 95, 96, 'data pendaftar/20230100001/BerkasSiswa1673879039-Formulir Pendaftaran-Cupiditate ex amet (1).pdf', 'path_prestasi', 'Terverifikasi', '2024-01-29 09:00:55', '2024-01-29 02:00:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -242,7 +243,7 @@ CREATE TABLE `pengumuman` (
 --
 
 INSERT INTO `pengumuman` (`id`, `id_pengumuman`, `id_pendaftaran`, `user_id`, `hasil_seleksi`, `kursus_penerima`, `nilai_interview`, `nilai_test`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'PENGSB00001', '1', '2', 'LULUS', 1, 100, 100, 0, '2023-07-07 16:26:08', NULL);
+(1, 'PENGSB00001', '1', '2', 'LULUS', 1, 100, 100, 0, '2024-01-29 02:00:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -261,6 +262,31 @@ CREATE TABLE `personal_access_tokens` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produk`
+--
+
+CREATE TABLE `produk` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_produk` varchar(255) NOT NULL,
+  `nama_produk` varchar(255) NOT NULL,
+  `foto_produk` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id`, `id_produk`, `nama_produk`, `foto_produk`, `created_at`, `updated_at`) VALUES
+(1, 'STLTH001', 'Black Mamba', 'foto kursus/kursus1672487749-puzzle.jpg', '2024-01-29 02:00:55', NULL),
+(2, 'STLTH002', 'Smoky Black', 'foto kursus/kursus1672488285-fighting.jpg', '2024-01-29 02:00:55', NULL),
+(3, 'STLTH003', 'Jet Black', 'foto kursus/kursus1672488306-sport.jpg', '2024-01-29 02:00:55', NULL),
+(4, 'STLTH004', 'Midnight Hollow', 'foto kursus/kursus1672488321-education.jpg', '2024-01-29 02:00:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -290,42 +316,11 @@ CREATE TABLE `profile_user` (
 --
 
 INSERT INTO `profile_user` (`id`, `user_id`, `nama`, `email`, `foto`, `tempat_lahir`, `tanggal_lahir`, `gender`, `no_hp`, `alamat`, `instagram`, `whatsapp`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Iam Admin', 'admin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-07 16:26:08', NULL),
-(2, 2, 'Iam Admin', 'admin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-07 16:26:08', NULL),
-(3, 3, 'Iam User', 'user@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-07 16:26:08', NULL),
-(4, 4, 'Abii Hutabarat', 'abiihutabarat29@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-07 16:26:08', NULL),
-(5, 5, 'Jasmine Mutiara Bintang', 'jasminemutiara@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-07-07 16:26:08', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `program_kursus`
---
-
-CREATE TABLE `program_kursus` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `id_kursus` varchar(255) NOT NULL,
-  `nama_kursus` varchar(255) NOT NULL,
-  `jenjang_kursus` varchar(255) DEFAULT NULL,
-  `foto_kursus` varchar(255) DEFAULT NULL,
-  `pengajar` varchar(255) DEFAULT NULL,
-  `jam` varchar(255) DEFAULT NULL,
-  `hari` varchar(255) DEFAULT NULL,
-  `contoh_game` varchar(255) DEFAULT NULL,
-  `harga_kursus` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `program_kursus`
---
-
-INSERT INTO `program_kursus` (`id`, `id_kursus`, `nama_kursus`, `jenjang_kursus`, `foto_kursus`, `pengajar`, `jam`, `hari`, `contoh_game`, `harga_kursus`, `created_at`, `updated_at`) VALUES
-(1, 'KRS001', 'PUZZLE GAME', 'Program 1', 'foto kursus/kursus1672487749-puzzle.jpg', 'Syahfrial', '08.00 - 10.00', 'selasa', NULL, 'Rp 150.000 / bulan', '2023-07-07 16:26:08', NULL),
-(2, 'KRS002', 'FIGHTING GAME', 'Program 2', 'foto kursus/kursus1672488285-fighting.jpg', 'Rina', '09.00 - 12.00', 'rabu', NULL, 'Rp 150.000 / bulan', '2023-07-07 16:26:08', NULL),
-(3, 'KRS003', 'SPORT GAME', 'Program 3', 'foto kursus/kursus1672488306-sport.jpg', 'Prida Yanti', '09.00 - 13.00', 'jumat', NULL, 'Rp 150.000 / bulan', '2023-07-07 16:26:08', NULL),
-(4, 'KRS004', 'EDUCATION GAME', 'Program 4', 'foto kursus/kursus1672488321-education.jpg', 'Karisa', '12.00 - 14.00', 'rabu', NULL, 'Rp 150.000 / bulan', '2023-07-07 16:26:08', NULL);
+(1, 1, 'Iam Admin', 'admin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-01-29 02:00:55', NULL),
+(2, 2, 'Iam Admin', 'admin@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-01-29 02:00:55', NULL),
+(3, 3, 'Iam User', 'user@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-01-29 02:00:55', NULL),
+(4, 4, 'Abii Hutabarat', 'abiihutabarat29@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-01-29 02:00:55', NULL),
+(5, 5, 'Jasmine Mutiara Bintang', 'jasminemutiara@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-01-29 02:00:55', NULL);
 
 -- --------------------------------------------------------
 
@@ -348,7 +343,7 @@ CREATE TABLE `sekolah` (
 --
 
 INSERT INTO `sekolah` (`id`, `NPSN`, `nama_sekolah`, `alamat`, `kota`, `created_at`, `updated_at`) VALUES
-(1, '2303241', 'SMAN 3 Purwakarta 1', 'Purwakarta', 'Purwakarta', '2023-07-07 16:26:08', '2023-07-07 16:38:26');
+(1, '2303241', 'SMAN 3 Purwakarta', 'Purwakarta', 'Purwakarta', '2024-01-29 02:00:55', '2024-01-29 02:00:55');
 
 -- --------------------------------------------------------
 
@@ -376,7 +371,7 @@ CREATE TABLE `timeline` (
   `user_id` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   `pesan` varchar(255) NOT NULL,
-  `tgl_update` date NOT NULL DEFAULT '2023-07-07',
+  `tgl_update` date NOT NULL DEFAULT '2024-01-29',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -386,11 +381,13 @@ CREATE TABLE `timeline` (
 --
 
 INSERT INTO `timeline` (`id`, `user_id`, `status`, `pesan`, `tgl_update`, `created_at`, `updated_at`) VALUES
-(1, '1', 'Bergabung', 'Membuat Akun baru', '2023-07-07', '2023-07-07 16:26:08', NULL),
-(2, '2', 'Bergabung', 'Membuat Akun baru', '2023-07-07', '2023-07-07 16:26:08', NULL),
-(3, '3', 'Bergabung', 'Membuat Akun baru', '2023-07-07', '2023-07-07 16:26:08', NULL),
-(4, '4', 'Bergabung', 'Membuat Akun baru', '2023-07-07', '2023-07-07 16:26:08', NULL),
-(5, '5', 'Bergabung', 'Membuat Akun baru', '2023-07-07', '2023-07-07 16:26:08', NULL);
+(1, '1', 'Bergabung', 'Membuat Akun baru', '2024-01-29', '2024-01-29 02:00:55', NULL),
+(2, '2', 'Bergabung', 'Membuat Akun baru', '2024-01-29', '2024-01-29 02:00:55', NULL),
+(3, '3', 'Bergabung', 'Membuat Akun baru', '2024-01-29', '2024-01-29 02:00:55', NULL),
+(4, '4', 'Bergabung', 'Membuat Akun baru', '2024-01-29', '2024-01-29 02:00:55', NULL),
+(5, '5', 'Bergabung', 'Membuat Akun baru', '2024-01-29', '2024-01-29 02:00:55', NULL),
+(6, '1', 'Pendaftaran', 'Melakukan perubahan verifikasi pendaftaran 20230100001 (Belum Terverifikasi)', '2024-01-29', NULL, NULL),
+(7, '1', 'Pendaftaran', 'Melakukan verifikasi pendaftaran 20230100001', '2024-01-29', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -399,19 +396,48 @@ INSERT INTO `timeline` (`id`, `user_id`, `status`, `pesan`, `tgl_update`, `creat
 --
 
 CREATE TABLE `tipes` (
-  `merek_id` varchar(255) NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `merek_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tipes`
 --
 
-INSERT INTO `tipes` (`merek_id`, `name`, `updated_at`, `created_at`) VALUES
-('2', 'Avanza', '2024-01-25 01:00:12', '2024-01-25 01:00:12'),
-('3', 'GTR Nismo', '2024-01-25 01:00:12', '2024-01-25 01:00:12');
+INSERT INTO `tipes` (`id`, `merek_id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Avanza', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(2, 1, 'Agya', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(3, 1, 'Calya', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(4, 1, 'Camry', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(5, 1, 'Corolla Altis', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(6, 1, 'Fortuner', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(7, 1, 'Innova', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(8, 1, 'Kijang Innova', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(9, 1, 'Kijang Innova Reborn', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(10, 1, 'Kijang Innova Venturer', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(11, 1, 'Kijang Innova Venturer Touring Sport', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(12, 1, 'Kijang Innova Venturer Touring Sport Diesel', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(13, 1, 'Kijang Innova Venturer Diesel', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(14, 1, 'Kijang Innova Diesel', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(15, 1, 'Kijang Innova Diesel Reborn', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(16, 1, 'Kijang Innova Diesel Venturer', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(17, 1, 'Kijang Innova Diesel Venturer Touring Sport', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(18, 2, 'GTR Nismo', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(19, 2, 'GTR', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(20, 2, 'GTR Premium', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(21, 2, 'GTR Track Edition', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(22, 2, 'GTR Black Edition', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(23, 2, 'GTR Pure Edition', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(24, 2, 'GTR Premium Edition', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(25, 2, 'GTR Track Edition Engineered By Nismo', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(26, 2, 'GTR Nismo Engineered By Nismo', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(27, 2, 'GTR Nismo N Attack Package', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(28, 2, 'GTR Nismo N Attack Package Engineered By Nismo', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(29, 2, 'GTR Nismo N Attack Package Track Edition', '2024-01-29 19:40:59', '2024-01-29 19:40:59'),
+(30, 2, 'GTR Nismo N Attack Package Track Edition Engineered By Nismo', '2024-01-29 19:40:59', '2024-01-29 19:40:59');
 
 -- --------------------------------------------------------
 
@@ -436,11 +462,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Iam Admin', 'admin@gmail.com', '2023-07-07 16:26:08', '$2y$10$2Z01hQjV0dU2EeUnEmCyWeUJES/JrChfuXmVrk9PzzHozO01gmW9S', 'Administrator', NULL, '2023-07-07 16:26:08', '2023-07-07 16:26:08'),
-(2, 'Iam Admin 2', 'admin2@gmail.com', '2023-07-07 16:26:08', '$2y$10$dXhiCBQUUrmPBSrxn5e1SOLW7RdkHMNNpUzWIrHihlTWZqkHe2djW', 'Administrator', NULL, '2023-07-07 16:26:08', '2023-07-07 16:26:08'),
-(3, 'Iam User', 'user@gmail.com', '2023-07-07 16:26:08', '$2y$10$m5GTJKXdoEId0JgyzCzqp.X7i7YLEdTvZc7Leg25Pe8yV0fLL7MlS', 'Calon Peserta', NULL, '2023-07-07 16:26:08', '2023-07-07 16:26:08'),
-(4, 'Abii Hutabarat', 'abiihutabarat29@gmail.com', '2023-07-07 16:26:08', '$2y$10$Orq0QJZlMquHGGcBUlCMOecqxHIEJ6uNPw3qj0tJyNK0aFtnCS4Uq', 'Calon Peserta', NULL, '2023-07-07 16:26:08', '2023-07-07 16:26:08'),
-(5, 'Jasmine Mutiara Bintang', 'jasminemutiara@gmail.com', '2023-07-07 16:26:08', '$2y$10$izXLkeJnCyZXgwYkQtaTdOOgTOqjDo1m//pal1XF56tk0wQYKCyyu', 'Calon Peserta', NULL, '2023-07-07 16:26:08', '2023-07-07 16:26:08');
+(1, 'Admin', 'admin@gmail.com', '2024-01-29 02:00:55', '$2y$10$xaDxUXTboL.7dr855eM/0eObB7BSSIisg3sSWg3vNLBsbBsVCR93a', 'Administrator', NULL, '2024-01-29 02:00:55', '2024-01-29 02:00:55'),
+(2, 'Iam Admin 2', 'admin2@gmail.com', '2024-01-29 02:00:55', '$2y$10$s7e0Lqo6P04oQfA0un9feOlqGoScv3/68sm.4ngJhkq/Xj1Hh1Unq', 'Administrator', NULL, '2024-01-29 02:00:55', '2024-01-29 02:00:55'),
+(3, 'Iam User', 'user@gmail.com', '2024-01-29 02:00:55', '$2y$10$qcXzgcp1upMc9eY7F/YWcuD/ZjN7y8Tf4RrfamjUxcBy4DslDWMBK', 'Calon Peserta', NULL, '2024-01-29 02:00:55', '2024-01-29 02:00:55'),
+(4, 'Abii Hutabarat', 'abiihutabarat29@gmail.com', '2024-01-29 02:00:55', '$2y$10$LUXM18ACdO3bl0ZiZMTKRuXenN/lNACxkP2HuJGSrD0a1ujMPyLQ2', 'Calon Peserta', NULL, '2024-01-29 02:00:55', '2024-01-29 02:00:55'),
+(5, 'Jasmine Mutiara Bintang', 'jasminemutiara@gmail.com', '2024-01-29 02:00:55', '$2y$10$6wl95W8QMFGuz6/uN1oGFuEMm4RAIFwA6M5LokgdC5SI.UHmJ3GJ6', 'Calon Peserta', NULL, '2024-01-29 02:00:55', '2024-01-29 02:00:55');
 
 -- --------------------------------------------------------
 
@@ -453,12 +479,15 @@ CREATE TABLE `warranty` (
   `code` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL DEFAULT 'unclaimed',
   `nama` varchar(255) DEFAULT NULL,
-  `tanggal` date DEFAULT NULL,
+  `tanggal` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `handphone` varchar(255) DEFAULT NULL,
   `alamat` varchar(255) DEFAULT NULL,
   `merek` varchar(255) DEFAULT NULL,
   `tipe` varchar(255) DEFAULT NULL,
+  `front_window` varchar(255) DEFAULT NULL,
+  `side_window` varchar(255) DEFAULT NULL,
+  `back_window` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -467,17 +496,48 @@ CREATE TABLE `warranty` (
 -- Dumping data for table `warranty`
 --
 
-INSERT INTO `warranty` (`id`, `code`, `status`, `nama`, `tanggal`, `email`, `handphone`, `alamat`, `merek`, `tipe`, `created_at`, `updated_at`) VALUES
-(2, 'sHsvhGMYRe', 'pending', 'Muhammad Faliqh', '2004-03-16', 'design@rpm-audio.com', '081934022750', 'Jakarta', 'Pilih merek mobil anda', 'Pilih tipe mobil anda', NULL, '2024-01-24 21:30:05'),
-(3, 'iMMDh51WNA', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-01-24 21:00:33'),
-(4, 'zcWPK3bNnI', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-01-24 00:21:36'),
-(5, '7RO9DC86XS', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(6, '1J7suj5poI', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, 'MYhBgWLdV4', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'PIvrKU3h6m', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(9, 'SwEuPStaJE', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(10, '8ty05rhmrv', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(11, 'O4JhXrqW5G', 'claimed', 'Muhammad Faliqh', '2024-01-18', 'faliqhyoon@outlook.com', '081934022750', 'Jakarta', NULL, NULL, NULL, '2024-01-23 23:29:43');
+INSERT INTO `warranty` (`id`, `code`, `status`, `nama`, `tanggal`, `email`, `handphone`, `alamat`, `merek`, `tipe`, `front_window`, `side_window`, `back_window`, `created_at`, `updated_at`) VALUES
+(1, 'EwEkCc1zKb', 'pending', 'Muhammad Faliqh', '2004-03-16', 'faliqhyoon@outlook.com', '081934022750', 'Jakarta', NULL, '1', NULL, NULL, NULL, NULL, '2024-01-29 19:52:45'),
+(2, 'xVFseVNYZM', 'claimed', 'test', '2024-01-08', 'faliqhyoon@outlook.com', '081934022750', 'Jakarta', NULL, '28', NULL, NULL, NULL, NULL, '2024-01-29 21:18:35'),
+(3, 'GLJ96ufrv8', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'qyxKnNQfX4', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 's5w0a2w0Y9', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'EIVPIDonDI', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 'fRdmHx7ULr', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'a4Az29540K', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'qnmZsRyuz4', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'OfhUN9uWsB', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 'gVTQyQv4Xh', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 'cxf1PUCEE0', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, '9hNN8GnyzR', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 'fZyMnSf510', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, '7UWIV4r6Np', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 'yl4vGgbphY', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 'cXXW1fO9FW', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 'guGymCWxkL', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, '9wY1NwsdqA', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 'nZtgeP05BL', 'unclaimed', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `window_films`
+--
+
+CREATE TABLE `window_films` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `window_films`
+--
+
+INSERT INTO `window_films` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Black Mamba', NULL, NULL),
+(2, 'Midnight Blues', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -551,17 +611,17 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
+-- Indexes for table `produk`
+--
+ALTER TABLE `produk`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `profile_user`
 --
 ALTER TABLE `profile_user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `profile_user_user_id_unique` (`user_id`);
-
---
--- Indexes for table `program_kursus`
---
-ALTER TABLE `program_kursus`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sekolah`
@@ -584,6 +644,12 @@ ALTER TABLE `timeline`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tipes`
+--
+ALTER TABLE `tipes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -596,6 +662,12 @@ ALTER TABLE `users`
 ALTER TABLE `warranty`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `warranty_code_unique` (`code`);
+
+--
+-- Indexes for table `window_films`
+--
+ALTER TABLE `window_films`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -617,13 +689,13 @@ ALTER TABLE `jadwal_kegiatan`
 -- AUTO_INCREMENT for table `mereks`
 --
 ALTER TABLE `mereks`
-  MODIFY `id` int(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
@@ -650,16 +722,16 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `produk`
+--
+ALTER TABLE `produk`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `profile_user`
 --
 ALTER TABLE `profile_user`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `program_kursus`
---
-ALTER TABLE `program_kursus`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `sekolah`
@@ -677,7 +749,13 @@ ALTER TABLE `social_accounts`
 -- AUTO_INCREMENT for table `timeline`
 --
 ALTER TABLE `timeline`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tipes`
+--
+ALTER TABLE `tipes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -689,7 +767,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `warranty`
 --
 ALTER TABLE `warranty`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `window_films`
+--
+ALTER TABLE `window_films`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -705,8 +789,8 @@ ALTER TABLE `pembayaran`
 -- Constraints for table `pendaftaran`
 --
 ALTER TABLE `pendaftaran`
-  ADD CONSTRAINT `pendaftaran_pil1_foreign` FOREIGN KEY (`pil1`) REFERENCES `program_kursus` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `pendaftaran_pil2_foreign` FOREIGN KEY (`pil2`) REFERENCES `program_kursus` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pendaftaran_pil1_foreign` FOREIGN KEY (`pil1`) REFERENCES `produk` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pendaftaran_pil2_foreign` FOREIGN KEY (`pil2`) REFERENCES `produk` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pendaftaran_sekolah_foreign` FOREIGN KEY (`sekolah`) REFERENCES `sekolah` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `pendaftaran_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -714,7 +798,7 @@ ALTER TABLE `pendaftaran`
 -- Constraints for table `pengumuman`
 --
 ALTER TABLE `pengumuman`
-  ADD CONSTRAINT `pengumuman_kursus_penerima_foreign` FOREIGN KEY (`kursus_penerima`) REFERENCES `program_kursus` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pengumuman_kursus_penerima_foreign` FOREIGN KEY (`kursus_penerima`) REFERENCES `produk` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `profile_user`

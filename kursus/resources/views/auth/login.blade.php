@@ -13,7 +13,7 @@
     <meta property="og:description" content="COURSE">
 
     <!-- PAGE TITLE HERE -->
-    <title>Masuk dan Daftar | COURSE</title>
+    <title>Login | STEALTH</title>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">

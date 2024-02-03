@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    COURSE
+    Edit Pendaftaran Garansi | STEALTH
 @endsection
 
 @section('header')
@@ -12,7 +12,7 @@
 @endsection
 
 @section('menunya')
-Pendaftaran
+    <h1 class="font-weight-bold" style="font-size: 24px;">Edit Pendaftaran Garansi</h1>
 @endsection
 
 @section('menu')
@@ -20,19 +20,18 @@ Pendaftaran
 <ul class="metismenu" id="menu">
     <li><a href="{{route('dashboard')}}">
             <i class="fas fa-home"></i>
-            <span class="nav-text">Beranda</span>
+            <span class="nav-text">Garansi</span>
         </a>
     </li>
     @if (auth()->user()->role == 'Administrator')
     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
         <i class="fa fa-book"></i>
-        <span class="nav-text">Data Master </span>
+        <span class="nav-text">Data Master</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{route('data-user')}}">Pengguna</a></li>
-            <li><a href="{{route('data-sekolah')}}">Sekolah</a></li>
-            <li><a href="{{route('data-kursus')}}">Kursus</a></li>
-            <li><a href="{{route('data-jadwal')}}">Jadwal Kegiatan</a></li>
+            <li><a href="{{route('data-user')}}">Garansi</a></li>
+            <li><a href="{{route('data-sekolah')}}">Merek & Tipe Mobil</a></li>
+            <li><a href="{{route('data-produk')}}">Produk</a></li>
         </ul>
     </li>
     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -40,14 +39,8 @@ Pendaftaran
         <span class="nav-text">Data History</span>
         </a>
         <ul aria-expanded="false">
-            <li><a href="{{route('data-registration')}}">Pendaftaran</a></li>
-            <li><a href="{{route('data-pembayaran')}}">Pembayaran</a></li>
+            <li><a href="{{route('data-registration')}}">Pendaftaran Garansi</a></li>
         </ul>
-    </li>
-    <li><a href="{{route('data-pengumuman')}}" aria-expanded="false">
-            <i class="fa fa-file"></i>
-            <span class="nav-text">Pengumuman</span>
-        </a>
     </li>
     @else
     <li class="mm-active"><a href="{{ route('data-registration') }}" aria-expanded="false">
@@ -72,12 +65,13 @@ Pendaftaran
                                 <div class="d-flex align-items-center">
                                     <div class="flex-shrink-0 me-3"> <i class="uil uil-receipt text-primary h2"></i> </div>
                                     <div class="flex-grow-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Data Pribadi</h5>
-                                        <p class="text-muted text-truncate mb-0">NISN, NIK, Nama, Jenis Kelamin, Pas
-                                            Photo, TTL, dsb</p>
+                                        <h5 class="font-size-16 mb-1">Data Garansi</h5>
+                                        <p class="text-muted text-truncate mb-0">Pastikan data garansi tersebut sesuai ya!
+                                        </p>
                                     </div>
-                                    <div class="flex-shrink-0"> <i
-                                            class="mdi mdi-chevron-up accor-down-icon font-size-24"></i> </div>
+                                    <div class="flex-shrink-0">
+                                        <i class="mdi mdi-chevron-up accor-down-icon font-size-24"></i>
+                                    </div>
                                 </div>
                             </div>
                         </a>
@@ -86,10 +80,10 @@ Pendaftaran
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label"  for="personal-data-nisn">NISN</label>
-                                            <input type="text" value="{{ $viewData->nisn }}" class="form-control" id="personal-data-nisn" name="nisn"
-                                                placeholder="Enter NISN" value="{{ old('nisn') }}">
-                                            @error('nisn')
+                                            <label class="form-label"  for="">Kode Garansi</label>
+                                            <input type="text" value="" class="form-control" id="" name=""
+                                                placeholder="Masukkan Kode Garansi" value="">
+                                            @error()
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -99,10 +93,10 @@ Pendaftaran
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nik">NIK</label>
-                                            <input type="text" value="{{ $viewData->nik }}" class="form-control" id="personal-data-nik" name="nik"
-                                                placeholder="Enter NIK" value="{{ old('nik') }}">
-                                            @error('nik')
+                                            <label class="form-label" for="">Nama</label>
+                                            <input type="text" value="" class="form-control" id="" name=""
+                                                placeholder="Masukkan Nama" value="">
+                                            @error()
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -111,56 +105,32 @@ Pendaftaran
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-name">Nama</label>
-                                            <input type="text" value="{{ $viewData->nama_siswa }}" class="form-control" id="personal-data-name" name="nama"
-                                                placeholder="Enter Name" value="{{ old('nama') }}">
-                                            @error('nama')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-gender">Jenis Kelamin</label>
-                                            @if ($viewData->jenis_kelamin == 'Perempuan')
-                                                <select class="form-control wide" name="jk" value="{{ old('jk') }}">
-                                                    <option value="{{ $viewData->jenis_kelamin }}" selected> {{ $viewData->jenis_kelamin }}</option>
-                                                    <option value="Laki-laki">Laki-laki</option>
-                                                </select>
-                                            @else
-                                                <select class="form-control wide" name="jk" value="{{ old('jk') }}">
-                                                    <option value="{{ $viewData->jenis_kelamin }}" selected> {{ $viewData->jenis_kelamin }}</option>
-                                                    <option value="Perempuan">Perempuan</option>
-                                                </select>
-                                            @endif
-                                            @error('jk')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data">Agama</label>
-                                            <select class="form-control wide" name="agama" value="{{ old('agama') }}">
-                                                <option value="{{ old('agama') }}"  selected>{{ $viewData->agama }}
+                                            <label class="form-label" for="">Merek Mobil</label>
+                                            <select class="form-control wide" name="" value="">
+                                                <option value=""  selected>
                                                 </option>
-                                                <option value="Islam">Islam</option>
-                                                <option value="Kristen">Kristen</option>
-                                                <option value="Hindu">Hindu</option>
-                                                <option value="Budha">Budha</option>
-                                                <option value="Kong Hu Chu ">Kong Hu Chu</option>
-                                                <option value="Lainnya">Etc</option>
+                                                <option value=""></option>
                                             </select>
-                                            @error('agama')
+                                            @error()
+                                                <div class="alert alert-warning" role="alert">
+                                                    <strong>Peringatan!</strong>
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                        <div class="mb-3 mb-4">
+                                            <label class="form-label" for="">Jenis Mobil</label>
+                                            <select class="form-control wide" name="" value="">
+                                                <option value=""  selected>
+                                                </option>
+                                                <option value=""></option>
+                                            </select>
+                                            @error()
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -172,10 +142,10 @@ Pendaftaran
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="mb-4 mb-lg-0">
-                                            <label class="form-label">Tempat Lahir</label>
-                                            <input type="text" value="{{ $viewData->tempat_lahir }}" class="form-control" id="basicpill" name="tempatlahir"
-                                                placeholder="Masukkan Tempat Lahir" value="{{ old('tempatlahir') }}">
-                                            @error('tempatlahir')
+                                            <label class="form-label">Nomor Rangka</label>
+                                            <input type="text" value="" class="form-control" id="" name=""
+                                                placeholder="Masukkan Nomor Rangka" value="">
+                                            @error()
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -185,10 +155,10 @@ Pendaftaran
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="mb-4 mb-lg-0">
-                                            <label class="form-label" for="billing-city">Tanggal Lahir</label>
-                                            <input type="date" value="{{ $viewData->tanggal_lahir }}" class="form-control" id="basicpill" name="tanggallahir"
-                                            placeholder="Masukkan Tanggal Lahir" value="{{ old('tanggallahir') }}">
-                                            @error('tanggallahir')
+                                            <label class="form-label" for="">Nomor Plat</label>
+                                            <input type="text" value="" class="form-control" id="" name=""
+                                            placeholder="Masukkan Nomor Plat" value="">
+                                            @error()
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -197,261 +167,16 @@ Pendaftaran
                                             <!--<input name="tanggallahir" class="datepicker-default form-control" id="datepicker" >-->
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-0">
-                                            <label class="form-label" for="zip-code">Pas Foto</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Upload</span>
-                                                <div class="form-file">
-                                                    <input type="file" class="form-file-input form-control" name="foto"
-                                                        value="{{ old('foto') }}">
-                                                    <input type="hidden" name="pathFoto" class="form-control-file"
-                                                        value="{{ $viewData->foto }}">
-                                                </div>
-                                            </div>
-                                            @error('foto')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="mb-4">
-                                    <label class="form-label" for="billing-address">Alamat</label>
-                                    <textarea class="form-control" id="billing-address" rows="3" name="alamat"
-                                        placeholder="Masukkan Alamat">{{ $viewData->alamat }}</textarea>
-                                    @error('alamat')
-                                        <div class="alert alert-warning" role="alert">
-                                            <strong>Peringatan!</strong>
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nisn">Email</label>
-                                            <input type="email" value="{{ $viewData->email }}" class="form-control" id="personal-data-nisn" name="email"
-                                                placeholder="Masukkan email" value="{{ old('email') }}">
-                                            @error('email')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nik">Mobile
-                                                Nomor Telepon/WhatsApp</label>
-                                            <input type="number" value="{{ $viewData->hp }}" class="form-control" id="personal-data-nik" name="nohp"
-                                                placeholder="Masukkan No HP" value="{{ old('nohp') }}">
-                                            @error('nohp')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <a href="#registration-data" class="collapsed text-dark" data-bs-toggle="collapse">
-                            <div class="p-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-shrink-0 me-3"> <i class="uil uil-truck text-primary h2"></i> </div>
-                                    <div class="flex-grow-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Data Pendaftaran</h5>
-                                        <p class="text-muted text-truncate mb-0">Pilihan Kursus </p>
-                                    </div>
-                                    <div class="flex-shrink-0"> <i
-                                            class="mdi mdi-chevron-up accor-down-icon font-size-24"></i> </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div id="registration-data" class="collapse">
-                            <div class="p-4 border-top">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nisn">Pilihan 1</label>
-                                            <input class="form-control" value="{{ $viewData->pil1 }}" list="datalistOptionskursus" id="exampleDataList"
-                                                placeholder="Cari Kursus..." name="pil1" value="{{ old('pil1') }}" autocomplete='off' >
-                                            <datalist id="datalistOptionskursus">
-                                                @foreach ($viewkursus as $z)
-                                                    <option value="{{ $z->id_kursus }}">{{ $z->nama_kursus }}</option>
-                                                @endforeach
-                                            </datalist>
-                                            @error('pil1')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <a href="#parental-data" class="collapsed text-dark" data-bs-toggle="collapse">
-                            <div class="p-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-shrink-0 me-3"> <i class="uil uil-bill text-primary h2"></i> </div>
-                                    <div class="flex-grow-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Data Orang Tua</h5>
-                                        <p class="text-muted text-truncate mb-0">Data orang tua, keuangan dan data.</p>
-                                    </div>
-                                    <div class="flex-shrink-0"> <i
-                                            class="mdi mdi-chevron-up accor-down-icon font-size-24"></i> </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div id="parental-data" class="collapse">
-                            <div class="p-4 border-top">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-name">Nama Ayah</label>
-                                            <input type="text" value="{{ $viewData->nama_ayah }}" class="form-control" id="personal-data-name" name="ayah"
-                                                placeholder="Masukkan Nama Ayah" value="{{ old('ayah') }}">
-                                            @error('ayah')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-gender">Pekerjaan Ayah</label>
-                                            <input class="form-control" value="{{ $viewData->pekerjaan_ayah }}" list="datalistOptionsOccupation"
-                                                id="exampleDataList" placeholder="Cari Pekerjaan..."
-                                                name="pekerjaanayah" value="{{ old('pekerjaanayah') }}">
-                                            <datalist id="datalistOptionsOccupation">
-                                                <option value="Karyawan Swasta"></option>
-                                                <option value="Karyawan BUMN"></option>
-                                                <option value="Karyawan BUMD"></option>
-                                                <option value="Karyawan Honorer"></option>
-                                                <option value="PNS"></option>
-                                                <option value="Wirausaha"></option>
-                                                <option value="PNS"></option>
-                                                <option value="Buruh"></option>
-                                                <option value="Asisten Rumah Tangga"></option>
-                                                <option value="Seniman"></option>
-                                                <option value="Dokter"></option>
-                                                <option value="Perawat"></option>
-                                                <option value="Bidan"></option>
-                                                <option value="Apoteker"></option>
-                                                <option value="Pengajar"></option>
-                                                <option value="Notaris"></option>
-                                            </datalist>
-                                            @error('pekerjaanayah')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nik">Telepon Ayah</label>
-                                            <input type="number" value="{{ $viewData->nohp_ayah }}" class="form-control" id="personal-data-no" name="noayah"
-                                                placeholder="Enter Father's Mobile" value="{{ old('noayah') }}">
-                                            @error('pekerjaanayah')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-name">Nama Ibu</label>
-                                            <input type="text" value="{{ $viewData->nama_ibu }}" class="form-control" id="personal-data-name" name="ibu"
-                                                placeholder="Nama Ibu" value="{{ old('ibu') }}" autocomplete="off">
-                                            @error('ibu')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-gender">Pekerjaan Ibu</label>
-                                            <input class="form-control" value="{{ $viewData->pekerjaan_ibu }}" list="datalistOptionsOccupation"
-                                                id="exampleDataList" placeholder="Cari Pekerjaan..."
-                                                name="pekerjaanibu" value="{{ old('pekerjaanibu') }}">
-                                            <datalist id="datalistOptionsOccupation">
-                                                <option value="Karyawan Swasta"></option>
-                                                <option value="Karyawan BUMN"></option>
-                                                <option value="Karyawan BUMD"></option>
-                                                <option value="Karyawan Honorer"></option>
-                                                <option value="PNS"></option>
-                                                <option value="Wirausaha"></option>
-                                                <option value="PNS"></option>
-                                                <option value="Buruh"></option>
-                                                <option value="Asisten Rumah Tangga"></option>
-                                                <option value="Ibu Rumah Tangga"></option>
-                                                <option value="Seniman"></option>
-                                                <option value="Dokter"></option>
-                                                <option value="Perawat"></option>
-                                                <option value="Bidan"></option>
-                                                <option value="Apoteker"></option>
-                                                <option value="Pengajar"></option>
-                                                <option value="Notaris"></option>
-                                            </datalist>
-                                            @error('pekerjaanibu')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nik">Telepon Ibu</label>
-                                            <input type="number" value="{{ $viewData->nohp_ibu }}" class="form-control" id="personal-data-no" name="noibu"
-                                                placeholder="Telepon Ibu" value="{{ old('noibu') }}">
-                                            @error('noibu')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nisn">Penghasilan Ayah</label>
-                                            <select class="form-control wide" title="Recipient" name="penghasilan_ayah" required>
-                                                <option value="{{$viewData->penghasilan_ayah}}" selected>{{$viewData->penghasilan_ayah}}</option>
-                                                <option value="< 1.0000.000">< 1.000.000</option>
-                                                <option value="1.000.000 - 2.500.000">1.000.000 - 2.500.000</option>
-                                                <option value="2.500.000 - 5.000.000">2.500.000 - 5.000.000</option>
-                                                <option value="5.000.000 - 7.500.000">5.000.000 - 7.500.000</option>
-                                                <option value="7.500.000 - 10.000.000">7.500.000 - 10.000.000
+                                            <label class="form-label" for="">Kaca Film Depan</label>
+                                            <select class="form-control wide" name="" value="">
+                                                <option value=""  selected>
                                                 </option>
-                                                <option value="> 10.0000.000"> > 10.000.000</option>
+                                                <option value=""></option>
                                             </select>
-                                            @error('penghasilan_ayah')
+                                            @error()
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -459,45 +184,17 @@ Pendaftaran
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                </div>
+                                <div class="row">
+                                <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nisn">Penghasilan Ibu</label>
-                                            <select class="form-control wide" title="Recipient" name="penghasilan_ibu" required>
-                                                <option value="{{$viewData->penghasilan_ibu}}" selected>{{$viewData->penghasilan_ibu}}</option>
-                                                <option value="< 1.0000.000">
-                                                    < 1.000.000</option>
-                                                <option value="1.000.000 - 2.500.000">1.000.000 -
-                                                    2.500.000
+                                            <label class="form-label" for="">Kaca Film Samping</label>
+                                            <select class="form-control wide" name="" value="">
+                                                <option value=""  selected>
                                                 </option>
-                                                <option value="2.500.000 - 5.000.000">2.500.000 - 5.000.000</option>
-                                                <option value="5.000.000 - 7.500.000">5.000.000 - 7.500.000</option>
-                                                <option value="7.500.000 - 10.000.000">7.500.000 - 10.000.000
-                                                </option>
-                                                <option value="> 10.0000.000"> > 10.000.000</option>
+                                                <option value=""></option>
                                             </select>
-                                            @error('penghasilan_ibu')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="personal-data-nisn">Slip Gaji</small>
-                                            </label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Upload</span>
-                                                <div class="form-file">
-                                                    <input type="file" class="form-file-input form-control" name="ftberkas_ortu"
-                                                        value="{{ old('ftberkas_ortu') }}">
-
-                                                    <input type="hidden" name="pathOrtu" class="form-control-file"
-                                                        value="{{ $viewData->berkas_ortu }}">
-                                                </div>
-                                            </div>
-                                            @error('ftberkas_ortu')
+                                            @error()
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -506,143 +203,15 @@ Pendaftaran
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <a href="#school-data" class="collapsed text-dark" data-bs-toggle="collapse">
-                            <div class="p-4">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-shrink-0 me-3"> <i class="uil uil-truck text-primary h2"></i> </div>
-                                    <div class="flex-grow-1 overflow-hidden">
-                                        <h5 class="font-size-16 mb-1">Data sekolah asal dan nilai</h5>
-                                                <p class="text-muted text-truncate mb-0">Sekolah asal, jurusan, nilai
-                                                    raport, prestasi dan ijazah</p>
-                                    </div>
-                                    <div class="flex-shrink-0"> <i
-                                            class="mdi mdi-chevron-up accor-down-icon font-size-24"></i> </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div id="school-data" class="collapse">
-                            <div class="p-4 border-top">
-                                <div class="row">
-                                    <div class="col-lg-6">
+                                <div class="col-lg-4">
                                         <div class="mb-3 mb-4">
-                                            <label class="form-label" for="billing-address">Nama Sekolah</label>
-                                            <input class="form-control" value="{{ $viewData->sekolah }}" list="datalistOptionsSekolah"
-                                                id="exampleDataList" placeholder="Cari NPSN sekolah...." name="sekolah"
-                                                value="{{ old('sekolah') }}">
-                                            <datalist id="datalistOptionsSekolah">
-                                                @foreach ($viewSekolah as $z)
-                                                    <option value="{{ $z->id }}">{{ $z->nama_sekolah }}</option>
-                                                @endforeach
-                                            </datalist>
-                                            @error('sekolah')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        {{-- <div class="mb-3 mb-4">
-                                            <label class="form-label"  for="personal-data">Jurusan</label>
-                                            <input class="form-control" list="datalistOptionsJurusan"
-                                                id="exampleDataList" placeholder="Cari Jurusan..." name="jurusan"
-                                                value="{{ old('jurusan') }}" value="{{ $viewData->jurusan }}">
-                                            <datalist id="datalistOptionsJurusan">
-                                                <option value="IPA"></option>
-                                                <option value="IPS"></option>
-                                                <option value="Bahasa"></option>
-                                                <option value="Agama"></option>
-                                                <option value="Teknik"></option>
-                                                <option value="Tata Boga"></option>
-                                                <option value="Tata Busana"></option>
-                                                <option value="Administrasi Perkantoran"></option>
-                                            </datalist>
-                                            @error('jurusan')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div> --}}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-2">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 1</label>
-                                            <input type="number" value="{{ $viewData->smt1 }}" class="form-control" name="smt1"
-                                                placeholder="Masukkan nilai rata-rata" value="{{ old('smt1') }}">
-                                            @error('smt1')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 2</label>
-                                            <input type="number" value="{{ $viewData->smt2}}" class="form-control" name="smt2"
-                                                placeholder="Masukkan nilai rata-rata" value="{{ old('smt2') }}">
-                                            @error('smt2')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 3</label>
-                                            <input type="number" value="{{ $viewData->smt3 }}" class="form-control" name="smt3"
-                                                placeholder="Masukkan nilai rata-rata" value="{{ old('smt3') }}">
-                                            @error('smt3')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 4</label>
-                                            <input type="number" value="{{ $viewData->smt4 }}" class="form-control" name="smt4"
-                                                placeholder="Masukkan nilai rata-rata" value="{{ old('smt4') }}">
-                                            @error('smt4')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 5</label>
-                                            <input type="number" value="{{ $viewData->smt5 }}" class="form-control" name="smt5"
-                                                placeholder="Masukkan nilai rata-rata" value="{{ old('smt5') }}">
-                                            @error('smt5')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label">Semester 6</label>
-                                            <input type="number" value="{{ $viewData->smt6 }}" class="form-control" name="smt6"
-                                                placeholder="Masukkan nilai rata-rata" value="{{ old('smt6') }}">
-                                            @error('smt6')
+                                            <label class="form-label" for="">Kaca Film Belakang</label>
+                                            <select class="form-control wide" name="" value="">
+                                                <option value=""  selected>
+                                                </option>
+                                                <option value=""></option>
+                                            </select>
+                                            @error()
                                                 <div class="alert alert-warning" role="alert">
                                                     <strong>Peringatan!</strong>
                                                     {{ $message }}
@@ -651,49 +220,6 @@ Pendaftaran
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="billing-address">Ijazah</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Upload</span>
-                                                <div class="form-file">
-                                                    <input type="file" class="form-file-input form-control" name="ftberkas_siswa"
-                                                        value="{{ old('ftberkas_siswa') }}">
-
-                                                    <input type="hidden" name="pathSiswa" class="form-control-file"
-                                                        value="{{ $viewData->berkas_siswa }}">
-                                                </div>
-                                            </div>
-                                            @error('ftberkas_siswa')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-3 mb-4">
-                                            <label class="form-label" for="billing-address">Prestasi <small>(jika ada)</small></label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Upload</span>
-                                                <div class="form-file">
-                                                    <input type="file" class="form-file-input form-control"
-                                                        name="ftprestasi" value="{{ old('ftprestasi') }}">
-
-                                                    <input type="hidden" name="pathPrestasi" class="form-control-file"
-                                                        value="{{ $viewData->prestasi }}">
-                                                </div>
-                                            </div>
-                                            @error('ftprestasi')
-                                                <div class="alert alert-warning" role="alert">
-                                                    <strong>Peringatan!</strong>
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
