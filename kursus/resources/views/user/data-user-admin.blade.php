@@ -73,7 +73,7 @@
                         <div class="modal-dialog modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Tambah Garansi</h5>
+                                    <h5 class="modal-title">Tambah Kode Garansi</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     </button>
                                 </div>
@@ -84,60 +84,9 @@
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-xl-12">
-                                                    <label for="iduser">Nama</label>
+                                                    <label for="iduser">Kode Garansi</label>
                                                     <input type="text" class="form-control" id="nama"
-                                                        placeholder="Masukkan Nama" name="nama" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="iduser">Email</label>
-                                            <input type="email" class="form-control" id="nama"
-                                                placeholder="Masukkan Email" name="email" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="iduser">Kata Sandi</label>
-                                            <input type="password" class="form-control" id="nama"
-                                                placeholder="Masukkan Kata Sandi" name="password" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-xl-6">
-                                                    <label for="iduser">Jenis Kelamin</label>
-                                                    <select class="default-select form-control wide" title="Jenis Kelamin"
-                                                        name="gender" required>
-                                                        <option value="Laki-laki" disabled>Pilih Jenis Kelamin</option>
-                                                        <option value="Perempuan">Female</option>
-                                                        <option value="Laki-laki">Male</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-xl-6">
-                                                    <label for="iduser">Telepon</label>
-                                                    <input type="number" class="form-control"
-                                                        placeholder="Enter Telepon" name="nohp" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-xl-6">
-                                                    <label for="iduser">Role Pengguna</label>
-                                                    <select class="default-select form-control wide" title="Country"
-                                                        aria-placeholder="Pilih role" name="level" required>
-                                                        <option disabled>Pilih Role</option>
-                                                        <option value="Administrator">Administrator</option>
-                                                        <option value="Calon Peserta">Calon Peserta</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-xl-6">
-                                                    <label for="iduser">Foto Profil</label>
-                                                    <div class="input-group mb-3">
-                                                        <span class="input-group-text">Upload</span>
-                                                        <div class="form-file">
-                                                            <input type="file" class="form-file-input form-control"
-                                                                name="foto">
-                                                        </div>
-                                                    </div>
+                                                        placeholder="Masukkan Kode Garansi" name="nama" required>
                                                 </div>
                                             </div>
                                         </div>

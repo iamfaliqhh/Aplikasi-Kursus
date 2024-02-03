@@ -81,22 +81,20 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="" value="">
                                         <div class="form-group">
-                                            <label class="form-label" for="">Merek Mobil</label>
-                                                <select class="form-control wide" name=""
-                                                    value="">
-                                                    <option value="" disabled selected>
-                                                    </option>
-                                                    <option value=""></option>>
-                                                </select>
+                                            <div class="col-xl-4">
+                                                <label for="">Merek Mobil</label>
+                                                    <input type="text" class="form-control"
+                                                    id="" value=""
+                                                    placeholder="Masukkan Merek Mobil" name="">
+                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="form-label" for="">Tipe Mobil</label>
-                                                <select class="form-control wide" name=""
-                                                    value="">
-                                                    <option value="" disabled selected>
-                                                    </option>
-                                                    <option value=""></option>>
-                                                </select>
+                                            <div class="col-xl-4">
+                                                <label for="">Tipe Mobil</label>
+                                                    <input type="text" class="form-control"
+                                                    id="" value=""
+                                                    placeholder="Masukkan Tipe Mobil" name="">
+                                            </div>
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex">
                                             <button type="button" class="btn btn-danger light"
@@ -170,52 +168,34 @@
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Sunting Sekolah</h5>
+                                                    <h5 class="modal-title">Edit Merek & Tipe Mobil</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close">
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="update-school/{{ $x->NPSN }}" method="POST"
+                                                    <form action="" method="POST"
                                                         enctype="multipart/form-data">
                                                         {{ csrf_field() }}
-                                                        <input type="hidden" name="userid"
-                                                            value="{{ auth()->user()->id }}">
+                                                        <input type="hidden" name=""
+                                                            value="">
                                                         <div class="form-group">
-                                                            <div class="row">
                                                                 <div class="col-xl-4">
-                                                                    <label for="iduser">NPSN</label>
+                                                                    <label for="">Merek Mobil</label>
                                                                     <input type="text" class="form-control"
-                                                                        id="nama" value="{{ $x->NPSN }}"
-                                                                        placeholder="Enter NPSN" name="id" readonly>
-                                                                </div>
-                                                                <div class="col-xl-8">
-                                                                    <label for="iduser">Nama Sekolah</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="nama" value="{{ $x->nama_sekolah }}"
-                                                                        placeholder="Enter School Name" name="nama"
-                                                                        required>
+                                                                        id="" value=""
+                                                                        placeholder="Masukkan Merek Mobil" name="">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="iduser">Alamat</label>
-                                                            <textarea name="Address" id="" cols="30" rows="5" class="form-control">{{ $x->alamat }}</textarea>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="iduser">Kabupaten/Kota</label>
-                                                            <input class="form-control" list="datalistOptionsSekolah"
-                                                                id="exampleDataList" name="kota"
-                                                                value="{{ $x->kota }}">
-                                                            <datalist id="datalistOptionsSekolah">
-                                                                <option value="Purwakarta">Purwakarta</option>
-                                                                <option value="Subang">Subang</option>
-                                                                <option value="Karawang">Karawang</option>
-                                                                <option value="Bandung">Bandung</option>
-                                                                <option value="Banten">Banten</option>
-                                                                <option value="Bekasi">Bekasi</option>
-                                                                <option value="Bogor">Bogor</option>
-                                                            </datalist>
+                                                                <div class="col-xl-4">
+                                                                    <label for="">Tipe Mobil</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="" value=""
+                                                                        placeholder="Masukkan Tipe Mobil" name="">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="modal-footer border-top-0 d-flex">
                                                             <button type="button" class="btn btn-danger light"
