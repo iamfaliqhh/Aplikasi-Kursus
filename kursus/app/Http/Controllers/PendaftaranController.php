@@ -32,7 +32,7 @@ class PendaftaranController extends Controller
 
     public function index()
     {
-        $data = Warranty::all();
+        $data = Warranty::with('tipe_mobil.merek')->get();
         $kode = ProfileUsers::id();
 
         return view('pendaftaran.index', compact('data','kode'));
