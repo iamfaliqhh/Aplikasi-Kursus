@@ -105,25 +105,35 @@
         <select id="tipe-dropdown" class="form-control select2" name="tipe">
         </select>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <label for="" class="form-label label-font">Kaca Film Depan</label>
-        <select name="name" class="form-control">
-            <option value="">-- Pilih Kaca Film --</option>
-                <option value=""></option>
+        <select id="front-dropdown" class="form-control" name="front">
+            <option value="">-- Pilih Merek Mobil --</option>
+            @foreach ($mereks as $data)
+            <option value="{{$data->id}}">
+                {{$data->name}}
+        </option>
+        @endforeach
         </select>
-    </div>
-    <div class="form-group">
+        <br>
         <label for="" class="form-label label-font">Kaca Film Samping</label>
-        <select name="name" class="form-control">
-            <option value="">-- Pilih Kaca Film --</option>
-                <option value=""></option>
+        <select id="side-dropdown" class="form-control" name="side">
+            <option value="">-- Pilih Merek Mobil --</option>
+            @foreach ($mereks as $data)
+            <option value="{{$data->id}}">
+                {{$data->name}}
+        </option>
+        @endforeach
         </select>
-    </div>
-    <div class="form-group">
+        <br>
         <label for="" class="form-label label-font">Kaca Film Belakang</label>
-        <select name="name" class="form-control">
-            <option value="">-- Pilih Kaca Film --</option>
-                <option value=""></option>
+        <select id="rear-dropdown" class="form-control" name="rear">
+            <option value="">-- Pilih Merek Mobil --</option>
+            @foreach ($mereks as $data)
+            <option value="{{$data->id}}">
+                {{$data->name}}
+        </option>
+        @endforeach
         </select>
     </div>
     <br>
@@ -135,7 +145,6 @@
     <script>
         $(document).ready(function () {
         $('.select2').select2();
-  
             /*------------------------------------------
             --------------------------------------------
             Merek Dropdown Change Event
@@ -164,7 +173,6 @@
                 });
             });
         });
-
         $(document).ready(function () {
         $('.select2').select2();
     </script>

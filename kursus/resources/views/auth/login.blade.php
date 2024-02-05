@@ -246,21 +246,6 @@
     <script src="{{ asset('sipenmaru/js/dlabnav-init.js') }}"></script>-->
     <script src="{{ asset('sipenmaru/js/styleSwitcher.js') }}"></script>
     <script src="{{ asset('sipenmaru/vendor/login/app.js') }}"></script>
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {},
-            Tawk_LoadStart = new Date();
-        (function() {
-            var s1 = document.createElement("script"),
-                s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/63b42e5047425128790b671c/1glrt9rn5';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
-    <!--End of Tawk.to Script-->
 </body>
 
 </html>

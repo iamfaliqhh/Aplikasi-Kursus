@@ -14,6 +14,7 @@ use App\Http\Controllers\LogAkunController;
 use App\Http\Controllers\WarrantyController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\MerekController;
+use App\Http\Controllers\TipeController;
 use App\Http\Controllers\WindowFilmsController;
 /*
 |--------------------------------------------------------------------------
@@ -55,14 +56,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/edit-profile', [LogAkunController::class, 'editprofil']);
     Route::post('/edit-pw', [LogAkunController::class, 'editakun']);
 
-    //user/pengguna
-    Route::get('/data-user', [UserController::class, 'datauser'])->name('data-user');
-    Route::post('/save-user', [UserController::class, 'simpanuser']);
-    Route::get('/edit-user/{user_id}', [UserController::class, 'edituser'])->name('edit-user');
-    Route::post('/edit-pw-user', [UserController::class, 'editakun'])->name("edit-pw-user");
-    Route::post('/update-user/{user_id}', [UserController::class, 'updateuser'])->name('update-user');
-    Route::get('/delete-user/{user_id}', [UserController::class, 'hapususer'])->name('delete-user');
-
     //sekolah
     Route::get('/data-sekolah', [SekolahController::class, 'datasekolah'])->name('data-sekolah');
     Route::post('/save-school', [SekolahController::class, 'simpansekolah']);
@@ -75,24 +68,25 @@ Route::middleware('auth')->group(function () {
     Route::post('/update-produk/{id_produk}', [ProgramStudiController::class, 'updateproduk']);
     Route::get('/delete-produk/{id_produk}', [ProgramStudiController::class, 'hapusproduk']);
 
-    //pendaftaran
-    Route::get('/data-registration', [PendaftaranController::class, 'datapendaftaran'])->name('data-registration');
-    Route::get('/form-registration', [PendaftaranController::class, 'inputpendaftaran']);
-    Route::post('/save-registration', [PendaftaranController::class, 'simpanpendaftaran']);
-    Route::get('/edit-registration/{id_pendaftaran}', [PendaftaranController::class, 'editpendaftaran']);
-    Route::post('/update-registration/{id_pendaftaran}', [PendaftaranController::class, 'updatependaftaran']);
-    Route::get('/delete-registration/{id_pendaftaran}', [PendaftaranController::class, 'hapuspendaftaran']);
-    Route::get('/detail-registration/{id_pendaftaran}', [PendaftaranController::class, 'detailpendaftaran']);
-
-    Route::get('/verified-registration/{id_pendaftaran}', [PendaftaranController::class, 'verifikasistatuspendaftaran']);
-    Route::get('/notverified-registration/{id_pendaftaran}', [PendaftaranController::class, 'notverifikasistatuspendaftaran']);
-    Route::get('/invalid-registration/{id_pendaftaran}', [PendaftaranController::class, 'invalidstatuspendaftaran']);
-    Route::get('/finish-registration/{id_pendaftaran}', [PendaftaranController::class, 'selesaistatuspendaftaran']);
-
     Route::get('/data-merek', [MerekController::class, 'index'])->name('data-merek');
     Route::post('/save-merek', [MerekController::class, 'store']);
     Route::post('/update-merek', [MerekController::class, 'update']);
     Route::get('/delete-merek/{id}', [MerekController::class, 'destroy'])->name('delete-merek');
+
+    Route::get('/data-tipe', [TipeController::class, 'index'])->name('data-tipe');
+    Route::post('/save-tipe', [TipeController::class, 'store']);
+    Route::post('/update-tipe', [TipeController::class, 'update']);
+    Route::get('/delete-tipe/{id}', [TipeController::class, 'destroy'])->name('delete-tipe');
+
+    Route::get('/data-pendaftaran', [PendaftaranController::class, 'index'])->name('data-pendaftaran');
+    Route::post('/save-pendaftaran', [PendaftaranController::class, 'store']);
+    Route::post('/update-pendaftaran', [PendaftaranController::class, 'update']);
+    Route::get('/delete-pendaftaran/{id}', [PendaftaranController::class, 'destroy'])->name('delete-pendaftaran');
+
+    Route::get('/verified-registration/{id}', [PendaftaranController::class, 'verifikasistatuspendaftaran']);
+    Route::get('/notverified-registration/{id}', [PendaftaranController::class, 'notverifikasistatuspendaftaran']);
+    Route::get('/invalid-registration/{id}', [PendaftaranController::class, 'invalidstatuspendaftaran']);
+    Route::get('/finish-registration/{id}', [PendaftaranController::class, 'selesaistatuspendaftaran']);
 });
 
 require __DIR__ . '/auth.php';

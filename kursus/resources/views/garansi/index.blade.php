@@ -83,13 +83,13 @@
                             <tbody>
                                 @foreach ($dataUser as $x)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{ $x->name }}</td>
                                     <td></td>
                                     <td>
                                         <div class="d-flex">
                                             <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
-                                                href="{{ route('edit-user', $x->id) }}"><i
+                                                href=""><i
                                                     class="fa fa-pencil-alt"></i></a>
                                             <a class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"
                                                     data-bs-toggle="modal"
@@ -106,7 +106,7 @@
                                                         </div>
                                                         <div class="modal-body text-center"><i
                                                                 class="fa fa-trash"></i><br> Apakah anda yakin ingin
-                                                            menghapus data ini?<br> {{ $x->id }}
+                                                            menghapus data ini?<br>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger light"
