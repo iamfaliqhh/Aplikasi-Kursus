@@ -15,4 +15,9 @@ class Tipe extends Model
      * @return response()
      */
     protected $guarded = [];
+
+    public function merek()
+    {
+        return $this->belongsTo(Merek::class,'merek_id','id');
+    }
 }
