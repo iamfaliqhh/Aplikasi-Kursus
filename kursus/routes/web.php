@@ -13,6 +13,7 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\LogAkunController;
 use App\Http\Controllers\WarrantyController;
 use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\MerekController;
 use App\Http\Controllers\WindowFilmsController;
 /*
 |--------------------------------------------------------------------------
@@ -87,6 +88,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/notverified-registration/{id_pendaftaran}', [PendaftaranController::class, 'notverifikasistatuspendaftaran']);
     Route::get('/invalid-registration/{id_pendaftaran}', [PendaftaranController::class, 'invalidstatuspendaftaran']);
     Route::get('/finish-registration/{id_pendaftaran}', [PendaftaranController::class, 'selesaistatuspendaftaran']);
+
+    Route::get('/data-merek', [MerekController::class, 'index'])->name('data-merek');
+    Route::post('/save-merek', [MerekController::class, 'store']);
+    Route::post('/update-merek', [MerekController::class, 'update']);
+    Route::get('/delete-merek/{id}', [MerekController::class, 'destroy'])->name('delete-merek');
 });
 
 require __DIR__ . '/auth.php';

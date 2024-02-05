@@ -14,7 +14,5 @@ class Merek extends Model
      *
      * @return response()
      */
-    protected $fillable = [
-        'name'
-    ];
+    protected $guarded = [];
 }

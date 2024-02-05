@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    Garansi | STEALTH
+    Merek | STEALTH
 @endsection
 
 @section('header')
@@ -12,7 +12,7 @@
 @endsection
 
 @section('menunya')
-    <h1 class="font-weight-bold" style="font-size: 24px;">Garansi<h1>
+    <h1 class="font-weight-bold" style="font-size: 24px;">Merek<h1>
 @endsection
 
 @section('menu')
@@ -24,35 +24,34 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data Garansi</h4>
+                    <h4 class="card-title">Data Merek</h4>
                     <!-- center modal -->
                     <div>
                         <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
                             class="fa fa-print"> </i></button>
                         <!--<button class="btn btn-secondary waves-effect waves-light mb-4"><i class="fas fa-eye"
                                                         title="Mode grid"> </i></button>-->
-                        <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target=".modal"
-                            style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambahkan Garansi</button>
+                        <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#modalTambah"
+                            style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambahkan Merek</button>
                     </div>
                     <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable">
+                        aria-hidden="true" id="modalTambah">
+                        <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Tambah Kode Garansi</h5>
+                                    <h5 class="modal-title">Tambah Merek</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="save-user" method="POST" enctype="multipart/form-data">
+                                    <form action="save-merek" method="POST" enctype="multipart/form-data">
                                         {{ csrf_field() }}
-                                        <input type="hidden" name="userid" value="{{ auth()->user()->id }}">
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-xl-12">
-                                                    <label for="iduser">Kode Garansi</label>
-                                                    <input type="text" class="form-control" id="nama"
-                                                        placeholder="Masukkan Kode Garansi" name="nama" required>
+                                                    <label for="name">Merek</label>
+                                                    <input type="text" class="form-control" id="name"
+                                                        placeholder="Masukkan Merek" name="name" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -75,46 +74,61 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kode Garansi</th>
-                                    <th>Status</th>
+                                    <th>Merek</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dataUser as $x)
+                                @foreach ($data as $x)
                                 <tr>
-                                    <td>
-                                        @if ($x->profile->foto != null)
-                                            <img class=" rounded-circle img-thumbnail"
-                                                src="{{ url('/' . $x->profile->foto) }}" alt=""
-                                                width="45px" />
-                                        @else
-                                            <img class="rounded-circle img-thumbnail"
-                                                src="{{ asset('sipenmaru/images/ava.png') }}" alt=""
-                                                width="45px" />
-                                        @endif
-                                    </td>
-                                    <td>{{ $x->profile->nama }}</td>
-                                    <td>
-                                        @if ($x->profile->gender == 'Perempuan')
-                                            <span class="badge badge-secondary">Perempuan</span>
-                                        @elseif($x->profile->gender == 'Laki-laki')
-                                            <span class="badge"
-                                                style="background-color: rgb(81, 171, 255)">Laki-Laki</span>
-                                        @else
-                                            <span class="badge badge-warning">?</span>
-                                        @endif
-                                    </td>
-                                    <td><strong>{{ $x->profile->no_hp }}</strong></a></td>
-                                    <td><a href="javascript:void(0);"><strong>{{ $x->email }}</strong></a></td>
+                                    <td> {{$loop->iteration}} </td>
+                                    <td>{{ $x->name }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
-                                                href="{{ route('edit-user', $x->id) }}"><i
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#modalEdit{{ $x->id }}"><i
                                                     class="fa fa-pencil-alt"></i></a>
                                             <a class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"
                                                     data-bs-toggle="modal"
                                                     data-bs-target=".delete{{ $x->id }}"></i></a>
+
+                                            {{-- modal edit --}}
+                                            <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                                                aria-hidden="true" id="modalEdit{{ $x->id }}">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Edit Merek</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="update-merek" method="POST" enctype="multipart/form-data">
+                                                                {{ csrf_field() }}
+                                                                <input type="hidden" name="id" value="{{ $x->id }}">
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-xl-12">
+                                                                            <label for="iduser">Merek</label>
+                                                                            <input type="text" class="form-control" id="name"
+                                                                                placeholder="Masukkan Merek" name="name" required value="{{$x->name}}">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer border-top-0 d-flex">
+                                                                    <button type="button" class="btn btn-danger light"
+                                                                        data-bs-dismiss="modal">Tutup</button>
+                                                                    <button type="submit" name="add" class="btn btn-primary">Tambah
+                                                                        Data</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
+
+                                            {{-- modal delete --}}
                                             <div class="modal fade delete{{ $x->id }}" tabindex="-1"
                                                 role="dialog" aria-hidden="true">
                                                 <div class="modal-dialog modal-sm">
@@ -127,12 +141,12 @@
                                                         </div>
                                                         <div class="modal-body text-center"><i
                                                                 class="fa fa-trash"></i><br> Apakah anda yakin ingin
-                                                            menghapus data ini?<br> {{ $x->id }}
+                                                            menghapus data ini?<br> {{ $x->name }}
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger light"
                                                                 data-bs-dismiss="modal">Batalkan</button>
-                                                            <a href="{{ route('delete-user', $x->id) }}">
+                                                            <a href="{{ route('delete-merek', $x->id) }}">
                                                                 <button type="submit" class="btn btn-danger shadow">
                                                                     Ya, Hapus Data!
                                                                 </button></a>
