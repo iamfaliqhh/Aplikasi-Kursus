@@ -83,7 +83,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="">No. Handphone</label>
-            <input type="te" class="form-control" name="handphone" id="" placeholder="Masukkan No. HP Anda" required>
+            <input type="tel" class="form-control" name="handphone" id="" placeholder="Masukkan No. HP Anda" required>
         </div>
     </div>
     <div class="form-group label-font">
@@ -105,33 +105,43 @@
         <select id="tipe-dropdown" class="form-control select2" name="tipe">
         </select>
     </div>
+    <div class="form-row label-font">
+        <div class="form-group col-md-6">
+            <label for="">Nomor Rangka Kendaraan</label>
+            <input type="text" name="nomor_rangka" class="form-control" id="" placeholder="Masukkan Nomor Rangka" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="">Nomor Plat Kendaraan</label>
+            <input type="text" name="nomor_plat" class="form-control" id="" placeholder="Masukkan Nomor Plat" required>
+        </div>
+    </div>
     <div class="mb-3">
         <label for="" class="form-label label-font">Kaca Film Depan</label>
-        <select id="front-dropdown" class="form-control" name="front">
-            <option value="">-- Pilih Merek Mobil --</option>
-            @foreach ($mereks as $data)
-            <option value="{{$data->id}}">
-                {{$data->name}}
+        <select id="" class="form-control select2" name="front_window">
+            <option value="">-- Pilih Kaca Film --</option>
+            @foreach ($windowfilms as $data)
+            <option value="{{$data->nama_produk}}">
+                {{$data->nama_produk}}
         </option>
         @endforeach
         </select>
         <br>
         <label for="" class="form-label label-font">Kaca Film Samping</label>
-        <select id="side-dropdown" class="form-control" name="side">
-            <option value="">-- Pilih Merek Mobil --</option>
-            @foreach ($mereks as $data)
-            <option value="{{$data->id}}">
-                {{$data->name}}
+        <select id="" class="form-control select2" name="side_window">
+            <option value="">-- Pilih Kaca Film --</option>
+            @foreach ($windowfilms as $data)
+            <option value="{{$data->nama_produk}}">
+                {{$data->nama_produk}}
         </option>
         @endforeach
         </select>
         <br>
         <label for="" class="form-label label-font">Kaca Film Belakang</label>
-        <select id="rear-dropdown" class="form-control" name="rear">
-            <option value="">-- Pilih Merek Mobil --</option>
-            @foreach ($mereks as $data)
-            <option value="{{$data->id}}">
-                {{$data->name}}
+        <select id="" class="form-control select2" name="back_window">
+            <option value="">-- Pilih Kaca Film --</option>
+            @foreach ($windowfilms as $data)
+            <option value="{{$data->nama_produk}}">
+                {{$data->nama_produk}}
         </option>
         @endforeach
         </select>
@@ -175,6 +185,7 @@
         });
         $(document).ready(function () {
         $('.select2').select2();
+        });
     </script>
 </body>
 </html>

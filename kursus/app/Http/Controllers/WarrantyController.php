@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Merek;
 use App\Models\Warranty;
 use Illuminate\Http\Request;
+use App\Models\WindowFilms;
 
 class WarrantyController extends Controller
 {
@@ -32,6 +33,7 @@ class WarrantyController extends Controller
     {
         $check = Warranty::with('tipe_mobil.merek')->where('code', $request->code)->first();
         $mereks = Merek::all();
+        $windowfilms = WindowFilms::all();
         if($check == null){
             return redirect('fp');
         }
@@ -41,7 +43,7 @@ class WarrantyController extends Controller
         }elseif($check->status == 'claimed'){
             return view('udah', compact('check'));
         }else{
-            return view('klaim', compact('check','mereks'));
+            return view('klaim', compact('check','mereks','windowfilms'));
         }
     }
 
@@ -120,6 +122,11 @@ class WarrantyController extends Controller
             'handphone' => $request->handphone,
             'alamat' => $request->alamat,
             'tipe' => $request->tipe,
+            'nomor_rangka' => $request->nomor_rangka,
+            'nomor_plat' => $request->nomor_plat,
+            'front_window' => $request->front_window,
+            'side_window' => $request->side_window,
+            'back_window' => $request->back_window,
             'status' => 'pending'
         ]);
         return view('tunggu');

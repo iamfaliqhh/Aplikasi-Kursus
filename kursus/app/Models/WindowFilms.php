@@ -4,13 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class WindowFilms extends Model
 {
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
     use HasFactory;
-    
-    protected $fillable = [
-        'name'
-    ];
+
+    protected $table = "produk";
+    protected $guarded = [];
 }

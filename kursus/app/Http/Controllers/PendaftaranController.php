@@ -7,6 +7,7 @@ use App\Models\ProfileUsers;
 use App\Models\Warranty;
 use App\Models\Timeline;
 use App\Models\User;
+use App\Models\WindowFilms;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 

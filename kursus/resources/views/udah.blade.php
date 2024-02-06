@@ -77,15 +77,15 @@
         </tr>
         <tr>
             <td scope="col"><b>Kaca Film Depan</b></td>
-            <td></td>
+            <td>{{$check->front_window ?? '-'}}</td>
         </tr>
         <tr>
             <td scope="col"><b>Kaca Film Samping</b></td>
-            <td></td>
+            <td>{{$check->side_window ?? '-'}}</td>
         </tr>
         <tr>
             <td scope="col"><b>Kaca Film Belakang</b></td>
-            <td></td>
+            <td>{{$check->back_window ?? '-'}}</td>
         </tr>
     </table>
     <br>
