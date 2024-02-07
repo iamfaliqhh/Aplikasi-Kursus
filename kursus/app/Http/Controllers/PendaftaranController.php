@@ -70,8 +70,14 @@ class PendaftaranController extends Controller
             if ($checkpendaftaran) {
                 return redirect()->back()->with('warning', 'Garansi Telah Terdaftar!');
             }
+            // dd($request->all());
+            // kalo pengen liat datanya
             Pendaftaran::find($request->id)->update([
                 'name' => $request->name,
+                'tanggal' => $request->tanggal,
+                'email' => $request->email,
+                //lanjutin datanya
+
             ]);
 
             return redirect('/data-pendaftaran')->with('success', 'Data Berhasil Diubah!');
