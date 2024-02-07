@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Merek;
-<<<<<<< HEAD
 use App\Models\Tipe;
-=======
->>>>>>> 7c5b6cbca974581d665962c8e1a63f2b7563effc
 use App\Models\Pendaftaran;
 use App\Models\ProfileUsers;
 use App\Models\Warranty;
@@ -41,15 +38,10 @@ class PendaftaranController extends Controller
         $data = Warranty::with('tipe_mobil.merek')->get();
         $kode = ProfileUsers::id();
         $mereks = Merek::all();
-<<<<<<< HEAD
         $tipes = Tipe::all();
         $windowfilms = WindowFilms::all();
 
         return view('pendaftaran.index', compact('data','kode','mereks','tipes', 'windowfilms'));
-=======
-
-        return view('pendaftaran.index', compact('data','kode','mereks'));
->>>>>>> 7c5b6cbca974581d665962c8e1a63f2b7563effc
     }
 
     public function store(Request $request)
@@ -84,7 +76,6 @@ class PendaftaranController extends Controller
             // dd($request->all());
             // kalo pengen liat datanya
             Pendaftaran::find($request->id)->update([
-<<<<<<< HEAD
                 'nama' => $request->nama,
                 'tanggal' => $request->tanggal,
                 'email' => $request->email,
@@ -94,11 +85,6 @@ class PendaftaranController extends Controller
                 'tipe' => $request->tipe,
                 'windowfilms' => $request->produk,
 
-=======
-                'name' => $request->name,
-                'tanggal' => $request->tanggal,
-                'email' => $request->email,
->>>>>>> 7c5b6cbca974581d665962c8e1a63f2b7563effc
                 //lanjutin datanya
 
             ]);
