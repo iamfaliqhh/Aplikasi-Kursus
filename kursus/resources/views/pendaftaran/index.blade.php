@@ -373,6 +373,46 @@
         </div>
     </div>
 @endsection
+<<<<<<< HEAD
+=======
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        /*------------------------------------------
+        --------------------------------------------
+        Merek Dropdown Change Event
+        --------------------------------------------
+        --------------------------------------------*/
+        $('#merek-dropdown').on('change', function () {
+            var idMerek = this.value;
+            $("#tipe-dropdown").html('');
+            $.ajax({
+                url: "{{url('api/fetch-tipe')}}",
+                type: "POST",
+                data: {
+                    merek_id: idMerek,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result);
+                    $('#tipe-dropdown').html('<option value="">-- Pilih Tipe --</option>');
+                    $.each(result.tipe, function (key, value) {
+                        $("#tipe-dropdown").append('<option value="' + value
+                            .id + '">' + value.name + '</option>');
+                    });
+                    $('#tipe-dropdown').select2();
+                }
+            });
+        });
+    });
+    $(document).ready(function () {
+        $('.select2').select2();
+    });
+</script>
+>>>>>>> 7c5b6cbca974581d665962c8e1a63f2b7563effc
 
 @section('footer')
 @endsection
