@@ -74,8 +74,9 @@
                                                 <label for="" class="form-label label-font">Merek Mobil</label>
                                                 <select id="merek-dropdown" class="form-control select2" name="merk">
                                                 <option value="">-- Pilih Merek Mobil --</option>
-                                                @foreach ($mereks as $data)
-                                                <option value="{{$data->id}}">
+                                                @foreach ($mereks as $m)
+                                                <option value="{{$m->id}}">
+                                                    {{$m->name}}
                                                 </option>
                                                 @endforeach
                                                 </select>
@@ -262,17 +263,23 @@
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label label-font">Merek Mobil</label>
-                                                                <select id="merek-dropdown" class="form-control select2" name="merk">
+                                                                <select id="merek-dropdown" class="form-control select2" name="merek">
                                                                     <option value="">-- Pilih Merek Mobil --</option>
-                                                                    @foreach ($mereks as $data)
-                                                                    <option value="{{$x->name}}">
-                                                                        {{$data->name}}
+                                                                    @foreach ($mereks as $m)
+                                                                    <option value="{{$m->id}}" @if(isset($x->tipe_mobil->merek->id) && $x->tipe_mobil->merek->id == $m->id) selected @endif>
+                                                                        {{$m->name}}
                                                                     </option>
                                                                     @endforeach
                                                                 </select>
                                                                 <br>
                                                                 <label for="" class="form-label label-font">Tipe Mobil</label>
-                                                                <select id="tipe-dropdown" class="form-control select2" name="tipe" value="{{$x->tipe}}">
+                                                                <select id="tipe-dropdown" class="form-control select2" name="tipe">
+                                                                <option value="">-- Pilih Tipe Mobil --</option>
+                                                                    @foreach ($tipes as $m)
+                                                                    <option value="{{$m->id}}" @if(isset($x->tipe_mobil->merek->id) && $x->tipe_mobil->merek->id == $m->id) selected @endif>
+                                                                        {{$m->name}}
+                                                                    </option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                             <div class="form-row label-font">
@@ -289,22 +296,31 @@
                                                                 <label for="" class="form-label label-font">Kaca Film Depan</label>
                                                                 <select id="" class="form-control select2" name="front_window">
                                                                     <option value="">-- Pilih Kaca Film --</option>
-                                                                    <option value="">
+                                                                    @foreach ($windowfilms as $m)
+                                                                    <option value="{{$x->front_window}}">
+                                                                        {{$m->nama_produk}}
                                                                     </option>
+                                                                    @endforeach
                                                                 </select>
                                                                 <br>
                                                                 <label for="" class="form-label label-font">Kaca Film Samping</label>
                                                                 <select id="" class="form-control select2" name="side_window">
                                                                     <option value="">-- Pilih Kaca Film --</option>
-                                                                    <option value="">
+                                                                    @foreach ($windowfilms as $m)
+                                                                    <option value="{{$m->nama_produk}}">
+                                                                        {{$m->nama_produk}}
                                                                     </option>
+                                                                    @endforeach
                                                                 </select>
                                                                 <br>
                                                                 <label for="" class="form-label label-font">Kaca Film Belakang</label>
                                                                 <select id="" class="form-control select2" name="back_window">
                                                                     <option value="">-- Pilih Kaca Film --</option>
-                                                                    <option value="">
+                                                                    @foreach ($windowfilms as $m)
+                                                                    <option value="{{$m->nama_produk}}">
+                                                                        {{$m->nama_produk}}
                                                                     </option>
+                                                                    @endforeach
                                                                 </select>
                                                             </div>
                                                             <div class="modal-footer border-top-0 d-flex">
@@ -357,44 +373,6 @@
         </div>
     </div>
 @endsection
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function () {
-        $('.select2').select2();
-            /*------------------------------------------
-            --------------------------------------------
-            Merek Dropdown Change Event
-            --------------------------------------------
-            --------------------------------------------*/
-            $('#merek-dropdown').on('change', function () {
-                var idMerek = this.value;
-                $("#tipe-dropdown").html('');
-                $.ajax({
-                    url: "{{url('api/fetch-tipe')}}",
-                    type: "POST",
-                    data: {
-                        merek_id: idMerek,
-                        _token: '{{csrf_token()}}'
-                    },
-                    dataType: 'json',
-                    success: function (result) {
-                        console.log(result);
-                        $('#tipe-dropdown').html('<option value="">-- Pilih Tipe --</option>');
-                        $.each(result.tipe, function (key, value) {
-                            $("#tipe-dropdown").append('<option value="' + value
-                                .id + '">' + value.name + '</option>');
-                        });
-                        $('#tipe-dropdown').select2();
-                    }
-                });
-            });
-        });
-        $(document).ready(function () {
-        $('.select2').select2();
-        });
-    </script>
 
 @section('footer')
 @endsection

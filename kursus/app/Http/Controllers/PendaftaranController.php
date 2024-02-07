@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Merek;
+use App\Models\Tipe;
 use App\Models\Pendaftaran;
 use App\Models\ProfileUsers;
 use App\Models\Warranty;
@@ -35,8 +37,11 @@ class PendaftaranController extends Controller
     {
         $data = Warranty::with('tipe_mobil.merek')->get();
         $kode = ProfileUsers::id();
+        $mereks = Merek::all();
+        $tipes = Tipe::all();
+        $windowfilms = WindowFilms::all();
 
-        return view('pendaftaran.index', compact('data','kode'));
+        return view('pendaftaran.index', compact('data','kode','mereks','tipes', 'windowfilms'));
     }
 
     public function store(Request $request)
@@ -64,12 +69,24 @@ class PendaftaranController extends Controller
     public function update(Request $request)
     {
         try {
-            $checkpendaftaran = Pendaftaran::where('name', $request->name)->where('id','!=',$request->id)->first();
+            $checkpendaftaran = Pendaftaran::where('nama', $request->nama)->where('id','!=',$request->id)->first();
             if ($checkpendaftaran) {
                 return redirect()->back()->with('warning', 'Garansi Telah Terdaftar!');
             }
+            // dd($request->all());
+            // kalo pengen liat datanya
             Pendaftaran::find($request->id)->update([
-                'name' => $request->name,
+                'nama' => $request->nama,
+                'tanggal' => $request->tanggal,
+                'email' => $request->email,
+                'handphone' => $request->handphone,
+                'alamat' => $request->alamat,
+                'merek' => $request->merek,
+                'tipe' => $request->tipe,
+                'windowfilms' => $request->produk,
+
+                //lanjutin datanya
+
             ]);
 
             return redirect('/data-pendaftaran')->with('success', 'Data Berhasil Diubah!');

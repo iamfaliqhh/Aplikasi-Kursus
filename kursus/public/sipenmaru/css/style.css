@@ -24937,6 +24937,20 @@ table.dataTable tfoot th {
     line-height: 55px;
     display: inline-block;
     color: var(--primary) !important; }
+
+    .paginate_button1.previous1 {
+      margin-left: 0px;
+      font-size: 0px;
+      margin: 0 -1px;
+      border: 0 !important;
+      height: 35px;
+      width: 36px;
+      padding: 0;
+      border-radius: 1rem;
+      line-height: 55px;
+      display: inline-block;
+      color: var(--primary) !important; }
+
     .dataTables_wrapper .dataTables_paginate .paginate_button.previous i, .dataTables_wrapper .dataTables_paginate .paginate_button.next i {
       font-size: 20px; }
     .dataTables_wrapper .dataTables_paginate .paginate_button.previous.current:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.previous.previous:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.previous.next:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.next.current:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.next.previous:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.next.next:hover {
@@ -24949,6 +24963,7 @@ table.dataTable tfoot th {
         height: 50px;
         width: 50px;
         line-height: 54px; } }
+
   .dataTables_wrapper .dataTables_paginate span .paginate_button {
     height: 37px;
     width: 24px;
