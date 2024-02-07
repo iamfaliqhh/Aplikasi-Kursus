@@ -32,29 +32,90 @@
                         <!--<button class="btn btn-secondary waves-effect waves-light mb-4"><i class="fas fa-eye"
                                                         title="Mode grid"> </i></button>-->
                         <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#modalTambah"
-                            style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambahkan Pendaftaran</button>
+                            style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Data Garansi</button>
                     </div>
                     <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
                         aria-hidden="true" id="modalTambah">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Tambah Pendaftaran</h5>
+                                    <h5 class="modal-title">Tambah Data Garansi</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                     </button>
                                 </div>
                                 <div class="modal-body">
                                     <form action="save-pendaftaran" method="POST" enctype="multipart/form-data">
                                         {{ csrf_field() }}
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-xl-12">
-                                                    <label for="name">Pendaftaran</label>
-                                                    <input type="text" class="form-control" id="name"
-                                                        placeholder="Masukkan Garansi" name="name" required>
-                                                </div>
+                                        <div class="form-row label-font">
+                                            <div class="form-group col-md-6">
+                                                <label for="">Nama</label>
+                                                <input type="text" name="nama" class="form-control" id="" placeholder="Masukkan Nama Lengkap Anda" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">Tanggal Lahir</label>
+                                                <input type="date" class="form-control" name="tanggal" id="" placeholder="Masukkan Tanggal Lahir Anda" required>
                                             </div>
                                         </div>
+                                        <div class="form-row label-font">
+                                            <div class="form-group col-md-6">
+                                                <label for="">Email</label>
+                                                <input type="email" class="form-control" name="email" id="" placeholder="Masukkan Email Anda" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">No. Handphone</label>
+                                                <input type="tel" class="form-control" name="handphone" id="" placeholder="Masukkan No. HP Anda" required>
+                                            </div>
+                                        </div>
+                                            <div class="form-group label-font">
+                                                <label for="">Alamat</label>
+                                                <input type="text" class="form-control" name="alamat" id="" placeholder="Masukkan Alamat Lengkap Anda" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="" class="form-label label-font">Merek Mobil</label>
+                                                <select id="merek-dropdown" class="form-control select2" name="merk">
+                                                <option value="">-- Pilih Merek Mobil --</option>
+                                                @foreach ($mereks as $data)
+                                                <option value="{{$data->id}}">
+                                                </option>
+                                                @endforeach
+                                                </select>
+                                                <br>
+                                                <label for="" class="form-label label-font">Tipe Mobil</label>
+                                                <select id="tipe-dropdown" class="form-control select2" name="tipe">
+                                                </select>
+                                            </div>
+                                        <div class="form-row label-font">
+                                            <div class="form-group col-md-6">
+                                                <label for="">Nomor Rangka Kendaraan</label>
+                                                <input type="text" name="nomor_rangka" class="form-control" id="" placeholder="Masukkan Nomor Rangka" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">Nomor Plat Kendaraan</label>
+                                                <input type="text" name="nomor_plat" class="form-control" id="" placeholder="Masukkan Nomor Plat" required>
+                                            </div>
+                                        </div>
+                                            <div class="mb-3">
+                                                <label for="" class="form-label label-font">Kaca Film Depan</label>
+                                                <select id="" class="form-control select2" name="front_window">
+                                                <option value="">-- Pilih Kaca Film --</option>
+                                                <option value="">
+                                                </option>
+                                                </select>
+                                                <br>
+                                                <label for="" class="form-label label-font">Kaca Film Samping</label>
+                                                <select id="" class="form-control select2" name="side_window">
+                                                <option value="">-- Pilih Kaca Film --</option>
+                                                <option value="">
+                                                </option>
+                                                </select>
+                                                <br>
+                                                <label for="" class="form-label label-font">Kaca Film Belakang</label>
+                                                <select id="" class="form-control select2" name="back_window">
+                                                <option value="">-- Pilih Kaca Film --</option>
+                                                <option value="">
+                                                </option>
+                                                </select>
+                                            </div>
                                         <div class="modal-footer border-top-0 d-flex">
                                             <button type="button" class="btn btn-danger light"
                                                 data-bs-dismiss="modal">Tutup</button>
@@ -97,9 +158,9 @@
                                     <td>{{ $x->tipe_mobil->name ?? '-' }}</td>
                                     <td>{{ $x->nomor_rangka ?? '-' }}</td>
                                     <td>{{ $x->nomor_plat ?? '-'}}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $x->front_window ?? '-'}}</td>
+                                    <td>{{ $x->side_window ?? '-'}}</td>
+                                    <td>{{ $x->back_window ?? '-'}}</td>
                                     <td>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -145,15 +206,6 @@
                                                         class="dropdown-item"
                                                         href="/notverified-registration/{{ $x->id }}">Belum
                                                                             Terverifikasi</a>
-                                                        <div class="dropdown-divider"></div><a
-                                                            class="dropdown-item text-success"
-                                                            href="/finish-registration/{{ $x->id }}">Selesai
-                                                            </a>
-                                                        </div>
-                                                        <div class="dropdown-divider"></div><a
-                                                        class="dropdown-item text-danger"
-                                                        href="/invalid-registration/{{ $x->id }}">Tidak
-                                                        Sah</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -176,29 +228,91 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Edit Merek</h5>
+                                                            <h5 class="modal-title">Edit Data Garansi</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="update-merek" method="POST" enctype="multipart/form-data">
+                                                            <form action="update-pendaftaran" method="POST" enctype="multipart/form-data">
                                                                 {{ csrf_field() }}
                                                                 <input type="hidden" name="id" value="{{ $x->id }}">
-                                                                <div class="form-group">
-                                                                    <div class="row">
-                                                                        <div class="col-xl-12">
-                                                                            <label for="iduser">Merek</label>
-                                                                            <input type="text" class="form-control" id="name"
-                                                                                placeholder="Masukkan Merek" name="name" required value="{{$x->name}}">
-                                                                        </div>
+                                                                <div class="form-row label-font">
+                                                                    <div class="form-group col-md-6">
+                                                                        <label for="">Nama</label>
+                                                                        <input type="text" name="nama" class="form-control" id="" placeholder="Masukkan Nama Lengkap Anda" value="{{$x->nama}}" required>
                                                                     </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="">Tanggal Lahir</label>
+                                                                    <input type="date" class="form-control" name="tanggal" id="" placeholder="Masukkan Tanggal Lahir Anda" value="{{$x->tanggal}}" required>
                                                                 </div>
-                                                                <div class="modal-footer border-top-0 d-flex">
-                                                                    <button type="button" class="btn btn-danger light"
-                                                                        data-bs-dismiss="modal">Tutup</button>
-                                                                    <button type="submit" name="add" class="btn btn-primary">Tambah
-                                                                        Data</button>
+                                                            </div>
+                                                            <div class="form-row label-font">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="">Email</label>
+                                                                    <input type="email" class="form-control" name="email" id="" placeholder="Masukkan Email Anda" value="{{$x->email}}" required>
                                                                 </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="">No. Handphone</label>
+                                                                    <input type="tel" class="form-control" name="handphone" id="" placeholder="Masukkan No. HP Anda" value="{{$x->handphone}}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group label-font">
+                                                                <label for="">Alamat</label>
+                                                                <input type="text" class="form-control" name="alamat" id="" placeholder="Masukkan Alamat Lengkap Anda" value="{{$x->alamat}}" required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="" class="form-label label-font">Merek Mobil</label>
+                                                                <select id="merek-dropdown" class="form-control select2" name="merk">
+                                                                    <option value="">-- Pilih Merek Mobil --</option>
+                                                                    @foreach ($mereks as $data)
+                                                                    <option value="{{$x->name}}">
+                                                                        {{$data->name}}
+                                                                    </option>
+                                                                    @endforeach
+                                                                </select>
+                                                                <br>
+                                                                <label for="" class="form-label label-font">Tipe Mobil</label>
+                                                                <select id="tipe-dropdown" class="form-control select2" name="tipe" value="{{$x->tipe}}">
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-row label-font">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="">Nomor Rangka Kendaraan</label>
+                                                                    <input type="text" name="nomor_rangka" class="form-control" id="" placeholder="Masukkan Nomor Rangka" value="{{$x->nomor_rangka}}" required>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="">Nomor Plat Kendaraan</label>
+                                                                    <input type="text" name="nomor_plat" class="form-control" id="" placeholder="Masukkan Nomor Plat" value="{{$x->nomor_plat}}" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="" class="form-label label-font">Kaca Film Depan</label>
+                                                                <select id="" class="form-control select2" name="front_window">
+                                                                    <option value="">-- Pilih Kaca Film --</option>
+                                                                    <option value="">
+                                                                    </option>
+                                                                </select>
+                                                                <br>
+                                                                <label for="" class="form-label label-font">Kaca Film Samping</label>
+                                                                <select id="" class="form-control select2" name="side_window">
+                                                                    <option value="">-- Pilih Kaca Film --</option>
+                                                                    <option value="">
+                                                                    </option>
+                                                                </select>
+                                                                <br>
+                                                                <label for="" class="form-label label-font">Kaca Film Belakang</label>
+                                                                <select id="" class="form-control select2" name="back_window">
+                                                                    <option value="">-- Pilih Kaca Film --</option>
+                                                                    <option value="">
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="modal-footer border-top-0 d-flex">
+                                                                <button type="button" class="btn btn-danger light"
+                                                                data-bs-dismiss="modal">Tutup</button>
+                                                                <button type="submit" name="add" class="btn btn-primary">Tambah
+                                                                Data</button>
+                                                            </div>
                                                             </form>
                                                         </div>
                                                     </div><!-- /.modal-content -->
@@ -243,6 +357,44 @@
         </div>
     </div>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+        $('.select2').select2();
+            /*------------------------------------------
+            --------------------------------------------
+            Merek Dropdown Change Event
+            --------------------------------------------
+            --------------------------------------------*/
+            $('#merek-dropdown').on('change', function () {
+                var idMerek = this.value;
+                $("#tipe-dropdown").html('');
+                $.ajax({
+                    url: "{{url('api/fetch-tipe')}}",
+                    type: "POST",
+                    data: {
+                        merek_id: idMerek,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (result) {
+                        console.log(result);
+                        $('#tipe-dropdown').html('<option value="">-- Pilih Tipe --</option>');
+                        $.each(result.tipe, function (key, value) {
+                            $("#tipe-dropdown").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                        $('#tipe-dropdown').select2();
+                    }
+                });
+            });
+        });
+        $(document).ready(function () {
+        $('.select2').select2();
+        });
+    </script>
 
 @section('footer')
 @endsection
