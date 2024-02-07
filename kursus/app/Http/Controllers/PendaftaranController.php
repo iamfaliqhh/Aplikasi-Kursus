@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Merek;
 use App\Models\Pendaftaran;
 use App\Models\ProfileUsers;
 use App\Models\Warranty;
@@ -35,8 +36,9 @@ class PendaftaranController extends Controller
     {
         $data = Warranty::with('tipe_mobil.merek')->get();
         $kode = ProfileUsers::id();
+        $mereks = Merek::all();
 
-        return view('pendaftaran.index', compact('data','kode'));
+        return view('pendaftaran.index', compact('data','kode','mereks'));
     }
 
     public function store(Request $request)
