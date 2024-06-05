@@ -21,6 +21,18 @@
             width: 100%;
             object-fit: cover;
         }
+
+        .form-warranty {
+            width: 500px !important;
+        }
+
+        .container1 {
+            width: 900px;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
         
         .float {
 	        position:fixed;
@@ -37,8 +49,20 @@
             z-index:100;
         }
         
+        .h1-warranty {
+            font-size: 20px;
+        }
+
+        .p-warranty {
+            font-size: 15px;
+        }
+
         .my-float{
 	        margin-top:16px;
+        }
+
+        .header-bold {
+            font-size:30px;
         }
 
         .text-mask {
@@ -55,8 +79,68 @@
             transform: translate(-50%, -50%);
             z-index: 2;
             width: 100%;
-            padding: 108px;
+            padding: 117px;
             text-align: center;
+        }
+
+        @media only screen and (max-width: 768px) {
+
+            .float {
+	            position:fixed;
+	            width:60px;
+	            height:60px;
+	            bottom:10px;
+	            right:10px;
+	            background-color:#25d366c7;
+	            color:#FFF;
+	            border-radius:50px;
+	            text-align:center;
+                font-size:30px;
+	            box-shadow: 2px 2px 3px #999;
+                z-index:100;
+            }
+
+            img {
+                height: 212px; 
+                width: 100%;
+                object-fit: cover;
+            }
+
+            .h1-warranty {
+                font-size: 20px;
+            }
+
+            .p-warranty {
+                font-size: 12px;
+            }
+
+            .form-warranty {
+                width: 345px !important;
+            }
+
+            .container1 {
+                width: 361px;
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            .text-mask {
+                background-color: rgb(0,0,0); 
+                background-color: rgba(0,0,0, 0.4); 
+                color: white;
+                font-weight: bold;
+                border: 0px solid;
+
+                /* now center the mask*/
+                position: absolute;
+                top: 106px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 2;
+                width: 100%;
+                padding: 84px;
+                text-align: center;
+            }
         }
     </style>
     <!-- FAVICONS ICON -->
@@ -73,19 +157,19 @@
     <div>
     <img src="https://premio.id/wp-content/uploads/2023/12/car-repair-maintenance-theme-mechanic-uniform-working-auto-service-scaled.jpg" class="bg-img object-fit-cover header">
     <div class="text-mask">
-        <h1 class="font-weight-bold" style="font-size:45px">E-WARRANTY</h1>
+        <h1 class="font-weight-bold header-bold">E-WARRANTY</h1>
     </div>
     </div>
-    <div class="container" style="width: 900px;">
+    <div class="container1">
     <br>
     <br>
-    <h1 class="font-weight-bold text-center" style="font-size: 24px;">TERIMA KASIH</h1>
-    <p class="text-center" style="font-size: 15px;">Anda telah menggunakan produk berkualitas dari <b>STEALTH HIGH DEFINITION FILMS</b></p>
+    <h1 class="font-weight-bold text-center h1-warranty">TERIMA KASIH</h1>
+    <p class="text-center p-warranty">Anda telah menggunakan produk berkualitas dari <b>DR ARTEX HIGH DEFINITION FILMS</b></p>
     <br>
-    <p class="text-center" style="font-size: 15px;">
-            Dengan memiliki kartu garansi Premio, anda telah mendapatkan jaminan <b>garansi 1 (satu) tahun</b>. 
+    <p class="text-center p-warranty">
+            Dengan memiliki kartu garansi Dr Artex, anda telah mendapatkan jaminan <b>garansi 1 (satu) tahun</b>. 
         <br>Untuk mendapatkan <b>garansi maksimal hingga 7 (tujuh) tahun</b>, 
-        <br>silakan aktivasi dan isi data diri anda secara lengkap pada halaman berikut setelah mengisi Kode Garansi anda.
+        <br>silahkan aktivasi dan isi data diri anda secara lengkap pada halaman berikut setelah mengisi Kode Garansi anda.
     </p>
     <br>
     <form action="/claim-warranty" method="post">
@@ -93,7 +177,7 @@
     <div class="d-flex justify-content-center">
     <div class="input-group w-auto input">
         <label for="" class="form-label"></label>
-        <input type="text" placeholder="Masukkan Kode Garansi" class="form-control input" name="code" style="width: 500px" id="" aria-describedby="helpId" placeholder="" required/>
+        <input type="text" placeholder="Masukkan Kode Garansi" class="form-control input form-warranty" name="code" id="" aria-describedby="helpId" placeholder="" required/>
         <button class="btn btn-primary" type="submit">
             Submit
         </button>
@@ -106,10 +190,13 @@
     <div class="card">
         <div class="card-body">
             <p style="font-size: 12px;">Note :
-                <br>1. Data tidak ditemukan atau salah informasi? Silakan hubungi Admin Stealth via WhatsApp.
+                <br>1. Data tidak ditemukan atau salah informasi? Silakan hubungi Admin Dr Artex via WhatsApp.
                 <br>2. Masa garansi produk sesuai dengan tipe produk yang terpasang.
             </p>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
 </body>
 </html>

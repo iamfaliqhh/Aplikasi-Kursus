@@ -85,7 +85,7 @@
             <a href="dashboard" class="brand-logo">
                 <img alt="image" width="50" src="{{ asset('sipenmaru/images/stealth.png') }}">
                 <div class="brand-title">
-                    <h2 style="font-size: 18px;">STEALTH Admin Panel</h2>
+                    <h2 style="font-size: 18px;">STEALTH Admin</h2>
                 </div>
             </a>
             <div class="nav-control">

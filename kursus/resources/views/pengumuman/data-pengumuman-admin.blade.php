@@ -70,16 +70,12 @@ Pengumuman
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Data Pengumuman</h4>
-
-
                         <div>
                             <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i class="fa fa-print"> </i></button>
-
                         {{-- <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target=".modal"
                         style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Pengumuman</button> --}}
                         </div>
                         <!-- center modal -->
-
                         <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
                             aria-hidden="true">
                             <div class="modal-dialog modal-dialog-scrollable">
@@ -215,7 +211,6 @@ Pengumuman
 
                                         <div class="modal fade edit{{ $x->id_pengumuman }}" tabindex="-1" role="dialog"
                                             aria-labelledby="mySmallModalLabel" aria-hidden="true">
-
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -239,7 +234,6 @@ Pengumuman
                                                                             <option value="{{ $x->id_pendaftaran }}">
                                                                                 {{ $x->pendaftaran->id_pendaftaran }}</option>
                                                                         </select>
-
                                                                     </div>
                                                                     <div class="col-xl-6">
                                                                         <label for="iduser">Hasil</label>
