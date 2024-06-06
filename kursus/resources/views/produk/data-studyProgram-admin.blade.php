@@ -55,23 +55,25 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="userid" value="{{ auth()->user()->id}}">
                                         <div class="form-group">
+                                            <label for="iduser">Kode Produk</label>
+                                            <input type="text" class="form-control" id="kode"
+                                                placeholder="Masukkan kode produk" name="kode" required>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="iduser">Nama Produk</label>
                                             <input type="text" class="form-control" id="nama"
                                                 placeholder="Masukkan nama produk" name="nama" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="iduser">Kategori Produk</label>
-                                            <input type="text" class="form-control" id="kategori"
-                                                placeholder="Masukkan kategori produk" name="kategori" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="iduser">Foto Produk</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Upload</span>
-                                                <div class="form-file">
-                                                    <input type="file" class="form-file-input form-control" name="foto">
-                                                </div>
-                                            </div>
+                                            <select name="kategori" id="kategori" class="form-select">
+                                                <option>Pilih Kategori</option>
+                                            @foreach($kategori as $val)
+                                                <option value="{{$val->id}}">{{$val->kategori}}</option>
+                                            @endforeach
+                                            </select>
+                                            <!-- <input type="text" class="form-control" id="kategori"
+                                                placeholder="Masukkan kategori produk" name="kategori" required> -->
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex">
                                             <button type="button" class="btn btn-danger light"
@@ -94,7 +96,7 @@
                                     <th>No</th>
                                     <th>ID</th>
                                     <th>Nama Produk</th>
-                                    <th>Foto Produk</th>
+                                    <th>Kategori Produk</th>
                                     <th>Aksi</th>
 
                                 </tr>
@@ -105,7 +107,13 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $x->id_produk }}</td>
                                         <td>{{$x->nama_produk}}</td>
-                                        <td><img src="{{ asset($x->foto_produk) }}" width="200px" height="200" alt=""></td>
+                                        <td>
+                                            @foreach($kategori as $val)
+                                                @if($x->kategori_produk == $val->id)
+                                                    {{$val->kategori}}
+                                                @endif
+                                            @endforeach
+                                        </td>
                                         <td>
                                             <div class="d-flex">
                                                 <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
@@ -163,23 +171,31 @@
                                                                 value="{{ $x->id }}">
                                                             <div class="row">
                                                                 <div class="col-xl-12">
+                                                                    <label for="iduser">Kode Produk</label>
+                                                                    <input type="text" class="form-control" id="kode"
+                                                                        value="{{ $x->id_produk }}" name="kode" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-12">
                                                                     <label for="iduser">Nama Produk</label>
                                                                     <input type="text" class="form-control" id="nama"
                                                                         value="{{ $x->nama_produk }}"
                                                                         placeholder="Masukan nama produk" name="nama"
                                                                         required>
                                                                 </div>
+                                                            </div>
+                                                            <div class="row">
                                                                 <div class="col-xl-12">
-                                                                    <label for="iduser">Foto Produk</label>
-                                                                    <div class="input-group">
-                                                                        <span class="input-group-text">Upload</span>
-                                                                        <div class="form-file">
-                                                                            <input type="file" class="form-file-input form-control" name="foto"
-                                                                                value="{{ old('foto') }}">
-                                                                            <input type="hidden" name="pathnya" class="form-control-file"
-                                                                                value="{{ $x->foto_produk }}">
-                                                                        </div>
-                                                                    </div>
+                                                                    <label for="iduser">Kategori Produk</label>
+                                                                    <select name="kategori" id="kategori" class="form-select">
+                                                                        <option>Pilih Kategori</option>
+                                                                        @foreach($kategori as $val)
+                                                                        <option value="{{$val->id}}" {{ ($val->id == $x->kategori_produk)? 'selected' : '' }}>{{$val->kategori}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <!-- <input type="text" class="form-control" id="kategori"
+                                                                    placeholder="Masukkan kategori produk" name="kategori" required> -->
                                                                 </div>
                                                             </div>
                                                         </div>

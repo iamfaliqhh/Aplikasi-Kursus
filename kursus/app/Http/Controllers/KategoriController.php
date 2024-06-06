@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tipe;
-use App\Models\Merek;
-use App\Models\ProfileUsers;
-use App\Models\Timeline;
-use App\Models\User;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Log;
 
-class TipeController extends Controller
+class KategoriController extends Controller
 {
     public function __construct()
     {
@@ -33,28 +29,26 @@ class TipeController extends Controller
 
     public function index()
     {
-        $data = Tipe::all();
-        $kode = ProfileUsers::id();
-        $merk = Merek::all();
+        $data = Kategori::all();
 
-        return view('tipe.index', compact('data','kode','merk'));
+        return view('kategori.index', compact('data'));
     }
 
     public function store(Request $request)
     {
         try {
-            $checktipe = Tipe::where('name', $request->name)->first();
-            if ($checktipe) {
-                return redirect()->back()->with('warning', 'Tipe Telah Terdaftar!');
+            $checkkategori = Kategori::where('kategori', $request->name)->first();
+            if ($checkkategori) {
+                return redirect()->back()->with('warning', 'Kategori Telah Terdaftar!');
             }
-            Tipe::create([
-                'name' => $request->name,
+            Kategori::create([
+                'kategori' => $request->kategori
             ]);
-
-            return redirect('/data-tipe')->with('success', 'Data Tersimpan!');
+    
+            return redirect('/data-kategori')->with('success', 'Data Tersimpan!');
         } catch (\Exception $e) {
-            Log::error('Error saat menyimpan user: ' . $e->getMessage());
-            dd($e->getMessage());
+            // Log::error('Error saat menyimpan user: ' . $e->getMessage());
+            // dd($e->getMessage());
             return redirect()->back()->with('error', 'Data Tidak Tersimpan, Periksa kembali inputan ada!');
         }
     }
@@ -67,17 +61,18 @@ class TipeController extends Controller
     public function update(Request $request)
     {
         try {
-            $checktipe = Tipe::where('name', $request->name)->where('id','!=',$request->id)->first();
-            if ($checktipe) {
-                return redirect()->back()->with('warning', 'Tipe Telah Terdaftar!');
+            $checkkategori = Kategori::where('kategori', $request->kategori)->where('id','!=',$request->id)->first();
+            if ($checkkategori) {
+                return redirect()->back()->with('warning', 'Kategori Telah Terdaftar!');
             }
-            Tipe::find($request->id)->update([
-                'name' => $request->name,
-                'merek_id' => $request->merek
+            Kategori::find($request->id)->update([
+                'kategori' => $request->kategori,
             ]);
 
-            return redirect('/data-tipe')->with('success', 'Data Berhasil Diubah!');
+            return redirect('/data-kategori')->with('success', 'Data Berhasil Diubah!');
         } catch (\Exception $e) {
+            // Log::error('Error saat menyimpan user: ' . $e->getMessage());
+            // dd($e->getMessage());
             return redirect()->back()->with('error', 'Data Tidak Berhasil Diubah, Periksa kembali inputan ada!');
         }
     }
@@ -86,9 +81,9 @@ class TipeController extends Controller
     {
         //$dataUser = ProfileUsers::all();
         try {
-            $dataTipe = Tipe::find($id);
-            $dataTipe->delete();
-            return redirect('/data-tipe')->with("success", 'Data Berhasil Dihapus');
+            $dataKategori = Kategori::find($id);
+            $dataKategori->delete();
+            return redirect('/data-kategori')->with("success", 'Data Berhasil Dihapus');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Data Tidak Berhasil Dihapus!');
         }

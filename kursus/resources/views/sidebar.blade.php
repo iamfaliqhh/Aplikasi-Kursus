@@ -11,6 +11,7 @@
                         <span class="nav-text">Data Master </span>
                     </a>
                     <ul aria-expanded="false">
+                        <li><a href="{{ route('data-kategori') }}">Kategori</a></li>
                         <li><a href="{{ route('data-merek') }}">Merek</a></li>
                         <li><a href="{{ route('data-tipe') }}">Tipe</a></li>
                         <li><a href="{{ route('data-produk') }}">Produk</a></li>
