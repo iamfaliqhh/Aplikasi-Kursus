@@ -16,6 +16,7 @@ use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\MerekController;
 use App\Http\Controllers\TipeController;
 use App\Http\Controllers\WindowFilmsController;
+use App\Http\Controllers\KategoriController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,6 +88,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/notverified-registration/{id}', [PendaftaranController::class, 'notverifikasistatuspendaftaran']);
     Route::get('/invalid-registration/{id}', [PendaftaranController::class, 'invalidstatuspendaftaran']);
     Route::get('/finish-registration/{id}', [PendaftaranController::class, 'selesaistatuspendaftaran']);
+
+    Route::get('/data-kategori', [KategoriController::class, 'index'])->name('data-kategori');
+    Route::post('/save-kategori', [KategoriController::class, 'store']);
+    Route::post('/update-kategori', [KategoriController::class, 'update']);
+    Route::get('/delete-kategori/{id}', [KategoriController::class, 'destroy'])->name('delete-kategori');
 });
 
 require __DIR__ . '/auth.php';

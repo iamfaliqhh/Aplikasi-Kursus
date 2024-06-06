@@ -23,6 +23,11 @@ class CreateWarrantyTable extends Migration
             $table->string('handphone')->nullable();
             $table->string('alamat')->nullable();
             $table->string('tipe')->nullable();
+            $table->string('nomor_rangka');
+            $table->string('nomor_plat');
+            $table->string('front_window');
+            $table->string('back_window');
+            $table->string('side_window');
             $table->timestamps();
         });
     }

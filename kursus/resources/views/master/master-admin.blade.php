@@ -54,6 +54,7 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="{{ asset('sipenmaru/vendor/toastr/css/toastr.min.css') }}">
 
+
     <link href="{{ asset('sipenmaru/css/style.css') }}" rel="stylesheet">
 
 </head>
@@ -579,6 +580,8 @@
 
         $(document).ready(function() {
             $('.mdb-select').materialSelect();
+
+            $('.sel2').select2();
         });
     </script>
 
