@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    Data Produk | STEALTH
+    Produk | DrArtexFilms
 @endsection
 
 @section('header')
@@ -12,7 +12,7 @@
 @endsection
 
 @section('menunya')
-    <h1 class="font-weight-bold" style="font-size: 24px;">Data Produk<h1>
+    <h1 class="font-weight-bold" style="font-size: 24px;">Produk<h1>
 @endsection
 
 @section('menu')
@@ -32,12 +32,12 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data Jenis Produk</h4>
+                    <h4 class="card-title">Data Produk</h4>
                     <!-- center modal -->
                     <div>
-                        <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
+                        <button class="btn btn-secondary waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
                                 class="fa fa-print"> </i></button>
-                        <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target=".modal"
+                        <button type="button" class="btn btn-secondary mb-4" data-bs-toggle="modal" data-bs-target=".modal"
                             style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Produk</button>
                     </div>
 
@@ -116,7 +116,7 @@
                                         </td>
                                         <td>
                                             <div class="d-flex">
-                                                <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
+                                                <a class="btn btn-secondary shadow btn-xs sharp me-1" title="Edit"
                                                     data-bs-toggle="modal" data-bs-target=".edit{{ $x->id }}"><i
                                                         class="fa fa-pencil-alt"></i></a>
                                                 <a class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"

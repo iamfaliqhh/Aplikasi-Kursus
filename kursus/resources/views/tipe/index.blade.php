@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    Tipe | STEALTH
+    Tipe Mobil | DrArtexFilms
 @endsection
 
 @section('header')
@@ -12,7 +12,7 @@
 @endsection
 
 @section('menunya')
-    <h1 class="font-weight-bold" style="font-size: 24px;">Tipe<h1>
+    <h1 class="font-weight-bold" style="font-size: 24px;">Tipe Mobil<h1>
 @endsection
 
 @section('menu')
@@ -24,14 +24,14 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data Tipe</h4>
+                    <h4 class="card-title">Data Tipe Mobil</h4>
                     <!-- center modal -->
                     <div>
-                        <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
+                        <button class="btn btn-secondary waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
                             class="fa fa-print"> </i></button>
                         <!--<button class="btn btn-secondary waves-effect waves-light mb-4"><i class="fas fa-eye"
                                                         title="Mode grid"> </i></button>-->
-                        <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#modalTambah"
+                        <button type="button" class="btn btn-secondary mb-4" data-bs-toggle="modal" data-bs-target="#modalTambah"
                             style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambahkan Tipe</button>
                     </div>
                     <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -104,7 +104,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            <a class="btn btn-primary shadow btn-xs sharp me-1" title="Edit"
+                                            <a class="btn btn-secondary shadow btn-xs sharp me-1" title="Edit"
                                                     data-bs-toggle="modal"
                                                     data-bs-target="#modalEdit{{ $x->id }}"><i
                                                     class="fa fa-pencil-alt"></i></a>

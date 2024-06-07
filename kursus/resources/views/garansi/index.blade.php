@@ -27,11 +27,11 @@
                     <h4 class="card-title">Data Garansi</h4>
                     <!-- center modal -->
                     <div>
-                        <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
+                        <button class="btn btn-secondary waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
                             class="fa fa-print"> </i></button>
                         <!--<button class="btn btn-secondary waves-effect waves-light mb-4"><i class="fas fa-eye"
                                                         title="Mode grid"> </i></button>-->
-                        <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target=".modal"
+                        <button type="button" class="btn btn-secondary mb-4" data-bs-toggle="modal" data-bs-target=".modal"
                             style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambahkan Garansi</button>
                     </div>
                     <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"

@@ -8,21 +8,21 @@
             @if (auth()->user()->role == 'Administrator')
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="fa fa-book"></i>
-                        <span class="nav-text">Data Master </span>
+                        <span class="nav-text">Main Data</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ route('data-kategori') }}">Kategori</a></li>
-                        <li><a href="{{ route('data-merek') }}">Merek</a></li>
-                        <li><a href="{{ route('data-tipe') }}">Tipe</a></li>
+                        <li><a href="{{ route('data-merek') }}">Merek Mobil</a></li>
+                        <li><a href="{{ route('data-tipe') }}">Tipe Mobil</a></li>
+                        <li><a href="{{ route('data-kategori') }}">Kategori Produk</a></li>
                         <li><a href="{{ route('data-produk') }}">Produk</a></li>
                     </ul>
                 </li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="fa fa-database"></i>
-                        <span class="nav-text">Data History</span>
+                        <span class="nav-text">Histori Data</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="{{ route('data-pendaftaran') }}">Pendaftaran Garansi</a></li>
+                        <li><a href="{{ route('data-pendaftaran') }}">Histori Pendaftaran</a></li>
                     </ul>
                 </li>
             @else

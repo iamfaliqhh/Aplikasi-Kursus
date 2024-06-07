@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    Data Produk | STEALTH
+    Data Produk | DrArtexFilms
 @endsection
 
 @section('header')

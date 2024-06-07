@@ -2543,12 +2543,12 @@ textarea.form-control-lg {
 
 .btn-secondary {
   color: #000;
-  background-color: #FFA7D7;
-  border-color: #FFA7D7; }
+  background-color: #EEEEEE;
+  border-color: #EEEEEE; }
   .btn-secondary:hover {
     color: #000;
-    background-color: #ffb4dd;
-    border-color: #ffb0db; }
+    background-color: #EEEEEE;
+    border-color: #ff4343; }
   .btn-check:focus + .btn-secondary, .btn-secondary:focus {
     color: #000;
     background-color: #ffb4dd;
@@ -9364,7 +9364,7 @@ label {
     display: flex;
     height: 100%;
     width: 100%;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     font-size: 1.125rem;
     color: #fff;
@@ -14122,7 +14122,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   z-index: 9;
   top: 14.75rem;
   right: 100%;
-  background-color: #886CC0;
+  background-color: #dc3545;
   color: #fff;
   display: inline-block;
   height: 3rem;
@@ -20673,7 +20673,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   font-size: 2rem; }
 
 :root {
-  --primary: #23A7AF;
+  --primary: #dc3545;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;
@@ -21870,7 +21870,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   background-color: #D653C1; }
 
 .badge-primary {
-  background-color: var(--primary); }
+  background-color: #dc3545; }
 
 .badge-warning {
   background-color: #FFCF6D; }
@@ -22042,7 +22042,7 @@ button {
       padding: 0.625rem 1rem;
       font-size: 0.813rem; } }
   .btn.btn-success, .btn.btn-secondary, .btn.btn-warning, .btn.btn-primary, .btn.btn-danger, .btn.btn-info {
-    color: #fff; }
+    color: #000; }
   .btn-transparent {
     background-color: transparent; }
 
@@ -25488,7 +25488,6 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
       z-index: -1;
       margin: -0.1875rem;
       border-radius: inherit;
-      background: linear-gradient(to right, #23a7af, #00f0ff); }
 
 .header-profile .nav-link {
   padding-right: 0 !important;
@@ -28568,7 +28567,7 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   padding-right: 9.375rem; }
 
 :root {
-  --primary: #23A7AF;
+  --primary: #ec262f;
   --secondary: #FFA7D7;
   --primary-light: #a590cf;
   --primary-hover: #6c4bae;

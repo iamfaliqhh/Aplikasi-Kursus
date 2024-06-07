@@ -9,9 +9,9 @@
     <meta name="author" content="">
     <meta name="robots" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
-    <meta property="og:title" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
-    <meta property="og:description" content="Fillow : Fillow Saas Admin  Bootstrap 5 Template">
+    <meta name="description" content="DrArtex Window Films Warranty Claim Website">
+    <meta property="og:title" content="DrArtex Window Films Warranty Claim Website">
+    <meta property="og:description" content="DrArtex Window Films Warranty Claim Website">
     <meta property="og:image" content="https:/fillow.dexignlab.com/xhtml/social-image.png">
     <meta name="format-detection" content="telephone=no">
 
@@ -19,7 +19,7 @@
     <title>@yield('title')</title>
 
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">
+    <link rel="shortcut icon" type="image/png" href="https://drartexfilms.com/wp-content/uploads/2024/05/cropped-image_2024-05-27_153243567-32x32.png">
 
     <!-- Datatable -->
     <link href="{{ asset('sipenmaru/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
@@ -84,10 +84,7 @@
         ***********************************-->
         <div class="nav-header">
             <a href="dashboard" class="brand-logo">
-                <img alt="image" width="50" src="{{ asset('sipenmaru/images/stealth.png') }}">
-                <div class="brand-title">
-                    <h2 style="font-size: 18px;">STEALTH Admin</h2>
-                </div>
+                <img alt="image" width="60%" src="{{ asset('https://drartexfilms.com/wp-content/uploads/2024/05/image_2024-05-27_154330103.png') }}">
             </a>
             <div class="nav-control">
                 <div class="hamburger">
@@ -396,7 +393,7 @@
 
 
                 <div class="copyright">
-                    <p><strong>STEALTH High Definition Films</strong> ©
+                    <p><strong>DrArtex Films</strong> ©
                         <script>
                             document.write(new Date().getFullYear())
                         </script> All Rights Reserved.</p>

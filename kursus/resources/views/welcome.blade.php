@@ -13,10 +13,10 @@
     <meta property="og:description" content="COURSE">
 
     <!-- PAGE TITLE HERE -->
-    <title>Admin Login | STEALTH</title>
+    <title>Admin Login | DrArtexFilms</title>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">
+    <link rel="shortcut icon" type="image/png" href="https://drartexfilms.com/wp-content/uploads/2024/05/cropped-image_2024-05-27_153243567-32x32.png">
     <link href="{{ asset('sipenmaru/vendor/login/style.css') }}" rel="stylesheet">
 
 </head>
@@ -158,7 +158,7 @@
 
         <div class="panels-container">
             <div class="panel left-panel">
-                <img src="{{ asset('sipenmaru/images/beranda.png') }}" class="image" alt="" />
+                <img src="{{ asset('sipenmaru/images/icon.png') }}" class="image" alt="" />
             </div>
             <div class="panel right-panel">
                 <div class="content">

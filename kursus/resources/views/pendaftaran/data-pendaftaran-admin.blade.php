@@ -30,9 +30,9 @@
                             <h4 class="card-title">Data Pendaftar Garansi</h4>
                             <!-- center modal -->
                             <div>
-                                <button class="btn btn-info waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
+                                <button class="btn btn-secondary waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
                                         class="fa fa-print"> </i></button>
-                                <a href="form-registration"><button type="button" class="btn btn-primary mb-4"
+                                <a href="form-registration"><button type="button" class="btn btn-secondary mb-4"
                                         style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah
                                         Pendaftaran</button></a>
                             </div>
