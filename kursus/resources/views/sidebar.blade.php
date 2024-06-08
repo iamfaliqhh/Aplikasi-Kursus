@@ -1,14 +1,9 @@
 @auth
         <ul class="metismenu" id="menu">
-            <li><a href="{{ route('dashboard') }}" style="pointer-events: none;">
-                    <i class="fas fa-home"></i>
-                    <span class="nav-text">Dashboard</span>
-                </a>
-            </li>
             @if (auth()->user()->role == 'Administrator')
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                         <i class="fa fa-book"></i>
-                        <span class="nav-text">Main Data</span>
+                        <span class="nav-text">Data Utama</span>
                     </a>
                     <ul aria-expanded="false">
                         <li><a href="{{ route('data-merek') }}">Merek Mobil</a></li>

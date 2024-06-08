@@ -8,9 +8,9 @@
     <meta name="author" content="">
     <meta name="robots" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="COURSE">
-    <meta property="og:title" content="COURSE">
-    <meta property="og:description" content="COURSE">
+    <meta name="description" content="DrArtexFilms Admin Login">
+    <meta property="og:title" content="DrArtexFilms Admin Login">
+    <meta property="og:description" content="DrArtexFilms Admin Login">
 
     <!-- PAGE TITLE HERE -->
     <title>Admin Login | DrArtexFilms</title>
@@ -58,28 +58,21 @@
                             <strong>Peringatan!</strong> {{ $message }}
                         </div>
                     @enderror
-
                     <h2 class="title">Selamat Datang</h2>
                     <p>Silahkan login ke akun Anda</p>
                     <br>
-
                     <div class="input-field">
                         <i class="fas fa-user"></i>
                         <input type="text" placeholder="Masukkan email" name="email" value="admin@gmail.com" autocomplete='off' />
-
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Masukkan kata sandi" name="password" value="12345678" autocomplete='off'/>
-
                     </div>
                     <input type="submit" value="MASUK" class="btn solid" />
-
                 <br>
                 <hr>
                 </form>
-
-
                 <form method="POST" action="/register" class="sign-up-form">
                     @csrf
                     @if (session()->has('loginError'))
@@ -151,11 +144,8 @@
                     </a>
                 </div>
                 </form>
-
-
             </div>
         </div>
-
         <div class="panels-container">
             <div class="panel left-panel">
                 <img src="{{ asset('sipenmaru/images/icon.png') }}" class="image" alt="" />
@@ -181,5 +171,4 @@
  <script src="{{ asset('sipenmaru/js/styleSwitcher.js') }}"></script>
     <script src="{{ asset('sipenmaru/vendor/login/app.js') }}"></script>
 </body>
-
 </html>

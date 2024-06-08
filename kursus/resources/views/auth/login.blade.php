@@ -8,15 +8,15 @@
     <meta name="author" content="">
     <meta name="robots" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="COURSE">
-    <meta property="og:title" content="COURSE">
-    <meta property="og:description" content="COURSE">
+    <meta name="description" content="DrArtexFilms Admin Login">
+    <meta property="og:title" content="DrArtexFilms Admin Login">
+    <meta property="og:description" content="DrArtexFilms Admin Login">
 
     <!-- PAGE TITLE HERE -->
-    <title>Login | STEALTH</title>
+    <title>Login | DrArtexFilms</title>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="{{ asset('sipenmaru/images/stealth.png') }}">
+    <link rel="shortcut icon" type="image/png" href="https://drartexfilms.com/wp-content/uploads/2024/05/cropped-image_2024-05-27_153243567-32x32.png">
     <link href="{{ asset('sipenmaru/vendor/login/style.css') }}" rel="stylesheet">
 
 </head>
@@ -75,15 +75,12 @@
                         <i class="fas fa-user"></i>
                         <input type="text" placeholder="Masukkan email" name="email" value="{{ old('email') }}"
                             autocomplete='off' />
-
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Masukkan kata sandi" name="password" autocomplete='off' />
-
                     </div>
                     <input type="submit" value="MASUK" class="btn solid" />
-
                     <br>
                     <hr>
                     <p class="social-text">Sosial Media Kami</p>
@@ -102,7 +99,6 @@
                         </a>
                     </div>
                 </form>
-
 
                 <form method="POST" action="/register" class="sign-up-form">
                     @csrf
@@ -217,14 +213,12 @@
                         </a>
                     </div>
                 </form>
-
-
             </div>
         </div>
 
         <div class="panels-container">
             <div class="panel left-panel">
-                <img src="{{ asset('sipenmaru/images/beranda.png') }}" class="image" alt="" />
+                <img src="{{ asset('sipenmaru/images/icon.png') }}" class="image" alt="" />
             </div>
             <div class="panel right-panel">
                 <div class="content">

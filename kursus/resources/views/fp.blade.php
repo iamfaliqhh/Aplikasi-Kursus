@@ -62,7 +62,7 @@
         }
 
         .header-bold {
-            font-size:30px;
+            font-size:40px;
         }
 
         .text-mask {
@@ -164,11 +164,11 @@
     <br>
     <br>
     <h1 class="font-weight-bold text-center h1-warranty">TERIMA KASIH</h1>
-    <p class="text-center p-warranty">Anda telah menggunakan produk berkualitas dari <b>DR ARTEX HIGH DEFINITION FILMS</b></p>
+    <p class="text-center p-warranty">Anda telah menggunakan produk berkualitas dari <b>DR ARTEX FILMS</b></p>
     <br>
     <p class="text-center p-warranty">
             Dengan memiliki kartu garansi Dr Artex, anda telah mendapatkan jaminan <b>garansi 1 (satu) tahun</b>. 
-        <br>Untuk mendapatkan <b>garansi maksimal hingga 7 (tujuh) tahun</b>, 
+        <br>Untuk mendapatkan <b>garansi maksimal hingga seumur hidup*</b>, 
         <br>silahkan aktivasi dan isi data diri anda secara lengkap pada halaman berikut setelah mengisi Kode Garansi anda.
     </p>
     <br>
