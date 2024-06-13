@@ -17,6 +17,10 @@ use App\Http\Controllers\MerekController;
 use App\Http\Controllers\TipeController;
 use App\Http\Controllers\WindowFilmsController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\M_WarrantyController;
+use App\Http\Controllers\ResellerController;
+use App\Models\Pendaftaran;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,6 +87,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/save-pendaftaran', [PendaftaranController::class, 'store']);
     Route::post('/update-pendaftaran', [PendaftaranController::class, 'update']);
     Route::get('/delete-pendaftaran/{id}', [PendaftaranController::class, 'destroy'])->name('delete-pendaftaran');
+    Route::get('/generate-kode', [PendaftaranController::class, 'generateKode'])->name('generate-kode');
 
     Route::get('/verified-registration/{id}', [PendaftaranController::class, 'verifikasistatuspendaftaran']);
     Route::get('/notverified-registration/{id}', [PendaftaranController::class, 'notverifikasistatuspendaftaran']);
@@ -93,6 +98,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/save-kategori', [KategoriController::class, 'store']);
     Route::post('/update-kategori', [KategoriController::class, 'update']);
     Route::get('/delete-kategori/{id}', [KategoriController::class, 'destroy'])->name('delete-kategori');
+
+    Route::get('/data-reseller', [ResellerController::class, 'index'])->name('data-reseller');
+    Route::post('/save-reseller', [ResellerController::class, 'store']);
+    Route::post('/update-reseller', [ResellerController::class, 'update']);
+    Route::get('/delete-reseller/{id}', [ResellerController::class, 'destroy'])->name('delete-reseller');
+
+    Route::get('/data-m_warranty', [M_WarrantyController::class, 'index'])->name('data-m_warranty');
+    Route::post('/save-m_warranty', [M_WarrantyController::class, 'store']);
+    Route::post('/update-m_warranty', [M_WarrantyController::class, 'update']);
+    Route::get('/delete-m_warranty/{id}', [M_WarrantyController::class, 'destroy'])->name('delete-m_warranty');
 });
 
 require __DIR__ . '/auth.php';

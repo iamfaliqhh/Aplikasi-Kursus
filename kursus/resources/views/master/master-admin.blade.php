@@ -21,6 +21,9 @@
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="https://drartexfilms.com/wp-content/uploads/2024/05/cropped-image_2024-05-27_153243567-32x32.png">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <!-- Datatable -->
     <link href="{{ asset('sipenmaru/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <!-- Print Datatable -->
@@ -523,8 +526,6 @@
 
     <!-- All init script -->
     <script src="{{ asset('sipenmaru/js/plugins-init/toastr-init.js') }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <script src="{{ asset('sipenmaru/vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
 
@@ -633,45 +634,94 @@
     </script>
 
 <script>
-    $(document).on('click', '#btn-delete', function (e) {
-        e.preventDefault();
-        var link = $(this).attr('href');
+    $(document).ready(function(){
 
-        Swal.fire({
-            title: 'Apakah Kamu Yakin Untuk Menghapus Data Tersebut?',
-            text: "Kamu tidak bisa mengembalikan data ini!",
-            icon: 'warning',
-            showCancelButton: true,
-            //confirmButtonColor: '#3085d6',
-            //cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Hapus itu!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location = link;
-            }
-        })
-    })
+        $('.generate_kode').on('click', function (e) {
+            e.preventDefault();
+            var link = $(this).data('url');
+            console.log(link);
+            Swal.fire({
+                title: 'Generate Kode?',
+                text: "Pilih jumlah data yang ingin di-generate:",
+                icon: 'warning',
+                html: `
+                    <p>Pilih jumlah data yang ingin di-generate:</p>
+                    <select id="jumlahData" class="swal2-input">
+                        <option>Pilih Jumlah</option>
+                        <option value="1">1 data</option>
+                        <option value="10">10 data</option>
+                        <option value="20">20 data</option>
+                        <option value="50">50 data</option>
+                        <option value="100">100 data</option>
+                    </select>
+                    <p>Pilih tanggal:</p>
+                    <input type="date" id="tanggalData" class="swal2-input">
+                `,
+                focusConfirm: false,
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Generate Data!',
+                preConfirm: () => {
+                    const jumlahData = $('#jumlahData').val();
+                    const tanggalData = $('#tanggalData').val();
+                    
+                    console.log(tanggalData);
+                    if (!jumlahData || !tanggalData) {
+                        Swal.showValidationMessage('Anda harus memilih jumlah data dan tanggal!')
+                    }
+                    return { jumlahData: jumlahData, tanggalData: tanggalData }
+                }
+            }).then((result) => {
+                console.log("Result dari Swal:", result);
+                const { jumlahData, tanggalData } = result.value;
+                if (result) {
+                    var url = link+'?jumlah='+jumlahData + '&tanggal=' + tanggalData;
+                    window.location = url;
+                }
+            });
+        });
 
-    $(document).on('click', '#btn-update', function (e) {
-        e.preventDefault();
-        var link = $(this).attr('method');
+        $('.btn-delete').on('click', function (e) {
+            e.preventDefault();
+            var link = $(this).attr('href');
+            var name = $(this).data('name');
 
-        Swal.fire({
-            title: 'Do you want to save the changes?',
-            icon: 'info',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: 'Save',
-            denyButtonText: `Don't save`,
-        }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-                window.location = link;
-            } else if (result.isDenied) {
-                Swal.fire('Changes are not saved', '', 'info')
-            }
-        })
-    })
+            Swal.fire({
+                title: "Apakah Kamu Yakin Untuk Menghapus Data "+name+"?",
+                text: "Kamu tidak bisa mengembalikan data ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                //confirmButtonColor: '#3085d6',
+                //cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus itu!'
+            }).then((result) => {
+                console.log(result);
+                if (result.value) {
+                    window.location = link;
+                }
+            });
+        });
+
+        $('.btn-update').on('click', function (e) {
+            e.preventDefault();
+            var link = $(this).attr('method');
+
+            Swal.fire({
+                title: 'Do you want to save the changes?',
+                icon: 'info',
+                showDenyButton: true,
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                denyButtonText: `Don't save`,
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result) {
+                    window.location = link;
+                } else if (result) {
+                    Swal.fire('Changes are not saved', '', 'info')
+                }
+            });
+        });
+    });
 </script>
 </body>
 

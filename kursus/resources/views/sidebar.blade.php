@@ -10,6 +10,8 @@
                         <li><a href="{{ route('data-tipe') }}">Tipe Mobil</a></li>
                         <li><a href="{{ route('data-kategori') }}">Kategori Produk</a></li>
                         <li><a href="{{ route('data-produk') }}">Produk</a></li>
+                        <li><a href="{{ route('data-reseller') }}">Official Reseller</a></li>
+                        <li><a href="{{ route('data-m_warranty') }}">Master Garansi</a></li>
                     </ul>
                 </li>
                 <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">

@@ -118,7 +118,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="">Tanggal Lahir</label>
-            <input type="date" class="form-control" name="tanggal" id="" placeholder="Masukkan Tanggal Lahir Anda" required>
+            <input type="text" class="form-control datepicker" name="tanggal" id="" placeholder="dd-mm-YYYY" required>
         </div>
     </div>
     <div class="form-row label-font">
@@ -136,6 +136,23 @@
         <input type="text" class="form-control" name="alamat" id="" placeholder="Masukkan Alamat Lengkap Anda" required>
     </div>
     <div class="mb-3">
+        <label for="" class="form-label label-font">Official Reseller</label>
+        <select id="" class="form-control select2 required" name="id_reseller">
+            <option value="">-- Pilih Official Reseller --</option>
+            @foreach ($reseller as $val)
+            <option value="{{$val->id}}">
+                {{$val->reseller}}
+            </option>
+            @endforeach
+        </select>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="">Tanggal Pemasangan</label>
+            <input type="text" class="form-control datepicker" name="tgl_pasang" placeholder="dd-mm-YYYY" required>
+        </div>
+    </div>
+    <div class="mb-3">
         <label for="" class="form-label label-font">Merek Mobil</label>
         <select id="merek-dropdown" class="form-control select2" name="merk">
             <option value="">-- Pilih Merek Mobil --</option>
@@ -148,6 +165,12 @@
         <br>
         <label for="" class="form-label label-font">Tipe Mobil</label>
         <select id="tipe-dropdown" class="form-control select2" name="tipe">
+            <option value="">-- Pilih Tipe --</option>
+            @foreach ($tipe as $val)
+            <option value="{{$val->id}}">
+                {{$val->name}}
+            </option>
+            @endforeach
         </select>
     </div>
     <div class="form-row label-font">
@@ -161,34 +184,45 @@
         </div>
     </div>
     <div class="mb-3">
+        <label for="" class="form-label label-font">PPF</label>
+        <select id="" class="form-control select2" name="ppf">
+            <option value="">-- Pilih PPF --</option>
+            @foreach ($produk_ppf as $val)
+            <option value="{{$val->id}}">
+                {{$val->nama_produk}}
+            </option>
+            @endforeach
+        </select>
+    </div>
+    <div class="mb-3">
         <label for="" class="form-label label-font">Kaca Film Depan</label>
         <select id="" class="form-control select2" name="front_window">
             <option value="">-- Pilih Kaca Film --</option>
-            @foreach ($windowfilms as $data)
-            <option value="{{$data->nama_produk}}">
+            @foreach ($produk_window as $data)
+            <option value="{{$data->id}}">
                 {{$data->nama_produk}}
-        </option>
-        @endforeach
+            </option>
+            @endforeach
         </select>
         <br>
         <label for="" class="form-label label-font">Kaca Film Samping</label>
         <select id="" class="form-control select2" name="side_window">
             <option value="">-- Pilih Kaca Film --</option>
-            @foreach ($windowfilms as $data)
-            <option value="{{$data->nama_produk}}">
+            @foreach ($produk_window as $data)
+            <option value="{{$data->id}}">
                 {{$data->nama_produk}}
-        </option>
-        @endforeach
+            </option>
+            @endforeach
         </select>
         <br>
         <label for="" class="form-label label-font">Kaca Film Belakang</label>
         <select id="" class="form-control select2" name="back_window">
             <option value="">-- Pilih Kaca Film --</option>
-            @foreach ($windowfilms as $data)
-            <option value="{{$data->nama_produk}}">
+            @foreach ($produk_window as $data)
+            <option value="{{$data->id}}">
                 {{$data->nama_produk}}
-        </option>
-        @endforeach
+            </option>
+            @endforeach
         </select>
     </div>
     <br>
@@ -197,11 +231,15 @@
     <br>
     <br>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
-        $('.select2').select2();
+            $('.select2').select2();
+
+            $('.datepicker').datepicker({dateFormat: "dd-mm-yy"});
             /*------------------------------------------
             --------------------------------------------
             Merek Dropdown Change Event
@@ -229,9 +267,6 @@
                     }
                 });
             });
-        });
-        $(document).ready(function () {
-        $('.select2').select2();
         });
     </script>
 </body>

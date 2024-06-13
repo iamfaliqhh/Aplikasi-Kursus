@@ -29,8 +29,7 @@
                     <div>
                         <button class="btn btn-secondary waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
                             class="fa fa-print"> </i></button>
-                        <!--<button class="btn btn-secondary waves-effect waves-light mb-4"><i class="fas fa-eye"
-                                                        title="Mode grid"> </i></button>-->
+                        <button type="button" data-url="generate-kode" class="btn btn-secondary waves-effect waves-light mb-4 generate_kode" id="generate_kode" title="Generate Kode"><i class="mdi mdi-download me-1"></i>Generate Kode</button>
                         <button type="button" class="btn btn-secondary mb-4" data-bs-toggle="modal" data-bs-target="#modalTambah"
                             style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Data Garansi</button>
                     </div>
@@ -45,7 +44,6 @@
                                 </div>
                                 <div class="modal-body">
                                     <form action="save-pendaftaran" method="POST" enctype="multipart/form-data">
-                                        {{ csrf_field() }}
                                         <div class="form-row label-font">
                                             <div class="form-group col-md-6">
                                                 <label for="">Nama</label>
@@ -85,16 +83,27 @@
                                                 <select id="tipe-dropdown" class="form-control select2" name="tipe">
                                                 </select>
                                             </div>
-                                        <div class="form-row label-font">
-                                            <div class="form-group col-md-6">
-                                                <label for="">Nomor Rangka Kendaraan</label>
-                                                <input type="text" name="nomor_rangka" class="form-control" id="" placeholder="Masukkan Nomor Rangka" required>
+                                            <div class="form-row label-font">
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Nomor Rangka Kendaraan</label>
+                                                    <input type="text" name="nomor_rangka" class="form-control" id="" placeholder="Masukkan Nomor Rangka" required>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="">Nomor Plat Kendaraan</label>
+                                                    <input type="text" name="nomor_plat" class="form-control" id="" placeholder="Masukkan Nomor Plat" required>
+                                                </div>
                                             </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="">Nomor Plat Kendaraan</label>
-                                                <input type="text" name="nomor_plat" class="form-control" id="" placeholder="Masukkan Nomor Plat" required>
+                                            <div class="mb-3">
+                                                <label for="" class="form-label label-font">PPF</label>
+                                                <select id="" class="form-control select2" name="ppf">
+                                                    <option value="">-- Pilih PPF --</option>
+                                                    @foreach ($res_ppf as $val)
+                                                    <option value="{{$val->id}}">
+                                                        {{$val->nama_produk}}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
-                                        </div>
                                             <div class="mb-3">
                                                 <label for="" class="form-label label-font">Kaca Film Depan</label>
                                                 <select id="" class="form-control select2" name="front_window">
@@ -142,6 +151,7 @@
                                     <th>Jenis Mobil</th>
                                     <th>Nomor Rangka</th>
                                     <th>Nomor Plat</th>
+                                    <th>PPF</th>
                                     <th>Kaca Film Depan</th>
                                     <th>Kaca Film Samping</th>
                                     <th>Kaca Film Belakang</th>
@@ -159,69 +169,69 @@
                                     <td>{{ $x->tipe_mobil->name ?? '-' }}</td>
                                     <td>{{ $x->nomor_rangka ?? '-' }}</td>
                                     <td>{{ $x->nomor_plat ?? '-'}}</td>
-                                    <td>{{ $x->front_window ?? '-'}}</td>
-                                    <td>{{ $x->side_window ?? '-'}}</td>
-                                    <td>{{ $x->back_window ?? '-'}}</td>
+                                    <td>{{ $x->ppf_name ?? '-'}}</td>
+                                    <td>{{ $x->front ?? '-'}}</td>
+                                    <td>{{ $x->side ?? '-'}}</td>
+                                    <td>{{ $x->back ?? '-'}}</td>
                                     <td>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            @if ($x->status == 'claimed')
-                                            <span class="badge badge-success">Terverifikasi<span
-                                                class="ms-1 fa fa-check"></span>
-                                            @elseif($x->status == 'unclaimed')
-                                            <span class="badge badge-warning">Belum <br> Klaim
-                                                <br><span class="ms-1 fas fa-ban"></span>
-                                            @elseif($x->status == 'pending')
-                                            <span class="badge badge-primary">Pending<span
-                                                class="ms-1 fa fa-check"></span>
-                                            @else
-                                            <span class="badge badge-danger">Not Found<span
-                                                class="ms-1 fa fa-ban"></span>
-                                            @endif
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="dropdown text-sans-serif"><button
-                                                class="btn btn-primary tp-btn-light sharp" type="button"
-                                                id="order-dropdown-7" data-bs-toggle="dropdown"
-                                                data-boundary="viewport" aria-haspopup="true"
-                                                aria-expanded="false"><span><svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                width="18px" height="18px" viewbox="0 0 24 24"
-                                                version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none"
-                                                fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24"></rect>
-                                                        <circle fill="#000000" cx="5" cy="12" r="2">
-                                                        </circle>
-                                                        <circle fill="#000000" cx="12" cy="12" r="2">
-                                                        </circle>
-                                                        <circle fill="#000000" cx="19" cy="12" r="2">
-                                                        </circle>
-                                                </g>
-                                                </svg></span></button>
-                                                <div class="dropdown-menu dropdown-menu-end border py-0"
-                                                    aria-labelledby="order-dropdown-7">
-                                                    <div class="py-2"><a class="dropdown-item"
-                                                        href="/verified-registration/{{ $x->id }}">Terverifikasi</a><a
-                                                        class="dropdown-item"
-                                                        href="/notverified-registration/{{ $x->id }}">Belum
-                                                                            Terverifikasi</a>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                @if ($x->status == 'claimed')
+                                                <span class="badge badge-success">Terverifikasi<span
+                                                    class="ms-1 fa fa-check"></span>
+                                                @elseif($x->status == 'unclaimed')
+                                                <span class="badge badge-warning">Belum <br> Klaim
+                                                    <br><span class="ms-1 fas fa-ban"></span>
+                                                @elseif($x->status == 'pending')
+                                                <span class="badge badge-primary">Pending<span
+                                                    class="ms-1 fa fa-check"></span>
+                                                @else
+                                                <span class="badge badge-danger">Not Found<span
+                                                    class="ms-1 fa fa-ban"></span>
+                                                @endif
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="dropdown text-sans-serif">
+                                                    <button class="btn btn-primary tp-btn-light sharp" type="button" id="order-dropdown-7" data-bs-toggle="dropdown"
+                                                    data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
+                                                        <span><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewbox="0 0 24 24" version="1.1">
+                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                <rect x="0" y="0" width="24" height="24"></rect>
+                                                                <circle fill="#000000" cx="5" cy="12" r="2">
+                                                                </circle>
+                                                                <circle fill="#000000" cx="12" cy="12" r="2">
+                                                                </circle>
+                                                                <circle fill="#000000" cx="19" cy="12" r="2">
+                                                                </circle>
+                                                            </g></svg></span>
+                                                    </button>
+                                                <div class="dropdown-menu dropdown-menu-end border py-0" aria-labelledby="order-dropdown-7">
+                                                    <div class="py-2">
+                                                        @if ($x->status != 'claimed')
+                                                        <a class="dropdown-item" href="/verified-registration/{{ $x->id }}">Verifikasi</a>
+                                                        @endif
+                                                        <a class="dropdown-item" href="/notverified-registration/{{ $x->id }}">Batal Verifikasi</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                </td>
+                                    </td>
                                     <td>
                                         <div class="d-flex">
-                                            <a class="btn btn-secondary shadow btn-xs sharp me-1" title="Edit"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#modalEdit{{ $x->id }}"><i
-                                                    class="fa fa-pencil-alt"></i></a>
-                                            <a class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target=".delete{{ $x->id }}"></i></a>
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary tp-btn-light" type="button" id="order-dropdown-2" data-bs-toggle="dropdown" data-boundary="viewport" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="order-dropdown-2">
+                                                    <a class="btn-xs dropdown-item" title="Edit" data-bs-toggle="modal" data-bs-target="#modalEdit{{ $x->id }}">
+                                                        <i class="fa fa-pencil-alt"></i> Ubah
+                                                    </a>
+                                                    <!-- <a class="btn-xs dropdown-item btn-delete" href="delete-merek/{{$x->id}}" data-name="{{$x->code}}">
+                                                        <i class="fa fa-trash"></i> Hapus
+                                                    </a> -->
+                                                    <a href="delete-pendaftaran/{{$x->id}}" class="btn-xs dropdown-item btn-delete" data-name="{{$x->code}}"><i class="fa fa-trash"></i> Hapus</a>
+                                                </div>
+                                            </div>
 
                                             {{-- modal edit --}}
                                             <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -244,7 +254,7 @@
                                                                     </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label for="">Tanggal Lahir</label>
-                                                                    <input type="date" class="form-control" name="tanggal" id="" placeholder="Masukkan Tanggal Lahir Anda" value="{{$x->tanggal}}" required>
+                                                                    <input type="text" class="form-control datepicker" name="tanggal" id="" placeholder="dd-mm-YYYY" value="{{$x->tanggal}}" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row label-font">
@@ -293,11 +303,22 @@
                                                                 </div>
                                                             </div>
                                                             <div class="mb-3">
+                                                                <label for="" class="form-label label-font">PPF</label>
+                                                                <select id="" class="form-control select2" name="ppf">
+                                                                    <option value="">-- Pilih PPF --</option>
+                                                                    @foreach ($res_ppf as $val)
+                                                                    <option value="{{$val->id}}" {{ ($val->id == $x->ppf)? 'selected' : '' }}>
+                                                                        {{$val->nama_produk}}
+                                                                    </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-3">
                                                                 <label for="" class="form-label label-font">Kaca Film Depan</label>
                                                                 <select id="" class="form-control select2" name="front_window">
                                                                     <option value="">-- Pilih Kaca Film --</option>
                                                                     @foreach ($windowfilms as $m)
-                                                                    <option value="{{$m->front_window}}" @if(isset($m->front_window) && $x->front_window == $m->id) selected @endif>
+                                                                    <option value="{{$m->id}}" {{ ($m->id == $x->front_window)? 'selected' : '' }}>
                                                                         {{$m->nama_produk}}
                                                                     </option>
                                                                     @endforeach
@@ -307,7 +328,7 @@
                                                                 <select id="" class="form-control select2" name="side_window">
                                                                     <option value="">-- Pilih Kaca Film --</option>
                                                                     @foreach ($windowfilms as $m)
-                                                                    <option value="{{$m->nama_produk}}">
+                                                                    <option value="{{$m->id}}" {{ ($m->id == $x->side_window)? 'selected' : '' }}>
                                                                         {{$m->nama_produk}}
                                                                     </option>
                                                                     @endforeach
@@ -317,7 +338,7 @@
                                                                 <select id="" class="form-control select2" name="back_window">
                                                                     <option value="">-- Pilih Kaca Film --</option>
                                                                     @foreach ($windowfilms as $m)
-                                                                    <option value="{{$m->nama_produk}}" @if (old('nama_produk') == 'nama_produk') selected="selected" @endif>
+                                                                    <option value="{{$m->id}}" {{ ($m->id == $x->back_window)? 'selected' : '' }}>
                                                                         {{$m->nama_produk}}
                                                                     </option>
                                                                     @endforeach
@@ -326,7 +347,7 @@
                                                             <div class="modal-footer border-top-0 d-flex">
                                                                 <button type="button" class="btn btn-danger light"
                                                                 data-bs-dismiss="modal">Tutup</button>
-                                                                <button type="submit" name="add" class="btn btn-primary">Tambah
+                                                                <button type="submit" class="btn btn-primary">Tambah
                                                                 Data</button>
                                                             </div>
                                                             </form>
@@ -336,8 +357,8 @@
                                             </div><!-- /.modal -->
 
                                             {{-- modal delete --}}
-                                            <div class="modal fade delete{{ $x->id }}" tabindex="-1"
-                                                role="dialog" aria-hidden="true">
+                                            <div class="modal fade" tabindex="-1"
+                                                role="dialog" aria-hidden="true" id="delete{{ $x->id }}">
                                                 <div class="modal-dialog modal-sm">
                                                     <div class="modal-content">
                                                         <div class="modal-header">

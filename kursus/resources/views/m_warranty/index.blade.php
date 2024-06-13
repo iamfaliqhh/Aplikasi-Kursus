@@ -1,7 +1,7 @@
 @extends('master.master-admin')
 
 @section('title')
-    Tipe Mobil | DrArtexFilms
+    Master Warranty | DrArtexFilms
 @endsection
 
 @section('header')
@@ -12,7 +12,7 @@
 @endsection
 
 @section('menunya')
-    <h1 class="font-weight-bold" style="font-size: 24px;">Tipe Mobil<h1>
+    <h1 class="font-weight-bold" style="font-size: 24px;">Master Warranty<h1>
 @endsection
 
 @section('menu')
@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data Tipe Mobil</h4>
+                    <h4 class="card-title">Data Master Warranty</h4>
                     <!-- center modal -->
                     <div>
                         <button class="btn btn-secondary waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
@@ -44,32 +44,26 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="save-tipe" method="POST" enctype="multipart/form-data">
+                                    <form action="save-m_warranty" method="POST">
                                         {{ csrf_field() }}
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col-xl-12">
                                                     <label for="name">Tipe</label>
-                                                    <input type="text" class="form-control" id="name"
-                                                        placeholder="Masukkan Merek" name="name" required>
+                                                    <input type="text" class="form-control" placeholder="Masukkan Tipe" name="tipe" required>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-xl-12">
-                                                    <label for="name">Merek</label>
-                                                    <select name="merek" id="merek" class="form-select">
-                                                        <option>Pilih Merek</option>
-                                                        @foreach($merk as $val)
-                                                            <option value="{{$val->id}}">{{$val->name}}</option>
-                                                        @endforeach
-                                                    </select>
+                                                    <label for="name">Tahun Garansi</label>
+                                                    <input type="text" class="form-control number" placeholder="Masukkan Tahun" name="tahun" required>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer border-top-0 d-flex">
                                             <button type="button" class="btn btn-danger light"
                                                 data-bs-dismiss="modal">Tutup</button>
-                                            <button type="submit" name="add" class="btn btn-primary">Tambah
+                                            <button type="submit" class="btn btn-primary">Tambah
                                                 Data</button>
                                         </div>
                                     </form>
@@ -86,7 +80,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Tipe</th>
-                                    <th>Merek</th>
+                                    <th>Tahun Garansi</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -94,21 +88,13 @@
                                 @foreach ($data as $x)
                                 <tr>
                                     <td> {{$loop->iteration}} </td>
-                                    <td>{{ $x->name }}</td>
-                                    <td>
-                                        @foreach($merk as $val)
-                                            @if($val->id == $x->merek_id)
-                                                {{$val->name}}
-                                            @endif
-                                        @endforeach
-                                    </td>
+                                    <td>{{ $x->tipe }}</td>
+                                    <td>{{ $x->tahun_berlaku }} Tahun</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a class="btn btn-secondary shadow btn-xs sharp me-1" title="Edit" 
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#modalEdit{{ $x->id }}"><i class="fa fa-pencil-alt"></i></a>
-                                            <a class="btn btn-danger shadow btn-xs sharp" title="Delete" data-bs-toggle="modal"
-                                            data-bs-target=".delete{{ $x->id }}"><i class="fa fa-trash"></i></a>
+                                            <a class="btn btn-secondary shadow btn-xs sharp me-1" title="Edit" data-bs-toggle="modal" data-bs-target="#modalEdit{{ $x->id }}"><i class="fa fa-pencil-alt"></i></a>
+                                            <!-- <a class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash" data-bs-toggle="modal" data-bs-target=".delete{{ $x->id }}"></i></a> -->
+                                            <a href="delete-m_warranty/{{$x->id}}" data-name="{{$x->tipe}}" class="btn btn-danger shadow btn-xs sharp btn-delete"><i class="fa fa-trash"></i></a>
 
                                             {{-- modal edit --}}
                                             <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -116,38 +102,32 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title">Edit Tipe</h5>
+                                                            <h5 class="modal-title">Edit Reseller</h5>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="update-tipe" method="POST" enctype="multipart/form-data">
+                                                            <form action="update-m_warranty" method="POST" enctype="multipart/form-data">
                                                                 {{ csrf_field() }}
                                                                 <input type="hidden" name="id" value="{{ $x->id }}">
                                                                 <div class="form-group">
                                                                     <div class="row">
                                                                         <div class="col-xl-12">
                                                                             <label for="iduser">Tipe</label>
-                                                                            <input type="text" class="form-control" id="name"
-                                                                                placeholder="Masukkan Merek" name="name" required value="{{$x->name}}">
+                                                                            <input type="text" class="form-control" placeholder="Masukkan Tipe" name="tipe" required value="{{$x->tipe}}">
                                                                         </div>
                                                                     </div>
                                                                     <div class="row">
                                                                         <div class="col-xl-12">
-                                                                            <label for="name">Merek</label>
-                                                                            <select name="merek" id="merek" class="form-select">
-                                                                                <option>Pilih Merek</option>
-                                                                                @foreach($merk as $val)
-                                                                                    <option value="{{$val->id}}" {{ ($val->id == $x->merek_id)? 'selected' : '' }}>{{$val->name}}</option>
-                                                                                @endforeach
-                                                                            </select>
+                                                                            <label for="name">Tahun Garansi</label>
+                                                                            <input type="text" class="form-control number" placeholder="Masukkan Tahun" name="tahun" required value="{{$x->tahun_berlaku}}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer border-top-0 d-flex">
                                                                     <button type="button" class="btn btn-danger light"
                                                                         data-bs-dismiss="modal">Tutup</button>
-                                                                    <button type="submit" name="add" class="btn btn-primary">Edit
+                                                                    <button type="submit" class="btn btn-primary">Ubah
                                                                         Data</button>
                                                                 </div>
                                                             </form>
@@ -169,12 +149,12 @@
                                                         </div>
                                                         <div class="modal-body text-center"><i
                                                                 class="fa fa-trash"></i><br> Apakah anda yakin ingin
-                                                            menghapus data ini?<br> {{ $x->name }}
+                                                            menghapus data ini?<br> {{ $x->tipe }}
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-danger light"
                                                                 data-bs-dismiss="modal">Batalkan</button>
-                                                            <a href="{{ route('delete-tipe', $x->id) }}">
+                                                            <a href="{{ route('delete-m_warranty', $x->id) }}">
                                                                 <button type="submit" class="btn btn-danger shadow">
                                                                     Ya, Hapus Data!
                                                                 </button></a>

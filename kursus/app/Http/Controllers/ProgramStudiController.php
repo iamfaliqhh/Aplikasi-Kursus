@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\ProgramStudi;
 use App\Models\Kategori;
-use Alert;
+use App\Models\M_Warranty;
+use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProgramStudiController extends Controller
 {
@@ -34,7 +36,8 @@ class ProgramStudiController extends Controller
     public function dataproduk(){
         $viewData = ProgramStudi::all();
         $kategori = Kategori::all();
-        return view ('produk.data-studyProgram-admin',compact('viewData','kategori'));
+        $mWarranty = M_Warranty::all();
+        return view ('produk.data-studyProgram-admin',compact('viewData','kategori','mWarranty'));
     }
 
     public function simpanproduk(Request $a)
@@ -57,12 +60,17 @@ class ProgramStudiController extends Controller
                 'id_produk'         => $a->kode,//$kode,
                 'nama_produk'       => $a->nama,
                 'kategori_produk'   => $a->kategori,
+                'tipe_warranty'     => $a->tipe_warranty,
+                'is_lifetime'       => $a->is_lifetime,
+                'create_id'         => $a->userid,
+                'created_at'        => Carbon::now()
                 // 'foto_produk'       => $path
         ]);
+// dd($a);
             return redirect('/data-produk')->with('success', 'Data Tersimpan!!');
         } catch (\Exception $e){
-            echo $e;
-            //return redirect()->back()->with('error', 'Data Tidak Berhasil Disimpan!');
+            // dd($e);
+            return redirect()->back()->with('error', 'Data Gagal Disimpan!');
         }
     }
 
@@ -80,12 +88,18 @@ class ProgramStudiController extends Controller
             // }
             ProgramStudi::where("id", $id_produk)->update([
                 'nama_produk' => $a->nama,
-                'kategori_produk' => $a->kategori,
+                'kategori_produk' => $a->kategori??0,
+                'tipe_warranty'     => $a->tipe_warranty,
+                'is_lifetime'       => $a->is_lifetime,
+                'modify_id'         => $a->userid,
+                'updated_at'        => Carbon::now()
                 // 'foto_produk' => $path,
-        ]);
+            ]);
+            
             return redirect('/data-produk')->with('success', 'Data Terubah!!');
         } catch (\Exception $e){
-            return redirect()->back()->with('error', 'Data Tidak Berhasil Diubah!');
+            dd($e);
+            return redirect()->back()->with('error', 'Data Gagal Diubah!');
         }
     }
 
@@ -96,7 +110,7 @@ class ProgramStudiController extends Controller
             $data->delete();
             return redirect('/data-produk')->with('success', 'Data Terhapus!!');
         } catch (\Exception $e){
-            return redirect()->back()->with('error', 'Data Tidak Berhasil Dihapus!');
+            return redirect()->back()->with('error', 'Data Gagal Dihapus!');
         }
     }
 }

@@ -92,6 +92,13 @@
     <h1 class="font-weight-bold" style="font-size: 24px;">Terima kasih telah mengisi data!</h1>
     <p style="font-size: 15px;">Selamat! Warranty anda telah diaktivasi dan berlaku untuk 7 tahun.</p>
     <br>
+    
+    @php
+        $countdown_front = app('App\Http\Controllers\WarrantyController')->warrantyCountdown($check->code,'front');
+        $countdown_side = app('App\Http\Controllers\WarrantyController')->warrantyCountdown($check->code,'side');
+        $countdown_back = app('App\Http\Controllers\WarrantyController')->warrantyCountdown($check->code,'back');
+    @endphp
+
     <table class="table table-bordered text-left">
         <tr>
             <td scope="col"><b>Nama Pemilik</b></td>
@@ -107,19 +114,20 @@
         </tr>
         <tr>
             <td scope="col"><b>Kaca Film Depan</b></td>
-            <td>{{$check->front_window ?? '-'}}</td>
+            <td>{{$check->front ?? '-'}} ({{$countdown_front}})</td>
         </tr>
         <tr>
             <td scope="col"><b>Kaca Film Samping</b></td>
-            <td>{{$check->side_window ?? '-'}}</td>
+            <td>{{$check->side ?? '-'}} ({{$countdown_side}})</td>
         </tr>
         <tr>
             <td scope="col"><b>Kaca Film Belakang</b></td>
-            <td>{{$check->back_window ?? '-'}}</td>
+            <td>{{$check->back ?? '-'}} ({{$countdown_back}})</td>
         </tr>
     </table>
     <br>
     <a class="btn btn-primary" style="" href="{{url('fp')}}" >Balik ke halaman utama</a>
 </div>
 </body>
+
 </html>

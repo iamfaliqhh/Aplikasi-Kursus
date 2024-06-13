@@ -6,12 +6,16 @@ use App\Models\Merek;
 use App\Models\Tipe;
 use App\Models\Pendaftaran;
 use App\Models\ProfileUsers;
+use App\Models\ProgramStudi;
 use App\Models\Warranty;
 use App\Models\Timeline;
 use App\Models\User;
 use App\Models\WindowFilms;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
+
 
 class PendaftaranController extends Controller
 {
@@ -35,13 +39,27 @@ class PendaftaranController extends Controller
 
     public function index()
     {
-        $data = Warranty::with('tipe_mobil.merek')->get();
+        $data = Warranty::with('tipe_mobil.merek')
+        ->leftJoin('produk as x', 'warranty.side_window', '=', 'x.id')
+        ->leftJoin('produk as y', 'warranty.front_window', '=', 'y.id')
+        ->leftJoin('produk as z', 'warranty.back_window', '=', 'z.id')
+        ->leftJoin('produk as w', 'warranty.ppf', '=', 'w.id')
+        ->select(
+            'warranty.*',
+            'x.nama_produk as side',
+            'y.nama_produk as front',
+            'z.nama_produk as back',
+            'w.nama_produk as ppf_name'
+        )
+        ->get();
+        // dd($data);
         $kode = ProfileUsers::id();
         $mereks = Merek::all();
         $tipes = Tipe::all();
-        $windowfilms = WindowFilms::all();
+        $windowfilms = ProgramStudi::where('kategori_produk',1)->get();
+        $res_ppf = ProgramStudi::where('kategori_produk',3)->get();
 
-        return view('pendaftaran.index', compact('data','kode','mereks','tipes', 'windowfilms'));
+        return view('pendaftaran.index', compact('data','kode','mereks','tipes','windowfilms','res_ppf'));
     }
 
     public function store(Request $request)
@@ -75,22 +93,26 @@ class PendaftaranController extends Controller
             }
             // dd($request->all());
             // kalo pengen liat datanya
-            Pendaftaran::find($request->id)->update([
-                'nama' => $request->nama,
-                'tanggal' => $request->tanggal,
-                'email' => $request->email,
-                'handphone' => $request->handphone,
-                'alamat' => $request->alamat,
-                'merek' => $request->merek,
-                'tipe' => $request->tipe,
-                'windowfilms' => $request->produk,
+            $data = $request->all();
+            $rec = [];
+            $rec = $data;
+            Pendaftaran::find($request->id)->update($rec);
+                // 'nama' => $request->nama,
+                // 'tanggal' => $request->tanggal,
+                // 'email' => $request->email,
+                // 'handphone' => $request->handphone,
+                // 'alamat' => $request->alamat,
+                // 'merek' => $request->merek,
+                // 'tipe' => $request->tipe,
+                // 'window_films' => $request->produk,
 
                 //lanjutin datanya
 
-            ]);
+            // ]);
 
             return redirect('/data-pendaftaran')->with('success', 'Data Berhasil Diubah!');
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return redirect()->back()->with('error', 'Data Tidak Berhasil Diubah, Periksa kembali inputan ada!');
         }
     }
@@ -110,7 +132,9 @@ class PendaftaranController extends Controller
     public function verifikasistatuspendaftaran($id){
         //$dataUser = ProfileUsers::all();
         Pendaftaran::where("id", "$id")->update([
-            'status' => "claimed"
+            'status' => "claimed",
+            'verify_id' => auth()->user()->id,
+            'tgl_verif' => Carbon::now()
         ]);
         return redirect('/data-pendaftaran');
     }
@@ -134,8 +158,39 @@ class PendaftaranController extends Controller
     public function selesaistatuspendaftaran($id){
         //$dataUser = ProfileUsers::all();
         Pendaftaran::where("id", "$id")->update([
-            'status' => "claimed"
+            'status' => "claimed",
+            'verify_id' => auth()->user()->id,
+            'tgl_verif' => Carbon::now()
         ]);
         return redirect('/data-pendaftaran');
+    }
+
+    public function generateKode(Request $request)
+    {
+        $data = $request->query('jumlah',5);
+        $tanggal = $request->query('tanggal');
+
+        // Validate the inputs
+        if (!is_numeric($data) || !$this->validateDate($tanggal)) {
+            return redirect()->back()->withErrors(['error' => 'Invalid input data']);
+        }
+
+        $formattedDate = \DateTime::createFromFormat('Y-m-d', $tanggal)->format('Ymd');
+
+        $kode = [];
+        for($i=0; $i<$data; $i++) {
+            $rand_code = $formattedDate.Str::random(10);
+            $kode[] = ['code' => $rand_code];
+        }
+
+        Pendaftaran::insert($kode);
+
+        return redirect('/data-pendaftaran')->with('success', 'Berhasil Generate Kode Garansi!');
+    }
+
+    private function validateDate($date, $format = 'Y-m-d')
+    {
+        $d = \DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) === $date;
     }
 }
