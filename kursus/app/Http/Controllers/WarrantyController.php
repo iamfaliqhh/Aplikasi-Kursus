@@ -40,10 +40,12 @@ class WarrantyController extends Controller
         ->leftJoin('produk as x','warranty.front_window','=','x.id')
         ->leftJoin('produk as y','warranty.side_window','=','y.id')
         ->leftJoin('produk as z','warranty.back_window','=','z.id')
+        ->leftJoin('produk as w', 'warranty.ppf', '=', 'w.id')
         ->select('warranty.*',
                  'x.nama_produk as front',
                  'y.nama_produk as side',
-                 'z.nama_produk as back')
+                 'z.nama_produk as back',
+                 'w.nama_produk as ppf_name')
         ->where('code', $request->code)->first();
         $mereks = Merek::all();
         $windowfilms = WindowFilms::all();
@@ -76,6 +78,9 @@ class WarrantyController extends Controller
                 break;
             case 'back':
                 $windowParts = 'back_window';
+                break;
+            case 'ppf':
+                $windowParts = 'ppf';
                 break;
             default:
                 // Jika nilai $parts tidak valid, kembalikan pesan kesalahan

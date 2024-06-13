@@ -94,9 +94,9 @@ class PendaftaranController extends Controller
             // dd($request->all());
             // kalo pengen liat datanya
             $data = $request->all();
-            $rec = [];
-            $rec = $data;
-            Pendaftaran::find($request->id)->update($rec);
+            $formattedDate = \DateTime::createFromFormat('Y-m-d', $request->code)->format('Ymd');
+            $data['code'] = $formattedDate.'-'.Str::random(10);
+            Pendaftaran::find($request->id)->update($data);
                 // 'nama' => $request->nama,
                 // 'tanggal' => $request->tanggal,
                 // 'email' => $request->email,
@@ -179,7 +179,7 @@ class PendaftaranController extends Controller
 
         $kode = [];
         for($i=0; $i<$data; $i++) {
-            $rand_code = $formattedDate.Str::random(10);
+            $rand_code = $formattedDate.'-'.Str::random(10);
             $kode[] = ['code' => $rand_code];
         }
 

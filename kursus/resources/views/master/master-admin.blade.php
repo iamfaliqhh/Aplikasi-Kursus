@@ -24,9 +24,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
     <!-- Datatable -->
     <link href="{{ asset('sipenmaru/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <!-- Print Datatable -->
@@ -642,7 +639,7 @@
         $('.generate_kode').on('click', function (e) {
             e.preventDefault();
             var link = $(this).data('url');
-            console.log(link);
+
             Swal.fire({
                 title: 'Generate Kode?',
                 text: "Pilih jumlah data yang ingin di-generate:",
@@ -666,15 +663,13 @@
                 preConfirm: () => {
                     const jumlahData = $('#jumlahData').val();
                     const tanggalData = $('#tanggalData').val();
-                    
-                    console.log(tanggalData);
+                   
                     if (!jumlahData || !tanggalData) {
                         Swal.showValidationMessage('Anda harus memilih jumlah data dan tanggal!')
                     }
                     return { jumlahData: jumlahData, tanggalData: tanggalData }
                 }
             }).then((result) => {
-                console.log("Result dari Swal:", result);
                 const { jumlahData, tanggalData } = result.value;
                 if (result) {
                     var url = link+'?jumlah='+jumlahData + '&tanggal=' + tanggalData;
@@ -697,7 +692,6 @@
                 //cancelButtonColor: '#d33',
                 confirmButtonText: 'Ya, Hapus itu!'
             }).then((result) => {
-                console.log(result);
                 if (result.value) {
                     window.location = link;
                 }

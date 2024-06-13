@@ -73,14 +73,16 @@
                                                 <select id="merek-dropdown" class="form-control select2" name="merk">
                                                 <option value="">-- Pilih Merek Mobil --</option>
                                                 @foreach ($mereks as $m)
-                                                <option value="{{$m->id}}">
-                                                    {{$m->name}}
-                                                </option>
+                                                <option value="{{$m->id}}">{{$m->name}}</option>
                                                 @endforeach
                                                 </select>
                                                 <br>
                                                 <label for="" class="form-label label-font">Tipe Mobil</label>
                                                 <select id="tipe-dropdown" class="form-control select2" name="tipe">
+                                                    <option value="">-- Pilih Tipe Mobil --</option>
+                                                    @foreach ($tipes as $m)
+                                                    <option value="{{$m->id}}">{{$m->name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <div class="form-row label-font">
@@ -108,22 +110,31 @@
                                                 <label for="" class="form-label label-font">Kaca Film Depan</label>
                                                 <select id="" class="form-control select2" name="front_window">
                                                 <option value="">-- Pilih Kaca Film --</option>
-                                                <option value="">
+                                                @foreach ($windowfilms as $m)
+                                                <option value="{{$m->id}}">
+                                                    {{$m->nama_produk}}
                                                 </option>
+                                                @endforeach
                                                 </select>
                                                 <br>
                                                 <label for="" class="form-label label-font">Kaca Film Samping</label>
                                                 <select id="" class="form-control select2" name="side_window">
                                                 <option value="">-- Pilih Kaca Film --</option>
-                                                <option value="">
+                                                @foreach ($windowfilms as $m)
+                                                <option value="{{$m->id}}">
+                                                    {{$m->nama_produk}}
                                                 </option>
+                                                @endforeach
                                                 </select>
                                                 <br>
                                                 <label for="" class="form-label label-font">Kaca Film Belakang</label>
                                                 <select id="" class="form-control select2" name="back_window">
                                                 <option value="">-- Pilih Kaca Film --</option>
-                                                <option value="">
+                                                @foreach ($windowfilms as $m)
+                                                <option value="{{$m->id}}">
+                                                    {{$m->nama_produk}}
                                                 </option>
+                                                @endforeach
                                                 </select>
                                             </div>
                                         <div class="modal-footer border-top-0 d-flex">
@@ -151,10 +162,6 @@
                                     <th>Jenis Mobil</th>
                                     <th>Nomor Rangka</th>
                                     <th>Nomor Plat</th>
-                                    <th>PPF</th>
-                                    <th>Kaca Film Depan</th>
-                                    <th>Kaca Film Samping</th>
-                                    <th>Kaca Film Belakang</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -169,10 +176,6 @@
                                     <td>{{ $x->tipe_mobil->name ?? '-' }}</td>
                                     <td>{{ $x->nomor_rangka ?? '-' }}</td>
                                     <td>{{ $x->nomor_plat ?? '-'}}</td>
-                                    <td>{{ $x->ppf_name ?? '-'}}</td>
-                                    <td>{{ $x->front ?? '-'}}</td>
-                                    <td>{{ $x->side ?? '-'}}</td>
-                                    <td>{{ $x->back ?? '-'}}</td>
                                     <td>
                                         <div class="row">
                                             <div class="col-md-6">
@@ -223,15 +226,132 @@
                                                     <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="order-dropdown-2">
+                                                    <a class="btn-xs dropdown-item" title="Detail" data-bs-toggle="modal" data-bs-target="#modalDetail{{ $x->id }}">
+                                                        <i class="fa fa-regular fa-eye"></i> Lihat
+                                                    </a>
                                                     <a class="btn-xs dropdown-item" title="Edit" data-bs-toggle="modal" data-bs-target="#modalEdit{{ $x->id }}">
                                                         <i class="fa fa-pencil-alt"></i> Ubah
+                                                    </a>
+                                                    <a href="delete-pendaftaran/{{$x->id}}" class="btn-xs dropdown-item btn-delete" data-name="{{$x->code}}">
+                                                        <i class="fa fa-trash"></i> Hapus
                                                     </a>
                                                     <!-- <a class="btn-xs dropdown-item btn-delete" href="delete-merek/{{$x->id}}" data-name="{{$x->code}}">
                                                         <i class="fa fa-trash"></i> Hapus
                                                     </a> -->
-                                                    <a href="delete-pendaftaran/{{$x->id}}" class="btn-xs dropdown-item btn-delete" data-name="{{$x->code}}"><i class="fa fa-trash"></i> Hapus</a>
                                                 </div>
                                             </div>
+
+
+                                            {{-- modal detail data --}}
+                                            <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel{{ $x->id }}" aria-hidden="true" id="modalDetail{{ $x->id }}">
+                                                <div class="modal-dialog modal-xl">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Detail Data Garansi</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form>
+                                                                <input type="hidden" name="id" value="{{ $x->id }}">
+                                                                <div class="row mb-3">
+                                                                    <div class="col-md-6">
+                                                                        <label for="nama" class="form-label">Kode Garansi</label>
+                                                                        <input type="text" name="nama" class="form-control" id="nama" value="{{ $x->code }}" readonly>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="nama" class="form-label">Nama</label>
+                                                                        <input type="text" name="nama" class="form-control" id="nama" value="{{ $x->nama }}" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-md-6">
+                                                                        <label for="tanggal" class="form-label">Tanggal Lahir</label>
+                                                                        <input type="text" class="form-control datepicker" name="tanggal" id="tanggal" placeholder="dd-mm-YYYY" value="{{ $x->tanggal }}" readonly>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="email" class="form-label">Email</label>
+                                                                        <input type="email" class="form-control" name="email" id="email" value="{{ $x->email }}" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-md-6">
+                                                                        <label for="handphone" class="form-label">No. Handphone</label>
+                                                                        <input type="tel" class="form-control" name="handphone" id="handphone" value="{{ $x->handphone }}" readonly>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="alamat" class="form-label">Alamat</label>
+                                                                        <input type="text" class="form-control" name="alamat" id="alamat" value="{{ $x->alamat }}" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-md-6">
+                                                                        <label for="merek-dropdown" class="form-label">Merek Mobil</label>
+                                                                        <select id="merek-dropdown" class="form-control select2" name="merek" disabled>
+                                                                            <option value=""></option>
+                                                                            @foreach ($mereks as $m)
+                                                                                <option value="{{ $m->id }}" @if(isset($x->tipe_mobil->merek->id) && $x->tipe_mobil->merek->id == $m->id) selected @endif>
+                                                                                    {{ $m->name }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="tipe-dropdown" class="form-label">Tipe Mobil</label>
+                                                                        <select id="tipe-dropdown" class="form-control select2" name="tipe" disabled>
+                                                                            <option value=""></option>
+                                                                            @foreach ($tipes as $m)
+                                                                                <option value="{{ $m->id }}" @if(isset($x->tipe) && $x->tipe == $m->id) selected @endif>
+                                                                                    {{ $m->name }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-md-6">
+                                                                        <label for="nomor_rangka" class="form-label">Nomor Rangka Kendaraan</label>
+                                                                        <input type="text" name="nomor_rangka" class="form-control" id="nomor_rangka" value="{{ $x->nomor_rangka }}" readonly>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="nomor_plat" class="form-label">Nomor Plat Kendaraan</label>
+                                                                        <input type="text" name="nomor_plat" class="form-control" id="nomor_plat" value="{{ $x->nomor_plat }}" readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="ppf" class="form-label">PPF</label>
+                                                                    <input type="text" class="form-control" name="ppf" id="ppf" value="{{ $x->ppf_name }}" readonly>
+                                                                </div>
+                                                                <div class="row mb-3">
+                                                                    <div class="col-md-4">
+                                                                        <label for="front_window" class="form-label">Kaca Film Depan</label>
+                                                                        <input type="text" class="form-control" name="front_window" id="front_window" value="{{ $x->front }}" readonly>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <label for="side_window" class="form-label">Kaca Film Samping</label>
+                                                                        <input type="text" class="form-control" name="side_window" id="side_window" value="{{ $x->side }}" readonly>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <label for="back_window" class="form-label">Kaca Film Belakang</label>
+                                                                        <input type="text" class="form-control" name="back_window" id="back_window" value="{{ $x->back }}" readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
+
+                                            @php
+                                                $data_code = explode('-',$x->code)[0];
+                                                $date = null;
+                                                
+                                                if (strlen($data_code) === 8 && is_numeric($data_code)) {
+                                                    $date = \Carbon\Carbon::createFromFormat('dmY', $data_code)->format('Y-m-d');
+                                                }
+                                            @endphp
 
                                             {{-- modal edit --}}
                                             <div class="modal fade modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -254,7 +374,7 @@
                                                                     </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label for="">Tanggal Lahir</label>
-                                                                    <input type="text" class="form-control datepicker" name="tanggal" id="" placeholder="dd-mm-YYYY" value="{{$x->tanggal}}" required>
+                                                                    <input type="date" class="form-control" name="tanggal" id="" placeholder="dd-mm-YYYY" value="{{$x->tanggal}}" required>
                                                                 </div>
                                                             </div>
                                                             <div class="form-row label-font">
@@ -271,6 +391,16 @@
                                                                 <label for="">Alamat</label>
                                                                 <input type="text" class="form-control" name="alamat" id="" placeholder="Masukkan Alamat Lengkap Anda" value="{{$x->alamat}}" required>
                                                             </div>
+                                                            <div class="form-row label-font">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="">Tanggal Pemasangan</label>
+                                                                    <input type="date" class="form-control" name="tgl_pemasangan" placeholder="dd-mm-YYYY" value="{{ $x->tgl_pemasangan }}" required>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="">Tanggal Garansi</label>
+                                                                    <input type="date" class="form-control" name="code" placeholder="dd-mm-YYYY" value="{{ $date }}" required>
+                                                                </div>
+                                                            </div>
                                                             <div class="mb-3">
                                                                 <label for="" class="form-label label-font">Merek Mobil</label>
                                                                 <select id="merek-dropdown" class="form-control select2" name="merek">
@@ -286,7 +416,7 @@
                                                                 <select id="tipe-dropdown" class="form-control select2" name="tipe">
                                                                 <option value="">-- Pilih Tipe Mobil --</option>
                                                                     @foreach ($tipes as $m)
-                                                                    <option value="{{$m->id}}" @if(isset($x->merek->tipe_mobil->id) && $x->merek->tipe_mobil->id == $m->id) selected @endif>
+                                                                    <option value="{{$m->id}}" @if(isset($x->tipe) && $x->tipe == $m->id) selected @endif>
                                                                         {{$m->name}}
                                                                     </option>
                                                                     @endforeach

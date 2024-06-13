@@ -97,6 +97,7 @@
         $countdown_front = app('App\Http\Controllers\WarrantyController')->warrantyCountdown($check->code,'front');
         $countdown_side = app('App\Http\Controllers\WarrantyController')->warrantyCountdown($check->code,'side');
         $countdown_back = app('App\Http\Controllers\WarrantyController')->warrantyCountdown($check->code,'back');
+        $countdown_ppf = app('App\Http\Controllers\WarrantyController')->warrantyCountdown($check->code,'ppf');
     @endphp
 
     <table class="table table-bordered text-left">
@@ -111,6 +112,10 @@
         <tr>
             <td scope="col"><b>Jenis Mobil</b></td>
             <td>{{$check->tipe_mobil->name ?? '-'}}</td>
+        </tr>
+        <tr>
+            <td scope="col"><b>PPF</b></td>
+            <td>{{$check->ppf_name ?? '-'}} ({{$countdown_ppf}})</td>
         </tr>
         <tr>
             <td scope="col"><b>Kaca Film Depan</b></td>
