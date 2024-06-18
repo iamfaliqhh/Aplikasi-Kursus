@@ -29,7 +29,7 @@
                     <div>
                         <button class="btn btn-secondary waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
                             class="fa fa-print"> </i></button>
-                        <button type="button" data-url="generate-kode" class="btn btn-secondary waves-effect waves-light mb-4 generate_kode" id="generate_kode" title="Generate Kode"><i class="mdi mdi-download me-1"></i>Generate Kode</button>
+                        <button type="button" data-url="generate-kode" class="btn btn-secondary waves-effect waves-light mb-4 generate_kode" id="generate_kode" title="Generate Kode"><i class="mdi mdi-shape-circle-plus me-1"></i>Generate Kode</button>
                         <button type="button" class="btn btn-secondary mb-4" data-bs-toggle="modal" data-bs-target="#modalTambah"
                             style="margin-bottom: 1rem;"><i class="mdi mdi-plus me-1"></i>Tambah Data Garansi</button>
                     </div>
@@ -316,6 +316,10 @@
                                                                         <label for="nomor_plat" class="form-label">Nomor Plat Kendaraan</label>
                                                                         <input type="text" name="nomor_plat" class="form-control" id="nomor_plat" value="{{ $x->nomor_plat }}" readonly>
                                                                     </div>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="reseller" class="form-label">Alamat Reseller</label>
+                                                                    <input type="text" class="form-control" name="reseller" id="reseller" value="{{ $x->reseller }}" readonly>
                                                                 </div>
                                                                 <div class="mb-3">
                                                                     <label for="ppf" class="form-label">PPF</label>

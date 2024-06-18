@@ -90,7 +90,7 @@
     <div class="container text-center">
     <br>
     <h1 class="font-weight-bold" style="font-size: 24px;">Terima kasih telah mengisi data!</h1>
-    <p style="font-size: 15px;">Selamat! Warranty anda telah diaktivasi dan berlaku untuk 7 tahun.</p>
+    <p style="font-size: 15px;">Selamat! Warranty anda telah diaktivasi.</p>
     <br>
     
     @php

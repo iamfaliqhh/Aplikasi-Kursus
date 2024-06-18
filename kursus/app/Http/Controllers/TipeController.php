@@ -49,6 +49,7 @@ class TipeController extends Controller
             }
             Tipe::create([
                 'name' => $request->name,
+                'merek_id' => $request->merek
             ]);
 
             return redirect('/data-tipe')->with('success', 'Data Tersimpan!');

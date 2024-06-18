@@ -90,23 +90,27 @@ class WarrantyController extends Controller
         $data = Warranty::where('code', $code)
         ->leftJoin('produk as a',"warranty.$windowParts",'=','a.id')
         ->leftJoin('m_warranties as b','a.tipe_warranty','=','b.id')
-        ->select('warranty.tgl_verif','a.is_lifetime','b.tahun_berlaku','a.nama_produk')
+        ->select('warranty.tgl_verif','a.is_lifetime','b.tahun_berlaku','a.nama_produk','a.tipe_warranty')
         ->first();
 
-        if($data->is_lifetime == true){
-            $remaining = 'Seumur Hidup';
-        }else{
+        if($data->is_lifetime == true) {
+            $remaining = 'Garansi Seumur Hidup';
+        } elseif ($data->tipe_warranty != null) {
             $verifikasi = Carbon::parse($data->tgl_verif);
             $endDate = $verifikasi->copy()->addYears($data->tahun_berlaku);
             
-            // Hitung sisa masa garansi
-            $remainingDays = $endDate->diffInDays(Carbon::now());
-            $years = floor($remainingDays / 365);
-            $remainingDays %= 365;
-            $months = floor($remainingDays / 30);
-            $days = $remainingDays % 30;
+            if (Carbon::now()->greaterThan($endDate)) {
+                $remaining = "Garansi telah berakhir";
+            }
+            // Hitung sisa masa garansi dengan metode diff
+            $diff = Carbon::now()->diff($endDate);
+            $years = $diff->y;
+            $months = $diff->m;
+            $days = $diff->d;
 
             $remaining = "$years tahun, $months bulan, $days hari";
+        } else {
+            $remaining = "-";
         }
 
         return $remaining;

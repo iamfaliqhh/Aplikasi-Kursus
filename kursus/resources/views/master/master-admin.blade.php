@@ -400,7 +400,7 @@
                         <script>
                             document.write(new Date().getFullYear())
                         </script> All Rights Reserved.</p>
-                    <p class="fs-12">Made by Faliqh Yoon X Fugomika</p>
+                    <p class="fs-12">Made by Faliqh Yoon</p>
                 </div>
             </div>
         </div>
@@ -433,7 +433,7 @@
                     <script>
                         document.write(new Date().getFullYear())
                     </script> <br>
-                    Designed &amp; Developed by <a href="https://www.instagram.com/" target="_blank">Faliqh Yoon X Fugomika</a>
+                    Designed &amp; Developed by <a href="https://www.instagram.com/" target="_blank">Faliqh Yoon</a>
 
                 </p>
             </div>

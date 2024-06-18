@@ -12,7 +12,7 @@
 @endsection
 
 @section('menunya')
-    <h1 class="font-weight-bold" style="font-size: 24px;">Official Reseller<h1>
+    <h1 class="font-weight-bold" style="font-size: 24px;">Alamat Reseller<h1>
 @endsection
 
 @section('menu')
@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data Official Reseller</h4>
+                    <h4 class="card-title">Data Alamat Reseller</h4>
                     <!-- center modal -->
                     <div>
                         <button class="btn btn-secondary waves-effect waves-light mb-4" onclick="printDiv('cetak')"><i
@@ -73,7 +73,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Reseller</th>
+                                    <th>Alamat Reseller</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>

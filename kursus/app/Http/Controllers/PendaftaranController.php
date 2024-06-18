@@ -44,12 +44,14 @@ class PendaftaranController extends Controller
         ->leftJoin('produk as y', 'warranty.front_window', '=', 'y.id')
         ->leftJoin('produk as z', 'warranty.back_window', '=', 'z.id')
         ->leftJoin('produk as w', 'warranty.ppf', '=', 'w.id')
+        ->leftJoin('official_reseller as o', 'warranty.id_reseller','=', 'o.id')
         ->select(
             'warranty.*',
             'x.nama_produk as side',
             'y.nama_produk as front',
             'z.nama_produk as back',
-            'w.nama_produk as ppf_name'
+            'w.nama_produk as ppf_name',
+            'o.reseller'
         )
         ->get();
         // dd($data);
